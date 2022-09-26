@@ -1,2 +1,6 @@
 # projet-groupe-16
-projet-groupe-16 created by GitHub Classroom
+Projet Application Mealer
+@author Hakim Chergui
+@author Astrid 
+@author Stéphane
+@author Nathan Gawargy
