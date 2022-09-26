@@ -1,0 +1,4 @@
+com/example/mealer/MainActivity.java
+ com.example.mealer.MainActivity
+com/example/mealer/BuildConfig.java
+ com.example.mealer.BuildConfig
