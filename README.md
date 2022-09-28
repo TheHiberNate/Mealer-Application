@@ -2,6 +2,6 @@
 Projet Mealer pour la classe SEG 2505
 @author Hakim
 @author Stéphane
-@author Nathan
+@author Nathan Gawargy
 @author Astrid
 @author Brice
