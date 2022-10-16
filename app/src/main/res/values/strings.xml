@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mealer</string>
+    <string name="radioBtnChef">Chef</string>
+    <string name="radioBtnClient">Client</string>
 </resources>
