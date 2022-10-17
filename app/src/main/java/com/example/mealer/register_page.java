@@ -126,14 +126,13 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    User user = new User(lastName, firstName, email, password);
-
-//                    if (role == "Client") {
-//                        user = new Client(lastName, firstName, email, password);
-//                    }
-//                    else {
-//                        user = new Chef(lastName, firstName, email, password);
-//                    }
+                    User user;
+                    if (role == "Client") {
+                        user = new Client(lastName, firstName, email, password);
+                    }
+                    else {
+                        user = new Chef(lastName, firstName, email, password);
+                    }
                     FirebaseDatabase.getInstance().getReference("Users")
                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
