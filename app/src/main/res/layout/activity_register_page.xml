@@ -3,29 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ConstraintLayout"
-    android:background="@drawable/register_page_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/register_page_background"
     tools:context=".register_page">
-
-    <EditText
-        android:id="@+id/editTextAddress"
-        android:layout_width="259dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
-        android:background="@drawable/button_style"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Address"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-
-        app:layout_constraintBottom_toTopOf="@+id/textHowUsingMealer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -33,7 +14,6 @@
         android:layout_height="52dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="24dp"
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
         android:ems="10"
@@ -41,42 +21,12 @@
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/editTextAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textChefDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="(Making Food)"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.731"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroupUsers" />
-
-    <EditText
-        android:id="@+id/editTextLastName"
-        android:layout_width="258dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_style"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Last Name"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textColor="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.433" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -94,10 +44,85 @@
         android:textColor="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.434" />
+        app:layout_constraintVertical_bias="0.356" />
+
+    <EditText
+        android:id="@+id/editTextLastName"
+        android:layout_width="258dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="Last Name"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textColor="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.279" />
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="259dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+        android:textColor="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.206" />
+
+    <EditText
+        android:id="@+id/editTextAddress"
+        android:layout_width="259dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="Address"
+        android:minHeight="48dp"
+        android:textAlignment="center"
+
+        app:layout_constraintBottom_toTopOf="@+id/textHowUsingMealer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.972" />
+
+    <TextView
+        android:id="@+id/textChefDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="(Making Food)"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.731"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroupUsers" />
 
     <RadioGroup
         android:id="@+id/radioGroupUsers"
@@ -172,26 +197,6 @@
         app:layout_constraintBottom_toTopOf="@+id/editTextName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.532"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="259dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/button_style"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="Name"
-        android:inputType="textEmailAddress"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textColor="@color/green"
-        app:layout_constraintBottom_toTopOf="@+id/editTextLastName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.545"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
