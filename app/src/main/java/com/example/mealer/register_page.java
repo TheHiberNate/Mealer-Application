@@ -47,22 +47,18 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         mAuth =  FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance();
         databaseUsers = mDatabase.getReference("Users");
-
         // Button
         register = (Button) findViewById(R.id.btn_Register2);
         register.setOnClickListener(this);
-
         // TextView
         homePage = (TextView) findViewById(R.id.textBacktoHome);
         homePage.setOnClickListener(this);
-
         // EditText
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextLastName = (EditText) findViewById(R.id.editTextLastName);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextAddress = (EditText) findViewById(R.id.editTextAddress);
-
         // RadioButton
         usersRadioGroup = (RadioGroup) findViewById(R.id.radioGroupUsers);
         usersRadioGroup.check(R.id.radioBtnClient);
@@ -108,18 +104,16 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    // toast success registered
+                                                    Toast.makeText(register_page.this, "Registered Successfully!", Toast.LENGTH_LONG).show();
                                                 }
                                                 else {
-                                                    // toast error Firebase databse error
-                                                }
+                                                    Toast.makeText(register_page.this, "Registration Failed, Try again later", Toast.LENGTH_LONG).show();                                                }
                                             }
                                         });
                             }
                             else {
-                                // toast error message Unable to register, try again later.s
+                                Toast.makeText(register_page.this, "Registration Failed, Try again later", Toast.LENGTH_LONG).show();                                                }
                             }
-                        }
                     });
         }
     }
