@@ -1,51 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/login_background"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btn_Register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#8BC34A"
+        android:layout_width="129dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/Light_green"
         android:text="REGISTER"
-        android:textColor="#4527A0"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.954" />
+        app:layout_constraintVertical_bias="0.807" />
 
     <TextView
         android:id="@+id/textRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Don't have an account? Click Here to Register!"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.873" />
+        app:layout_constraintVertical_bias="0.733" />
 
     <TextView
         android:id="@+id/textWelcomeApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome to the Best Food App...."
+        android:textColor="@color/white"
         android:textSize="18dp"
-        android:textColor="#689F38"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.566"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.158" />
 
     <TextView
         android:id="@+id/textMealer"
@@ -55,69 +57,78 @@
         android:textColor="@color/purple_500"
         android:textSize="60dp"
         android:textStyle="bold"
-        android:fontFamily="sans-serif-black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.305" />
+        app:layout_constraintVertical_bias="0.252" />
 
     <EditText
         android:id="@+id/editTextTextEmailAddress2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="287dp"
+        android:layout_height="47dp"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Email/Username"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword2"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textLogin"
-        app:layout_constraintVertical_bias="0.653" />
+        app:layout_constraintTop_toBottomOf="@+id/textLogin"
+        app:layout_constraintVertical_bias="0.089" />
 
     <TextView
         android:id="@+id/textLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Already a User? Enter your Credentials and Click Login!"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.462" />
+        app:layout_constraintVertical_bias="0.385" />
 
     <Button
         android:id="@+id/btn_Login"
-        android:layout_width="180dp"
-        android:layout_height="70dp"
-        android:backgroundTint="#8BC34A"
+        android:layout_width="214dp"
+        android:layout_height="45dp"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/Light_green"
         android:text="LOGIN"
+        android:textColor="@color/black"
+
         android:textSize="26sp"
-        android:textColor="#4527A0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
+        app:layout_constraintVertical_bias="0.634" />
 
     <EditText
         android:id="@+id/editTextTextPassword2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_width="284dp"
+        android:layout_height="46dp"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
         android:minHeight="48dp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_Login"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.563" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
