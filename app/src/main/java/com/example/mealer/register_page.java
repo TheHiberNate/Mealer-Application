@@ -29,7 +29,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
 //    private ProgressBar progressBar;
     private FirebaseAuth mAuth;
 
-//    private String role;
+    private String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +44,8 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         homePage = (TextView) findViewById(R.id.textBacktoHome);
         homePage.setOnClickListener(this);
 
-//        client = (RadioButton) findViewById(R.id.radioBtnClient);
-//        client.setOnClickListener(this);
-//        chef = (RadioButton) findViewById(R.id.radioBtnChef);
-//        chef.setOnClickListener(this);
+        client = (RadioButton) findViewById(R.id.radioBtnClient);
+        chef = (RadioButton) findViewById(R.id.radioBtnChef);
 
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextLastName = (EditText) findViewById(R.id.editTextLastName);
@@ -56,9 +54,9 @@ public class register_page extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View v) {
 //        boolean checked = ((RadioButton) view).isChecked();
-        switch (view.getId()) {
+        switch (v.getId()) {
             case R.id.textBacktoHome:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
@@ -79,6 +77,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         String lastName = editTextLastName.getText().toString().trim();
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
+        boolean checked = chef.isChecked();
 
         //Checks if corresponding fields are empty
         if (firstName.isEmpty()) {
@@ -113,8 +112,14 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextPassword.requestFocus();
             return;
         }
+        if (checked != true) { // chef radio button is no checked
+            role = "Client";
+        }
+        else {
+            role = "Chef";
+        }
 
-//        // set progress bar to visible
+        // set progress bar to visible
 //        progressBar.setVisibility(View.VISIBLE);
 
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -151,7 +156,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
-
+//        mAuth.createUserWithEmailAndPassword(email, password);
     }
 
 }
