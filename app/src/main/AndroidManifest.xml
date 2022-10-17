@@ -10,6 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mealer">
         <activity
+            android:name=".Home_page"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".register_page"
             android:exported="false">
             <meta-data
