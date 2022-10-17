@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="MEALER"
-        android:textColor="@color/purple_500"
+        android:textColor="@color/white"
         android:textSize="60dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +67,7 @@
     <EditText
         android:id="@+id/editTextTextEmailAddress2"
         android:layout_width="287dp"
-        android:layout_height="47dp"
+        android:layout_height="48dp"
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
         android:ems="10"
@@ -98,7 +98,7 @@
     <Button
         android:id="@+id/btn_Login"
         android:layout_width="214dp"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:background="@drawable/button_style"
         android:backgroundTint="@color/Light_green"
         android:text="LOGIN"
@@ -115,7 +115,7 @@
     <EditText
         android:id="@+id/editTextTextPassword2"
         android:layout_width="284dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
         android:ems="10"
