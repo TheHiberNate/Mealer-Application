@@ -34,7 +34,6 @@ public class register_page extends AppCompatActivity implements View.OnClickList
     private DatabaseReference databaseUsers;
 
 //    private String role;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,47 +76,6 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void registerUser() {
-        final String firstName = editTextName.getText().toString().trim();
-        final String lastName = editTextLastName.getText().toString().trim();
-        final String email = editTextEmail.getText().toString().trim();
-        final String password = editTextPassword.getText().toString().trim();
-        final String address = editTextAddress.getText().toString().trim();
-
-        int radioBtnInt = usersRadioGroup.getCheckedRadioButtonId();
-        userRadioButton = findViewById(radioBtnInt);
-        final String role = userRadioButton.getText().toString();
-
-        if (validCredentials()) {
-
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-
-                                final User user = createUser(role, firstName, lastName, email, address);
-
-                                databaseUsers
-                                        .child(mAuth.getCurrentUser().getUid()).setValue(user)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(register_page.this, "Registered Successfully!", Toast.LENGTH_LONG).show();
-                                                }
-                                                else {
-                                                    Toast.makeText(register_page.this, "Registration Failed, Try again later", Toast.LENGTH_LONG).show();                                                }
-                                            }
-                                        });
-                            }
-                            else {
-                                Toast.makeText(register_page.this, "Registration Failed, Try again later", Toast.LENGTH_LONG).show();                                                }
-                            }
-                    });
-        }
-    }
-
     public User createUser(String role, String firstName, String lastName, String email, String address) {
         if (role.equals("Client")) {
             return new Client(firstName, lastName, email, address);
@@ -125,7 +83,6 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             return new Chef(firstName, lastName, email, address);
         }
     }
-
 
     public boolean validCredentials() {
         boolean isValid = true;
@@ -178,6 +135,44 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         return isValid;
     }
 
+    private void registerUser() {
+        final String firstName = editTextName.getText().toString().trim();
+        final String lastName = editTextLastName.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
+        final String password = editTextPassword.getText().toString().trim();
+        final String address = editTextAddress.getText().toString().trim();
 
+        int radioBtnInt = usersRadioGroup.getCheckedRadioButtonId();
+        userRadioButton = findViewById(radioBtnInt);
+        final String role = userRadioButton.getText().toString();
+
+        if (validCredentials()) {
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+
+                                final User user = createUser(role, firstName, lastName, email, address);
+
+                                databaseUsers
+                                        .child(mAuth.getCurrentUser().getUid()).setValue(user)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(register_page.this, "Registered Successfully!", Toast.LENGTH_LONG).show();
+                                                }
+                                                else {
+                                                    Toast.makeText(register_page.this, "Registration Failed, Try again later", Toast.LENGTH_LONG).show();                                                }
+                                            }
+                                        });
+                            }
+                            else {
+                                Toast.makeText(register_page.this, "Registration Failed, Try again later", Toast.LENGTH_LONG).show();                                                }
+                            }
+                    });
+        }
+    }
 
 }
