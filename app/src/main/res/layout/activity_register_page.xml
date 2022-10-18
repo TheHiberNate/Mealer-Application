@@ -27,7 +27,8 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.933" />
+        app:layout_constraintVertical_bias="0.933"
+        android:autofillHints="" />
 
     <EditText
         android:id="@+id/editTextEmail"
@@ -116,7 +117,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="(Making Food)"
+        android:text="@string/TextView_MakingFood"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.731"
@@ -139,7 +140,7 @@
             android:layout_width="116dp"
             android:layout_height="48dp"
             android:checked="true"
-            android:text="Client"
+            android:text="@string/radioBtnClient"
             android:textColor="@color/white" />
 
         <RadioButton
@@ -190,7 +191,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="20dp"
         android:width="180dp"
-        android:text="Enter your Email and Password Below"
+        android:text="@string/TextView_RegistrationCredentials"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/purple_500"
@@ -205,7 +206,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="(Ordering Food)"
+        android:text="@string/TextView_OrderingFood"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.339"
@@ -218,7 +219,7 @@
         android:layout_height="55dp"
         android:background="@drawable/button_style"
         android:backgroundTint="#8BC34A"
-        android:text="REGISTER"
+        android:text="@string/btn_REGISTER"
         android:textColor="#4527A0"
         app:layout_constraintBottom_toTopOf="@+id/btnBackHome"
         app:layout_constraintEnd_toEndOf="parent"
