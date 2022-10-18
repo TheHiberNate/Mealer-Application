@@ -9,17 +9,13 @@ public class User {
     //private String address;
 
 
-    public User(String firstName, String lastName, String email, String address) {
+    public User(String firstName, String lastName, String email, String address, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
+        this.role = role;
         //this.address = address;
     }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public String getRole() { return role; }
+    
 }
