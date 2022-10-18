@@ -24,9 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class register_page extends AppCompatActivity implements View.OnClickListener {
 
-    private TextView homePage;
+//    private TextView homePage;
     private EditText editTextName, editTextLastName, editTextPassword, editTextEmail, editTextAddress;
-    private Button register;
+    private Button register, btnhomePage;
     private RadioGroup usersRadioGroup;
     private RadioButton userRadioButton;
     private FirebaseAuth mAuth;
@@ -49,9 +49,11 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         // Button
         register = (Button) findViewById(R.id.btn_Register2);
         register.setOnClickListener(this);
-        // TextView
-        homePage = (TextView) findViewById(R.id.textBacktoHome);
-        homePage.setOnClickListener(this);
+        btnhomePage = (Button) findViewById(R.id.btnBackHome);
+        btnhomePage.setOnClickListener(this);
+//        // TextView
+//        homePage = (TextView) findViewById(R.id.textBacktoHome);
+//        homePage.setOnClickListener(this);
         // EditText
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextLastName = (EditText) findViewById(R.id.editTextLastName);
@@ -67,7 +69,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
 //        boolean checked = ((RadioButton) view).isChecked();
         switch (v.getId()) {
-            case R.id.textBacktoHome:
+            case R.id.btnBackHome:
                 startActivity(new Intent(this, MainActivity.class));
                 break;
             case R.id.btn_Register2:
