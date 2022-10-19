@@ -41,7 +41,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         initializeVariables();
     }
 
-    public void initializeVariables() {
+    private void initializeVariables() {
         // Firebase
         mAuth =  FirebaseAuth.getInstance();
 //        mDatabase = FirebaseDatabase.getInstance();
@@ -79,7 +79,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public User createUser(String role, String firstName, String lastName, String email, String address, String payment) {
+    private User createUser(String role, String firstName, String lastName, String email, String address, String payment) {
         if (role.equals("Client")) {
             return new Client(firstName, lastName, email, address, payment);
         } else {
@@ -87,7 +87,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public boolean validCredentials() {
+    private boolean validCredentials() {
         boolean isValid = true;
 
         String firstName = editTextName.getText().toString().trim();
