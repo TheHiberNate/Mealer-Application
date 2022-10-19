@@ -17,7 +17,7 @@
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textAlignment="center"
@@ -39,7 +39,7 @@
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textAlignment="center"
@@ -49,7 +49,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.916" />
+        app:layout_constraintVertical_bias="0.916"
+        tools:ignore="TextContrastCheck"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editTextLastName"
@@ -60,7 +62,7 @@
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="@string/last_name"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textAlignment="center"
@@ -70,7 +72,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906" />
+        app:layout_constraintVertical_bias="0.906"
+        tools:ignore="TextContrastCheck"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editTextName"
@@ -81,7 +85,7 @@
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textAlignment="center"
@@ -91,7 +95,9 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861" />
+        app:layout_constraintVertical_bias="0.861"
+        tools:ignore="TextContrastCheck"
+        android:importantForAutofill="no" />
 
     <EditText
         android:id="@+id/editTextAddress"
@@ -103,14 +109,17 @@
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
         android:ems="10"
-        android:hint="Address"
+        android:hint="@string/address"
+        android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textAlignment="center"
 
         app:layout_constraintBottom_toTopOf="@+id/textHowUsingMealer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TextContrastCheck"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/textChefDescription"
@@ -141,14 +150,16 @@
             android:layout_height="48dp"
             android:checked="true"
             android:text="@string/radioBtnClient"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            tools:ignore="TextContrastCheck" />
 
         <RadioButton
             android:id="@+id/radioBtnChef"
             android:layout_width="94dp"
             android:layout_height="48dp"
             android:text="@string/radioBtnChef"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            tools:ignore="TextContrastCheck" />
     </RadioGroup>
 
     <TextView
@@ -157,7 +168,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
         android:width="180dp"
-        android:text="Click Here to Create your Account"
+        android:text="@string/TextView_ClickHereCreateAccount"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/white"
@@ -173,7 +184,7 @@
         android:id="@+id/textHowUsingMealer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How will you be using Mealer?"
+        android:text="@string/how_will_you_be_using_mealer"
         android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -181,7 +192,8 @@
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.594" />
+        app:layout_constraintVertical_bias="0.594"
+        tools:ignore="TextContrastCheck" />
 
     <TextView
         android:id="@+id/textEnterCredentials"
@@ -191,7 +203,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="20dp"
         android:width="180dp"
-        android:text="@string/TextView_RegistrationCredentials"
+        android:text="@string/TextView_EnterRegistrationCredentials"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/purple_500"
@@ -234,13 +246,14 @@
         android:background="@drawable/button_style"
         android:backgroundTint="@color/Light_green"
         android:foreground="@drawable/abc_vector_test"
-        android:text="h"
+        android:text="@string/h"
         android:textColor="@color/Light_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.043"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.981" />
+        app:layout_constraintVertical_bias="0.981"
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
