@@ -155,8 +155,8 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-//                                final User user = createUser(role, firstName, lastName, email, address);
-                                User user = new User(firstName, lastName, email, address,"Chef");
+                                final User user = createUser(role, firstName, lastName, email, address);
+//                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")
                                         .child(mAuth.getCurrentUser().getUid()).setValue(user)
