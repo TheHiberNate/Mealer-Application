@@ -166,7 +166,7 @@
         android:id="@+id/textclickHereRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="15dp"
         android:width="180dp"
         android:text="@string/TextView_ClickHereCreateAccount"
         android:textAlignment="center"
