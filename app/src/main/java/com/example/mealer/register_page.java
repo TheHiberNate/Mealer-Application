@@ -25,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class register_page extends AppCompatActivity implements View.OnClickListener {
 
 //    private TextView homePage;
-    private EditText editTextName, editTextLastName, editTextPassword, editTextEmail, editTextAddress;
+    private EditText editTextName, editTextLastName, editTextPassword, editTextEmail, editTextAddress, editTextPayment;
     private Button register, btnhomePage;
     private RadioGroup usersRadioGroup;
     private RadioButton userRadioButton;
@@ -60,6 +60,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextAddress = (EditText) findViewById(R.id.editTextAddress);
+        editTextPayment = (EditText) findViewById(R.id.editTextPayment);
         // RadioButton
         usersRadioGroup = (RadioGroup) findViewById(R.id.radioGroupUsers);
         usersRadioGroup.check(R.id.radioBtnClient);
@@ -78,11 +79,11 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public User createUser(String role, String firstName, String lastName, String email, String address) {
+    public User createUser(String role, String firstName, String lastName, String email, String address, String payment) {
         if (role.equals("Client")) {
-            return new Client(firstName, lastName, email, address);
+            return new Client(firstName, lastName, email, address, payment);
         } else {
-            return new Chef(firstName, lastName, email, address);
+            return new Chef(firstName, lastName, email, address, payment);
         }
     }
 
@@ -94,6 +95,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
         String address = editTextAddress.getText().toString().trim();
+        String payment = editTextPayment.getText().toString().trim();
 
         //Checks if corresponding fields are empty and if has valid Email and Password
         if (firstName.isEmpty()) {
@@ -134,6 +136,12 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             isValid = false;
         }
 
+        if (payment.isEmpty()) {
+            editTextPayment.setError("Please Enter Payment Information");
+            editTextPayment.requestFocus();
+            isValid = false;
+        }
+
         return isValid;
     }
 
@@ -143,6 +151,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
         final String address = editTextAddress.getText().toString().trim();
+        final String payment = editTextPayment.getText().toString().trim();
 
         int radioBtnInt = usersRadioGroup.getCheckedRadioButtonId();
         userRadioButton = findViewById(radioBtnInt);
@@ -155,7 +164,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = createUser(role, firstName, lastName, email, address);
+                                final User user = createUser(role, firstName, lastName, email, address, payment);
 //                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")
@@ -164,10 +173,13 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
-                                                    Toast.makeText(register_page.this, "Registered Successfully!", Toast.LENGTH_LONG).show();
+                                                    Toast.makeText(register_page.this, "Registered Successfully! Please Login to get Started!", Toast.LENGTH_LONG).show();
+                                                    startActivity(new Intent(register_page.this, MainActivity.class));
                                                 }
                                                 else {
-                                                    Toast.makeText(register_page.this, "Registration Failed, Try again later", Toast.LENGTH_LONG).show();                                                }
+                                                    Toast.makeText(register_page.this, "Registration Failed, Try again later", Toast.LENGTH_LONG).show();
+                                                    startActivity(new Intent(register_page.this, MainActivity.class));
+                                                }
                                             }
                                         });
                             }

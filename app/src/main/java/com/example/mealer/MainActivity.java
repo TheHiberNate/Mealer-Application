@@ -9,7 +9,6 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     //redirect to user profile
-                    startActivity(new Intent(MainActivity.this, Home_page.class));
+                    startActivity(new Intent(MainActivity.this, home_page_client.class));
                 }
                 else{
                     Toast.makeText(MainActivity.this, "Failed to login! Please check your credentials", Toast.LENGTH_LONG).show();
