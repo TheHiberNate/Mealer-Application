@@ -6,7 +6,7 @@ public class User {
     private String email;
     private String address;
     private String role;
-    //private String address;
+    private String payment;
 
     public User(){}
 
@@ -16,7 +16,6 @@ public class User {
         this.email = email;
         this.address = address;
         this.role = role;
-        //this.address = address;
     }
 
     public String getFirstName() {
@@ -39,6 +38,8 @@ public class User {
         return role;
     }
 
+    public String getPayment() { return payment; }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -58,4 +59,6 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public void setPayment(String payment) { this.payment = payment; }
 }

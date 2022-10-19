@@ -23,4 +23,7 @@
     <string name="name">Name</string>
     <string name="email_username">Email/Username</string>
     <string name="Password">Password</string>
+    <string name="credit_card">Credit Card</string>
+    <string name="payment_information">Payment Information</string>
+    <string name="logout">LOGOUT</string>
 </resources>

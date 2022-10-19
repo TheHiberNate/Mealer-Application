@@ -10,7 +10,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mealer">
         <activity
-            android:name=".Home_page"
+            android:name=".home_page_admin"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".home_page_chef"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".home_page_client"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
