@@ -31,7 +31,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
     private RadioButton userRadioButton;
     private FirebaseAuth mAuth;
 //    private FirebaseDatabase mDatabase;
-    private DatabaseReference databaseUsers;
+//    private DatabaseReference databaseUsers;
 
 //    private String role;
     @Override
@@ -45,7 +45,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         // Firebase
         mAuth =  FirebaseAuth.getInstance();
 //        mDatabase = FirebaseDatabase.getInstance();
-        databaseUsers = FirebaseDatabase.getInstance().getReference("Users");
+//        databaseUsers = FirebaseDatabase.getInstance().getReference("Users");
         // Button
         register = (Button) findViewById(R.id.btn_Register2);
         register.setOnClickListener(this);
@@ -155,10 +155,10 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = createUser(role, firstName, lastName, email, address);
-//                                User user = new User(firstName, lastName, email, address);
+//                                final User user = createUser(role, firstName, lastName, email, address);
+                                User user = new User(firstName, lastName, email, address,"Chef");
 
-                                databaseUsers
+                                FirebaseDatabase.getInstance().getReference("Users")
                                         .child(mAuth.getCurrentUser().getUid()).setValue(user)
                                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                                             @Override
