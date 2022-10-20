@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/register_page_background"
-    tools:context=".register_page">
+    tools:context=".activities.register_page">
 
     <EditText
         android:id="@+id/editTextLastName"

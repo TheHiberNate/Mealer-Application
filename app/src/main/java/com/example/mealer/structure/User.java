@@ -1,4 +1,4 @@
-package com.example.mealer;
+package com.example.mealer.structure;
 
 public class User {
     private String firstName;
