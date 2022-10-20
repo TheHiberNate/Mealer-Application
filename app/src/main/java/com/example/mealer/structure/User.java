@@ -6,7 +6,7 @@ public class User {
     private String email;
     private String address;
     private String role;
-    private String payment;
+    private int payment;
 
     public User(){}
 
@@ -38,7 +38,7 @@ public class User {
         return role;
     }
 
-    public String getPayment() { return payment; }
+    public int getPayment() { return payment; }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -60,5 +60,5 @@ public class User {
         this.role = role;
     }
 
-    public void setPayment(String payment) { this.payment = payment; }
+    public void setPayment(int payment) { this.payment = payment; }
 }

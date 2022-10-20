@@ -82,7 +82,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private User createUser(String role, String firstName, String lastName, String email, String address, String payment) {
+    private User createUser(String role, String firstName, String lastName, String email, String address, int payment) {
         if (role.equals("Client")) {
             return new Client(firstName, lastName, email, address, payment);
         } else {
@@ -144,6 +144,11 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextPayment.requestFocus();
             isValid = false;
         }
+        if (Integer.parseInt(payment) > 16) {
+            editTextPayment.setError("Please Enter A Valid Payment Method");
+            editTextPayment.requestFocus();
+            isValid = false;
+        }
 
         return isValid;
     }
@@ -154,7 +159,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
         final String address = editTextAddress.getText().toString().trim();
-        final String payment = editTextPayment.getText().toString().trim();
+        final int payment = Integer.parseInt(editTextPayment.getText().toString().trim());
 
         int radioBtnInt = usersRadioGroup.getCheckedRadioButtonId();
         userRadioButton = findViewById(radioBtnInt);
