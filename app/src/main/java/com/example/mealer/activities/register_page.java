@@ -27,16 +27,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class register_page extends AppCompatActivity implements View.OnClickListener {
 
-//    private TextView homePage;
     private EditText editTextName, editTextLastName, editTextPassword, editTextEmail, editTextAddress, editTextPayment;
     private Button register, btnhomePage;
     private RadioGroup usersRadioGroup;
     private RadioButton userRadioButton;
     private FirebaseAuth mAuth;
-//    private FirebaseDatabase mDatabase;
-//    private DatabaseReference databaseUsers;
 
-//    private String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,16 +43,11 @@ public class register_page extends AppCompatActivity implements View.OnClickList
     private void initializeVariables() {
         // Firebase
         mAuth =  FirebaseAuth.getInstance();
-//        mDatabase = FirebaseDatabase.getInstance();
-//        databaseUsers = FirebaseDatabase.getInstance().getReference("Users");
         // Button
         register = (Button) findViewById(R.id.btn_Register2);
         register.setOnClickListener(this);
         btnhomePage = (Button) findViewById(R.id.btnBackHome);
         btnhomePage.setOnClickListener(this);
-//        // TextView
-//        homePage = (TextView) findViewById(R.id.textBacktoHome);
-//        homePage.setOnClickListener(this);
         // EditText
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextLastName = (EditText) findViewById(R.id.editTextLastName);
@@ -147,7 +138,6 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextPayment.setError("Please Enter Valid Payment Method (Maxmimum of 16 digits for a pin number");
             editTextPayment.requestFocus();
         }
-
         return isValid;
     }
 
