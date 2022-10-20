@@ -76,7 +76,7 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
         final String password_check = password.getText().toString().trim();
 
         if (validCredentials()) {
-            if (email_check.equals("admin@email.com") && password_check.equals("mealeradmin09!")) {
+            if (Validation.validateAdmin(email_check, password_check)) {
                 startActivity(new Intent(homePage.this, home_page_admin.class));
             } else {
                 mAuth.signInWithEmailAndPassword(email_check, password_check).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
