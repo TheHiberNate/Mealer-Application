@@ -87,7 +87,7 @@
         android:hint="@string/payment_information"
         android:importantForAutofill="no"
 
-        android:inputType="textEmailAddress"
+        android:inputType="number"
         android:minHeight="48dp"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/btnBackHome"

@@ -127,7 +127,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextPassword.setError("Please Enter your Password");
             editTextPassword.requestFocus();
             isValid = false;
-        } if (password.length() < 6) { // Not long enough password (Minimum 6 characters)
+        } else if (password.length() < 6) { // Not long enough password (Minimum 6 characters)
             editTextPassword.setError("Password must be at least 6 characters!");
             editTextPassword.requestFocus();
             isValid = false;
@@ -143,11 +143,9 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextPayment.setError("Please Enter Payment Information");
             editTextPayment.requestFocus();
             isValid = false;
-        }
-        if (Integer.parseInt(payment) > 16) {
-            editTextPayment.setError("Please Enter A Valid Payment Method");
+        } else if (payment.length() > 16) {
+            editTextPayment.setError("Please Enter Valid Payment Method (Maxmimum of 16 digits for a pin number");
             editTextPayment.requestFocus();
-            isValid = false;
         }
 
         return isValid;
@@ -159,7 +157,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
         final String address = editTextAddress.getText().toString().trim();
-        final int payment = Integer.parseInt(editTextPayment.getText().toString().trim());
+        final String payment = editTextPayment.getText().toString().trim();
 
         int radioBtnInt = usersRadioGroup.getCheckedRadioButtonId();
         userRadioButton = findViewById(radioBtnInt);
@@ -172,7 +170,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = createUser(role, firstName, lastName, email, address, payment);
+                                final User user = createUser(role, firstName, lastName, email, address, Integer.parseInt(payment));
 //                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")
