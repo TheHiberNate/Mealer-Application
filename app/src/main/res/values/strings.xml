@@ -26,4 +26,6 @@
     <string name="credit_card">Credit Card</string>
     <string name="payment_information">Payment Information</string>
     <string name="logout">LOGOUT</string>
+    <string name="welcome_administrator_you_re_in_charge">Welcome Administrator! You\'re in Charge!</string>
+    <string name="welcome_to_mealer_chef_name">Welcome to Mealer, Chef [Name]</string>
 </resources>

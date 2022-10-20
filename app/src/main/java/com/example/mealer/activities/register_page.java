@@ -1,4 +1,5 @@
-package com.example.mealer;
+package com.example.mealer.activities;
+
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,20 +7,22 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mealer.functions.Validation;
+import com.example.mealer.structure.Chef;
+import com.example.mealer.structure.Client;
+import com.example.mealer.R;
+import com.example.mealer.structure.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class register_page extends AppCompatActivity implements View.OnClickListener {
@@ -71,7 +74,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
 //        boolean checked = ((RadioButton) view).isChecked();
         switch (v.getId()) {
             case R.id.btnBackHome:
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, homePage.class));
                 break;
             case R.id.btn_Register2:
                 registerUser();
@@ -114,7 +117,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextEmail.setError("Please Enter your Email");
             editTextEmail.requestFocus();
             isValid = false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        } else if (!Validation.validateEmail(email)) {
             editTextEmail.setError("Please Enter a Valid Email");
             editTextEmail.requestFocus();
             isValid = false;
@@ -174,11 +177,11 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                                             public void onComplete(@NonNull Task<Void> task) {
                                                 if (task.isSuccessful()) {
                                                     Toast.makeText(register_page.this, "Registered Successfully! Please Login to get Started!", Toast.LENGTH_LONG).show();
-                                                    startActivity(new Intent(register_page.this, MainActivity.class));
+                                                    startActivity(new Intent(register_page.this, homePage.class));
                                                 }
                                                 else {
                                                     Toast.makeText(register_page.this, "Registration Failed, Try again later", Toast.LENGTH_LONG).show();
-                                                    startActivity(new Intent(register_page.this, MainActivity.class));
+                                                    startActivity(new Intent(register_page.this, homePage.class));
                                                 }
                                             }
                                         });

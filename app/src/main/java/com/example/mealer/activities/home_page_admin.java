@@ -1,12 +1,13 @@
-package com.example.mealer;
+package com.example.mealer.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.mealer.R;
 
 public class home_page_admin extends AppCompatActivity implements View.OnClickListener {
     private Button logout;
@@ -24,7 +25,7 @@ public class home_page_admin extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnLogoutAdmin:
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, homePage.class));
                 break;
         }
     }

@@ -1,4 +1,4 @@
-package com.example.mealer;
+package com.example.mealer.structure;
 
 public class Chef extends User {
     public Chef(String firstName, String lastName, String email, String address, String payment) {

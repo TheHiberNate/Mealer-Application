@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home_page_admin">
+    tools:context=".activities.home_page_admin">
 
     <Button
         android:id="@+id/btnLogoutAdmin"
@@ -18,10 +18,10 @@
         app:layout_constraintVertical_bias="0.989" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewWelcomeAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome Administrator! You're in Charge!"
+        android:text="@string/welcome_administrator_you_re_in_charge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

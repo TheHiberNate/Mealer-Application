@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".home_page_chef">
+    tools:context=".activities.home_page_chef">
 
     <Button
         android:id="@+id/btn_Logout_Chef"
@@ -18,10 +18,10 @@
         app:layout_constraintVertical_bias="0.989" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewChefWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Mealer, Chef [Name]"
+        android:text="@string/welcome_to_mealer_chef_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
