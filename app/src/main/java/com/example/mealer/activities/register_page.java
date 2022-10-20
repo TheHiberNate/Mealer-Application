@@ -27,16 +27,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class register_page extends AppCompatActivity implements View.OnClickListener {
 
-//    private TextView homePage;
     private EditText editTextName, editTextLastName, editTextPassword, editTextEmail, editTextAddress, editTextPayment;
     private Button register, btnhomePage;
     private RadioGroup usersRadioGroup;
     private RadioButton userRadioButton;
     private FirebaseAuth mAuth;
-//    private FirebaseDatabase mDatabase;
-//    private DatabaseReference databaseUsers;
 
-//    private String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,16 +43,11 @@ public class register_page extends AppCompatActivity implements View.OnClickList
     private void initializeVariables() {
         // Firebase
         mAuth =  FirebaseAuth.getInstance();
-//        mDatabase = FirebaseDatabase.getInstance();
-//        databaseUsers = FirebaseDatabase.getInstance().getReference("Users");
         // Button
         register = (Button) findViewById(R.id.btn_Register2);
         register.setOnClickListener(this);
         btnhomePage = (Button) findViewById(R.id.btnBackHome);
         btnhomePage.setOnClickListener(this);
-//        // TextView
-//        homePage = (TextView) findViewById(R.id.textBacktoHome);
-//        homePage.setOnClickListener(this);
         // EditText
         editTextName = (EditText) findViewById(R.id.editTextName);
         editTextLastName = (EditText) findViewById(R.id.editTextLastName);
@@ -82,7 +73,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private User createUser(String role, String firstName, String lastName, String email, String address, String payment) {
+    private User createUser(String role, String firstName, String lastName, String email, String address, int payment) {
         if (role.equals("Client")) {
             return new Client(firstName, lastName, email, address, payment);
         } else {
@@ -127,7 +118,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextPassword.setError("Please Enter your Password");
             editTextPassword.requestFocus();
             isValid = false;
-        } if (password.length() < 6) { // Not long enough password (Minimum 6 characters)
+        } else if (password.length() < 6) { // Not long enough password (Minimum 6 characters)
             editTextPassword.setError("Password must be at least 6 characters!");
             editTextPassword.requestFocus();
             isValid = false;
@@ -143,8 +134,10 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextPayment.setError("Please Enter Payment Information");
             editTextPayment.requestFocus();
             isValid = false;
+        } else if (payment.length() > 16) {
+            editTextPayment.setError("Please Enter Valid Payment Method (Maxmimum of 16 digits for a pin number");
+            editTextPayment.requestFocus();
         }
-
         return isValid;
     }
 
@@ -167,7 +160,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = createUser(role, firstName, lastName, email, address, payment);
+                                final User user = createUser(role, firstName, lastName, email, address, Integer.parseInt(payment));
 //                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")
