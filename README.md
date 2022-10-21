@@ -16,9 +16,4 @@ Email: admin@email.com <br />
 Password: mealeradmin09! <br />
 
 The 1er deliverable avoir pour but de modéliser l'inscription d'un nouveau utilisateur (client ou cuisiniers), ainsi que la connexion d'un utilisateur à l'application. Nous avous utilisé Firebase Authentication avec une addresse courriel et un mot de passe pour gérer les connexions, puis tout les informations (sauf mot de passe) d'un utilisateur qui s'inscrits sont stockées dans le Realtime Database de Firebase.
-
-
-
-**1) Connexion pour l'administrateur**
-
-**2) Création de compte pour un cuisinier**
+<img src = app/src/Images/UML.jpg>
