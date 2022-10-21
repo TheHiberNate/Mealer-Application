@@ -15,7 +15,7 @@ Projet Mealer pour la classe SEG 2505 (Groupe 16)
 Email: admin@email.com <br />
 Password: mealeradmin09! <br />
 
-Le 1er livrable a pour but de modéliser l'inscription d'un nouveau utilisateur (client ou cuisiniers), ainsi que la connexion d'un utilisateur à l'application. Nous avous utilisé Firebase Authentication avec une addresse courriel et un mot de passe pour gérer les connexions, puis toutes les informations (sauf le mot de passe) d'un utilisateur inscrit sont stockées dans le Realtime Database de Firebase.
+Le 1er livrable a pour but de modéliser l'inscription d'un nouveau utilisateur (client ou cuisinier), ainsi que la connexion d'un utilisateur à l'application. Nous avons utilisé Firebase Authentication avec une addresse courriel et un mot de passe pour gérer les connexions, puis toutes les informations (sauf le mot de passe) d'un utilisateur inscrit sont stockées dans le Realtime Database de Firebase.
 
 
 
