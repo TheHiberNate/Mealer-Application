@@ -27,11 +27,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class register_page extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText editTextName, editTextLastName, editTextPassword, editTextEmail, editTextAddress, editTextPayment;
+    private EditText editTextName, editTextLastName, editTextPassword,
+            editTextEmail, editTextAddress, editTextPayment, editTextDescription;
     private Button register, btnhomePage;
     private RadioGroup usersRadioGroup;
-    private RadioButton userRadioButton;
+    private RadioButton userRadioButton, radioButtonClient, radioButtonChef;
     private FirebaseAuth mAuth;
+    private boolean chefIsChecked = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,14 +57,30 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         editTextAddress = (EditText) findViewById(R.id.editTextAddress);
         editTextPayment = (EditText) findViewById(R.id.editTextPayment);
-        // RadioButton
+        editTextDescription = (EditText) findViewById(R.id.editTextDescription);
+        // RadioGroup
         usersRadioGroup = (RadioGroup) findViewById(R.id.radioGroupUsers);
-        usersRadioGroup.check(R.id.radioBtnClient);
+        usersRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+               if (checkedId == R.id.radioBtnChef) {
+                   editTextDescription.setVisibility(View.VISIBLE);
+                   chefIsChecked = true;
+               } else {
+                   editTextDescription.setVisibility(View.INVISIBLE);
+                   chefIsChecked = false;
+               }
+            }
+        });
+        // RadioButton
+//        radioButtonChef = (RadioButton) findViewById(R.id.radioBtnChef);
+//        radioButtonChef.setOnClickListener(this);
+//        radioButtonClient = (RadioButton) findViewById(R.id.radioBtnClient);
+//        radioButtonClient.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-//        boolean checked = ((RadioButton) view).isChecked();
         switch (v.getId()) {
             case R.id.btnBackHome:
                 startActivity(new Intent(this, homePage.class));
@@ -73,11 +91,11 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private User createUser(String role, String firstName, String lastName, String email, String address, int payment) {
+    private User createUser(String role, String firstName, String lastName, String email, String address, int payment, String description) {
         if (role.equals("Client")) {
             return new Client(firstName, lastName, email, address, payment);
         } else {
-            return new Chef(firstName, lastName, email, address, payment);
+            return new Chef(firstName, lastName, email, address, payment, description);
         }
     }
 
@@ -90,6 +108,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         String password = editTextPassword.getText().toString().trim();
         String address = editTextAddress.getText().toString().trim();
         String payment = editTextPayment.getText().toString().trim();
+        String description = editTextDescription.getText().toString().trim();
 
         //Checks if corresponding fields are empty and if has valid Email and Password
         if (firstName.isEmpty()) {
@@ -97,13 +116,11 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextName.requestFocus();
             isValid = false;
         }
-
         if (lastName.isEmpty()) {
             editTextLastName.setError("Please Enter your Last Name");
             editTextLastName.requestFocus();
             isValid = false;
         }
-
         if (email.isEmpty()) {
             editTextEmail.setError("Please Enter your Email");
             editTextEmail.requestFocus();
@@ -113,7 +130,6 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextEmail.requestFocus();
             isValid = false;
         }
-
         if (password.isEmpty()) {
             editTextPassword.setError("Please Enter your Password");
             editTextPassword.requestFocus();
@@ -123,13 +139,11 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             editTextPassword.requestFocus();
             isValid = false;
         }
-
         if (address.isEmpty()) {
             editTextAddress.setError("Please Enter your Address");
             editTextAddress.requestFocus();
             isValid = false;
         }
-
         if (payment.isEmpty()) {
             editTextPayment.setError("Please Enter Payment Information");
             editTextPayment.requestFocus();
@@ -137,6 +151,16 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         } else if (payment.length() > 16) {
             editTextPayment.setError("Please Enter Valid Payment Method (Maxmimum of 16 digits for a pin number");
             editTextPayment.requestFocus();
+            isValid = false;
+        }
+        if (description.isEmpty() && chefIsChecked) {
+            editTextDescription.setError(("Please Enter a description of your yourself!"));
+            editTextDescription.requestFocus();
+            isValid = false;
+        } else if (description.length() > 200 && chefIsChecked) {
+            editTextDescription.setError(("Maximum number of characters is 100!"));
+            editTextDescription.requestFocus();
+            isValid = false;
         }
         return isValid;
     }
@@ -148,6 +172,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         final String password = editTextPassword.getText().toString().trim();
         final String address = editTextAddress.getText().toString().trim();
         final String payment = editTextPayment.getText().toString().trim();
+        final String description = editTextDescription.getText().toString().trim();
 
         int radioBtnInt = usersRadioGroup.getCheckedRadioButtonId();
         userRadioButton = findViewById(radioBtnInt);
@@ -160,7 +185,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = createUser(role, firstName, lastName, email, address, Integer.parseInt(payment));
+                                final User user = createUser(role, firstName, lastName, email, address, Integer.parseInt(payment), description);
 //                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")

@@ -179,6 +179,7 @@
         android:textAlignment="center"
         android:textColor="@color/green"
         android:textColorHint="#757575"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textEnterCredentials"
