@@ -28,4 +28,5 @@
     <string name="logout">LOGOUT</string>
     <string name="welcome_administrator_you_re_in_charge">Welcome Administrator! You\'re in Charge!</string>
     <string name="welcome_to_mealer_chef_name">Welcome to Mealer, Chef [Name]</string>
+    <string name="chef_description">Chef Description</string>
 </resources>
