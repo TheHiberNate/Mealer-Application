@@ -211,5 +211,4 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
 }

@@ -29,4 +29,8 @@
     <string name="welcome_administrator_you_re_in_charge">Welcome Administrator! You\'re in Charge!</string>
     <string name="welcome_to_mealer_chef_name">Welcome to Mealer, Chef [Name]</string>
     <string name="chef_description">Chef Description</string>
+    <string name="manage_users">Manage Users</string>
+    <string name="manage_complaints">Manage Complaints</string>
+    <string name="click_here_to_manage_the_complaints">Click Here to Manage the Complaints</string>
+    <string name="click_here_to_manage_users">Click Here to Manage Users</string>
 </resources>

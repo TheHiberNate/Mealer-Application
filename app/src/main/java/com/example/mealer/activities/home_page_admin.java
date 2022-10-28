@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.example.mealer.R;
 
 public class home_page_admin extends AppCompatActivity implements View.OnClickListener {
-    private Button logout;
+    private Button logout, manageComplaints;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,9 @@ public class home_page_admin extends AppCompatActivity implements View.OnClickLi
 
         logout = (Button) findViewById(R.id.btnLogoutAdmin);
         logout.setOnClickListener(this);
+
+        manageComplaints = (Button) findViewById(R.id.btn_manageComplaints);
+        manageComplaints.setOnClickListener(this);
     }
 
     @Override
@@ -27,6 +30,8 @@ public class home_page_admin extends AppCompatActivity implements View.OnClickLi
             case R.id.btnLogoutAdmin:
                 startActivity(new Intent(this, homePage.class));
                 break;
+            case R.id.btn_manageComplaints:
+                startActivity(new Intent(this, admin_manage_complaints.class));
         }
     }
 }
