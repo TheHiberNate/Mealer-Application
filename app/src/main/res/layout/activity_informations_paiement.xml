@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.InformationsPaiement">
+
+    <ImageView
+        android:id="@+id/imagepaymentcard"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="564dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/commercial_visa_card" />
+
+    <EditText
+        android:id="@+id/textpayment"
+        android:layout_width="359dp"
+        android:layout_height="57dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="420dp"
+        android:background="@drawable/button_style"
+        android:hint="Entrez les numéros de votre carte bancaire "
+        android:minHeight="48dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/registerclient"
+        android:layout_width="179dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="140dp"
+        android:backgroundTint="#8BC34A"
+        android:text="Register"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/expirationdate"
+        android:layout_width="313dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="352dp"
+        android:background="@drawable/button_style"
+        android:hint="Entrez la date d'expiration (MMAA)"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/codeCVCC"
+        android:layout_width="388dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="280dp"
+        android:background="@drawable/button_style"
+        android:hint="Entrez le code CVCC a 3 chiffres (123)"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
