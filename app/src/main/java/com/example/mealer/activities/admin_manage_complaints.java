@@ -32,14 +32,15 @@ public class admin_manage_complaints extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Complaint complaint;
     private ArrayAdapter<Complaint> complaintAdapter;
-    private FirebaseDatabase database;
+    private FirebaseDatabase database1, database2;
+    private String chefFirstName, chefLastName, clientFirstName, clientLastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_manage_complaints);
 
-        database = FirebaseDatabase.getInstance();
+//        database = FirebaseDatabase.getInstance();
         complaint = new Complaint();
         // initialize list view & array list
         complaintsListView = (ListView) findViewById(R.id.complaintsListView);
@@ -51,19 +52,46 @@ public class admin_manage_complaints extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(admin_manage_complaints.this, admin_suspend_user.class);
-                String chefID = complaints.get(position).getChefID();
-                String clientID = complaints.get(position).getClientID();
 
-                String chefFirstName = String.valueOf(database.getReference(chefID).child("firstName"));
-                String chefLastName = String.valueOf(database.getReference(chefID).child("lastName"));
+                String chefID = complaints.get(position).getChefID(); // get chefID of complaint which was clicked
+                String clientID = complaints.get(position).getClientID(); // get clientID of complaint which was clicked
 
-                String clientFirstName = String.valueOf(database.getReference(clientID).child("firstName"));
-                String clientLastName = String.valueOf(database.getReference(clientID).child("lastName"));
+                database1 = FirebaseDatabase.getInstance();
+                database2 = FirebaseDatabase.getInstance();
+                DatabaseReference referenceChef = database1.getReference(chefID);
+                DatabaseReference referenceClient = database2.getReference(clientID);
 
+                referenceChef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        chefFirstName = snapshot.child("firstName").getValue().toString();
+                        chefLastName = snapshot.child("lastName").getValue().toString();
+                        System.out.println(chefFirstName+ " " + chefLastName);
+                    }
 
-                intent.putExtra("chefName", chefFirstName + chefLastName);
-                intent.putExtra("clientName", clientFirstName + clientLastName);
-                startActivity(intent);
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+                referenceClient.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        clientFirstName = snapshot.child("firstName").getValue().toString();
+                        clientLastName = snapshot.child("lastName").getValue().toString();
+                        System.out.println(clientFirstName+ " " +clientLastName);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
+//                intent.putExtra("chefName", chefFirstName + chefLastName);
+//                intent.putExtra("clientName", clientFirstName + clientLastName);
+//                startActivity(intent);
             }
         });
 
