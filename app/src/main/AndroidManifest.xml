@@ -10,21 +10,35 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mealer">
         <activity
-            android:name=".Home_page"
+            android:name=".activities.home_page_admin"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".register_page"
+            android:name=".activities.home_page_chef"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.home_page_client"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.register_page"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.homePage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
