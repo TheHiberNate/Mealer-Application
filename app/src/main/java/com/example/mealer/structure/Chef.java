@@ -1,18 +1,31 @@
 package com.example.mealer.structure;
 
+import java.util.ArrayList;
+
 public class Chef extends User {
     private String description;
-//    private int numberComplaints;
+    private ArrayList<Complaint> listOfComplaints;
 
 
     public Chef(String firstName, String lastName, String email, String address, int payment, String description) {
         super(firstName, lastName, email, address, "Chef");
         setPayment(payment);
         this.description = description;
-//        this.numberComplaints = new Complaint().getNumComplaints();
+        listOfComplaints = new ArrayList<>();
     }
 
     public String getDescription() { return description; }
 
     public void setDescription(String description) { this.description = description; }
+
+    public ArrayList<Complaint> getListOfComplaints() { return listOfComplaints; }
+
+    public void setListOfComplaints(ArrayList<Complaint> listOfComplaints) { this.listOfComplaints = listOfComplaints; }
+
+    public void addNewComplaint(Complaint complaint) { listOfComplaints.add(complaint); }
+
+    public void removeComplaint(Complaint complaint) { listOfComplaints.remove(complaint); }
+
+    public int getNumberOfComplaints() { return listOfComplaints.size(); }
+
 }

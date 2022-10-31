@@ -33,4 +33,5 @@
     <string name="manage_complaints">Manage Complaints</string>
     <string name="click_here_to_manage_the_complaints">Click Here to Manage the Complaints</string>
     <string name="click_here_to_manage_users">Click Here to Manage Users</string>
+    <string name="currently_no_chef_complaints">Currently no Chef complaints</string>
 </resources>

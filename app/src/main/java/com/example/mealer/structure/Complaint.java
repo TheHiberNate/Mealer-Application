@@ -6,31 +6,32 @@ public class Complaint {
     private String title;
     private String description;
     private String clientID;
-    private int numComplaints = 0;
+    private String chefID;
 
     public Complaint() {}
 
-    public Complaint(String title, String description, String clientID) {
+    public Complaint(String title, String description, String clientID, String chefID) {
         this.title = title;
         this.description = description;
         this.clientID = clientID;
+        this.chefID = chefID;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String getClientID() {
-        return clientID;
-    }
+    public String getClientID() { return clientID; }
 
     public String getTitle() {
         return title;
     }
 
-    public void addComplaint() { numComplaints++; }
+    public void setDescription(String description) { this.description = description; }
 
-    public void removeComplaint() { numComplaints--; }
+    public String getChefID() { return chefID; }
 
-    public int getNumComplaints() { return numComplaints; }
+    public void setClientID(String clientID) { this.clientID = clientID; }
+
+    public void setTitle(String title) { this.title = title; }
 }
