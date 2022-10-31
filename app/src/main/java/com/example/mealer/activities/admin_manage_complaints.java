@@ -58,8 +58,8 @@ public class admin_manage_complaints extends AppCompatActivity {
 
                 database1 = FirebaseDatabase.getInstance();
                 database2 = FirebaseDatabase.getInstance();
-                DatabaseReference referenceChef = database1.getReference(chefID);
-                DatabaseReference referenceClient = database2.getReference(clientID);
+                DatabaseReference referenceChef = database1.getReference("Users").child(chefID);
+                DatabaseReference referenceClient = database2.getReference("Users").child(clientID);
 
                 referenceChef.addValueEventListener(new ValueEventListener() {
                     @Override

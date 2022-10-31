@@ -51,15 +51,14 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
         database1 = FirebaseDatabase.getInstance();
         database2 = FirebaseDatabase.getInstance();
 
-        DatabaseReference referenceChef = database1.getReference(chefID);
-        DatabaseReference referenceClient = database2.getReference(clientID);
+        DatabaseReference referenceChef = database1.getReference("Users").child(chefID);
+        DatabaseReference referenceClient = database2.getReference("Users").child(clientID);
 
         referenceChef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chefFirstName = snapshot.child("firstName").getValue().toString();
                 chefLastName = snapshot.child("lastName").getValue().toString();
-                System.out.println(chefFirstName+chefLastName);
             }
 
             @Override
@@ -73,7 +72,6 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 clientFirstName = snapshot.child("firstName").getValue().toString();
                 clientLastName = snapshot.child("lastName").getValue().toString();
-                System.out.println(clientFirstName+clientLastName);
             }
 
             @Override
