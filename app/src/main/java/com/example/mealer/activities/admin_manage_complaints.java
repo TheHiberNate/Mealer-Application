@@ -31,7 +31,8 @@ public class admin_manage_complaints extends AppCompatActivity {
     private DatabaseReference complaintsReference;
     private FirebaseAuth mAuth;
     private Complaint complaint;
-    private ArrayAdapter<Complaint> complaintAdapter;
+    private ComplaintAdapter complaintAdapter;
+    // private ArrayAdapter<Complaint> complaintAdapter;
     private FirebaseDatabase database1, database2;
     private String chefFirstName, chefLastName, clientFirstName, clientLastName;
 
@@ -46,8 +47,7 @@ public class admin_manage_complaints extends AppCompatActivity {
         complaintsListView = (ListView) findViewById(R.id.complaintsListView);
         complaints = new ArrayList<>();
         complaintsReference = FirebaseDatabase.getInstance().getReference("Complaints");
-        complaintAdapter = new ComplaintAdapter(admin_manage_complaints.this, complaints,
-                chefFirstName, chefLastName, clientFirstName, clientLastName);
+        complaintAdapter = new ComplaintAdapter(admin_manage_complaints.this, complaints);
 
         complaintsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -57,41 +57,44 @@ public class admin_manage_complaints extends AppCompatActivity {
                 String chefID = complaints.get(position).getChefID(); // get chefID of complaint which was clicked
                 String clientID = complaints.get(position).getClientID(); // get clientID of complaint which was clicked
 
-                database1 = FirebaseDatabase.getInstance();
-                database2 = FirebaseDatabase.getInstance();
-                DatabaseReference referenceChef = database1.getReference("Users").child(chefID);
-                DatabaseReference referenceClient = database2.getReference("Users").child(clientID);
+//                database1 = FirebaseDatabase.getInstance();
+//                database2 = FirebaseDatabase.getInstance();
+//                DatabaseReference referenceChef = database1.getReference("Users").child(chefID);
+//                DatabaseReference referenceClient = database2.getReference("Users").child(clientID);
+//
+//                referenceChef.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        chefFirstName = snapshot.child("firstName").getValue().toString();
+//                        chefLastName = snapshot.child("lastName").getValue().toString();
+//                        System.out.println(chefFirstName+ " " + chefLastName);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+//
+//                referenceClient.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        clientFirstName = snapshot.child("firstName").getValue().toString();
+//                        clientLastName = snapshot.child("lastName").getValue().toString();
+//                        System.out.println(clientFirstName+ " " +clientLastName);
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
 
-                referenceChef.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        chefFirstName = snapshot.child("firstName").getValue().toString();
-                        chefLastName = snapshot.child("lastName").getValue().toString();
-                        System.out.println(chefFirstName+ " " + chefLastName);
-                    }
+                System.out.println("chefName " + complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
+                System.out.println("ClientName " +complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-                referenceClient.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        clientFirstName = snapshot.child("firstName").getValue().toString();
-                        clientLastName = snapshot.child("lastName").getValue().toString();
-                        System.out.println(clientFirstName+ " " +clientLastName);
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
-//                intent.putExtra("chefName", chefFirstName + chefLastName);
-//                intent.putExtra("clientName", clientFirstName + clientLastName);
+//                intent.putExtra("chefName", complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
+//                intent.putExtra("clientName", complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
 //                startActivity(intent);
             }
         });
