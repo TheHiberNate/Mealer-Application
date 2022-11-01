@@ -7,6 +7,18 @@
     tools:context=".activities.admin_suspend_user">
 
     <TextView
+        android:id="@+id/textViewClientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="ClientName"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewChefName" />
+
+    <TextView
         android:id="@+id/textViewLengthSuspension3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,8 +61,8 @@
         android:id="@+id/textViewChefName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:layout_marginTop="17dp"
+        android:text="ChefName"
         android:textSize="16sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,13 +73,13 @@
         android:id="@+id/radioGroupAmountOfTime"
         android:layout_width="146dp"
         android:layout_height="104dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChefName">
+        app:layout_constraintTop_toBottomOf="@+id/textViewClientName">
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/radbtn_indefiniteTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:checked="true"
@@ -76,7 +88,7 @@
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radBtn_specificTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
@@ -96,32 +108,32 @@
         app:layout_constraintTop_toBottomOf="@+id/radioGroupAmountOfTime">
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radBtn_1Day"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="24 hours" />
 
         <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="48 hours" />
-
-        <RadioButton
-            android:id="@+id/radioButton5"
+            android:id="@+id/radBtn_1Week"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="1 week" />
 
         <RadioButton
-            android:id="@+id/radioButton6"
+            android:id="@+id/radBtn_1month"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="1 month" />
+
+        <RadioButton
+            android:id="@+id/radBtn_1year"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="1 year" />
     </RadioGroup>
 
     <LinearLayout
@@ -148,7 +160,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_backToComplaints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
