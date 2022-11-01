@@ -26,10 +26,15 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
     private FirebaseDatabase database1, database2;
     private String chefFirstName, chefLastName, clientFirstName, clientLastName;
 
-    public ComplaintAdapter(Activity context, ArrayList<Complaint> complaints) {
+    public ComplaintAdapter(Activity context, ArrayList<Complaint> complaints, String chefFirstName,
+                            String chefLastName, String clientFirstName, String clientLastName) {
         super(context, R.layout.complaint_adapter, complaints);
         this.context = context;
         this.complaints = complaints;
+        this.chefFirstName = chefFirstName;
+        this.chefLastName = chefLastName;
+        this.clientFirstName = clientFirstName;
+        this.clientLastName = clientLastName;
     }
 
     @Override
@@ -59,6 +64,7 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chefFirstName = snapshot.child("firstName").getValue().toString();
                 chefLastName = snapshot.child("lastName").getValue().toString();
+                System.out.println("Chef: " + chefFirstName);
             }
 
             @Override
@@ -72,6 +78,7 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 clientFirstName = snapshot.child("firstName").getValue().toString();
                 clientLastName = snapshot.child("lastName").getValue().toString();
+//                System.out.println();
             }
 
             @Override

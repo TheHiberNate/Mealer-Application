@@ -46,7 +46,8 @@ public class admin_manage_complaints extends AppCompatActivity {
         complaintsListView = (ListView) findViewById(R.id.complaintsListView);
         complaints = new ArrayList<>();
         complaintsReference = FirebaseDatabase.getInstance().getReference("Complaints");
-        complaintAdapter = new ComplaintAdapter(admin_manage_complaints.this, complaints);
+        complaintAdapter = new ComplaintAdapter(admin_manage_complaints.this, complaints,
+                chefFirstName, chefLastName, clientFirstName, clientLastName);
 
         complaintsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
