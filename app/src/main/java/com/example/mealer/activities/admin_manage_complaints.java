@@ -41,7 +41,6 @@ public class admin_manage_complaints extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_manage_complaints);
 
-//        database = FirebaseDatabase.getInstance();
         complaint = new Complaint();
         // initialize list view & array list
         complaintsListView = (ListView) findViewById(R.id.complaintsListView);
