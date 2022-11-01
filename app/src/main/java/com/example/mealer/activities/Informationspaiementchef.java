@@ -32,7 +32,9 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informationspaiementchef);
+        initializeVariables();
     }
+
     private void initializeVariables(){
         accountnumber = (EditText) findViewById(R.id.accountnumber);
         succursalenumber = (EditText) findViewById(R.id.succursalenumber);
@@ -40,13 +42,15 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
         registerchef = (Button) findViewById(R.id.registerchef);
         registerchef.setOnClickListener(this);
     }
+
     public void onClick(View v){
         switch (v.getId()){
             case R.id.registerchef:
-                startActivity(new Intent(this,home_page_chef.class));
+                registerUser();
                 break;
         }
     }
+
     private boolean validCredentials(){
         boolean isValid=true;
         String account = accountnumber.getText().toString().trim();

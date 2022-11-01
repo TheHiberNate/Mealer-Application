@@ -27,25 +27,35 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
     private Button register;
     private FirebaseAuth mAuth;
 
-    private void initializeVariables(){
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_informations_paiement);
 
+        initializeVariables();
+    }
+
+    private void initializeVariables(){
         register = (Button) findViewById(R.id.registerclient);
         register.setOnClickListener(this);
         textpayment = (EditText) findViewById(R.id.textpayment);
         expirationdate = (EditText) findViewById(R.id.expirationdate);
         codeCVCC = (EditText) findViewById(R.id.codeCVCC);
-
     }
+
     public void onClick(View v){
         switch (v.getId()){
             case R.id.registerclient:
-                startActivity(new Intent(this, home_page_client.class));
+                registerUser();
+//                startActivity(new Intent(this, home_page_client.class));
                 break;
         }
     }
+
     public String getPayment(){
         return textpayment.getText().toString().trim();
     }
+
     private User createUser(String role, String firstName, String lastName, String email, String address, String payment, String description) {
         if (role.equals("Client")) {
             return new Client(firstName, lastName, email, address, payment);
@@ -54,13 +64,6 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
         }
     }
 
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_informations_paiement);
-    }
     private boolean validCredentials(){
         boolean isValid = true;
         String payment = textpayment.getText().toString().trim();

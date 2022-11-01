@@ -112,14 +112,13 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                 if (chefIsChecked==false) {
                     startActivity(new Intent(this, InformationsPaiement.class));
                     break;
-                }else if(chefIsChecked==true){
+                }
+                else {
                     startActivity(new Intent(this, Informationspaiementchef.class));
                     break;
                 }
         }
     }
-
-
 
     private boolean validCredentials() {
         boolean isValid = true;
