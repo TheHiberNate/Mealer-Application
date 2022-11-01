@@ -63,7 +63,6 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 final String tempchefFirstName = snapshot.child("firstName").getValue().toString();
                 final String tempchefLastName = snapshot.child("lastName").getValue().toString();
-//                System.out.println("Chef: " + chefFirstName+ " " + chefLastName);
                 setChefFirstName(tempchefFirstName);
                 setChefLastName(tempchefLastName);
             }
@@ -79,9 +78,13 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 final String tempclientFirstName = snapshot.child("firstName").getValue().toString();
                 final String tempclientLastName = snapshot.child("lastName").getValue().toString();
-//                System.out.println("Client: " + clientFirstName+ " " + clientLastName);
                 setClientFirstName(tempclientFirstName);
                 setClientLastName(tempclientLastName);
+
+                title.setText(complaint.getTitle());
+                chefName.setText("Complaint Against Chef: " + getChefFirstName() + " " + getChefLastName());
+                description.setText("Description: " + complaint.getDescription());
+                clientName.setText("Complaint filed by Client: " + getClientFirstName() + " " + getClientLastName());
             }
 
             @Override
@@ -89,14 +92,6 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
 
             }
         });
-
-        title.setText(complaint.getTitle());
-        System.out.println(getChefFirstName() + getChefLastName());
-        System.out.println(this.chefFirstName + this.chefLastName);
-
-        chefName.setText("Complaint Against Chef: " + this.chefFirstName + " " + this.chefLastName);
-        description.setText("Description: " + complaint.getDescription());
-        clientName.setText("Complaint filed by Client: " + getClientFirstName() + " " + getClientLastName());
 
         return listViewItem;
     }
