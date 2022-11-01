@@ -51,13 +51,14 @@ public class admin_manage_complaints extends AppCompatActivity {
         complaintsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("chefName " + complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
+                System.out.println("chefName " + complaintAdapter.getClientFirstName() + " " + complaintAdapter.getChefLastName());
                 System.out.println("clientName " +complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
 
                 Intent intent = new Intent(admin_manage_complaints.this, admin_suspend_user.class);
                 intent.putExtra("chefName", complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
                 intent.putExtra("clientName", complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
                 startActivity(intent);
+
             }
         });
 
