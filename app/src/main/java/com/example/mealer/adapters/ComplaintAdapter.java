@@ -47,8 +47,9 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
         String chefID = complaint.getChefID();
         String clientID = complaint.getClientID();
 
+        // Get data from database for chefName & clientName using chefID & clientID
+        // Set corresponding textView fields to the values respective to the given complaint
         reference = FirebaseDatabase.getInstance().getReference("Users");
-
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

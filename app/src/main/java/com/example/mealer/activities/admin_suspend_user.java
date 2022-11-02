@@ -29,14 +29,24 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
     private String chefID, clientID, chefName, clientName;
     private DatabaseReference reference;
 
+    //Instance Methods*************************************************
+
+    //Getter and Setter Methods
+    public String getChefName() { return chefName; }
+    public void setChefName(String chefName) { this.chefName = chefName; }
+    public String getClientName() { return clientName; }
+    public void setClientName(String clientName) { this.clientName = clientName; }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_suspend_user);
-
         initializeVariables();
     }
 
+    /**
+     * Method to initialize the variables
+     */
     private void initializeVariables() {
 
         Bundle extras = getIntent().getExtras();
@@ -46,8 +56,8 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
         textViewChefName = (TextView) findViewById(R.id.textViewChefName);
         textViewClientName = (TextView) findViewById(R.id.textViewClientName);
 
+        // Obtain data from database and set corresponding textViews to the values
         reference = FirebaseDatabase.getInstance().getReference("Users");
-
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -59,7 +69,6 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                 setClientName(tempclientFirstName + " " + tempclientLastName);
                 textViewClientName.setText("Complaint filed by: " + clientName);
                 textViewChefName.setText("Complaint against: " + chefName);
-
             }
 
             @Override
@@ -78,6 +87,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
         typeOfSuspension = (RadioGroup) findViewById(R.id.radioGroupAmountOfTime);
         durationOfSuspension = (RadioGroup) findViewById(R.id.radioGroupSpecifiedTime);
 
+        // Check if indefinite or specified suspension is checked
         typeOfSuspension.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -91,6 +101,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
             }
         });
 
+        // Check which length of suspension is specified
         durationOfSuspension.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -109,6 +120,11 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
 
     }
 
+    /**
+     * Implemented OnClick method to determine
+     * what to do when clicking certain elements
+     * @param v
+     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -124,7 +140,4 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
         }
     }
 
-    public void setChefName(String chefName) { this.chefName = chefName; }
-
-    public void setClientName(String clientName) { this.clientName = clientName; }
 }
