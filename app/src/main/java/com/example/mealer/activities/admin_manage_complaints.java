@@ -29,12 +29,11 @@ public class admin_manage_complaints extends AppCompatActivity {
     private TextView noComplaints;
     private ArrayList<Complaint> complaints;
     private DatabaseReference complaintsReference;
-    private FirebaseAuth mAuth;
     private Complaint complaint;
     private ComplaintAdapter complaintAdapter;
-    // private ArrayAdapter<Complaint> complaintAdapter;
-    private FirebaseDatabase database1, database2;
-    private String chefFirstName, chefLastName, clientFirstName, clientLastName;
+    private String chefName, clientName;
+
+    public admin_manage_complaints() { }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +50,15 @@ public class admin_manage_complaints extends AppCompatActivity {
         complaintsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("chefName " + complaintAdapter.getClientFirstName() + " " + complaintAdapter.getChefLastName());
-                System.out.println("clientName " +complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
 
+                setChefName(complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
+                setClientName(complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
+                System.out.println(chefName);
+                System.out.println(clientName);
+                
                 Intent intent = new Intent(admin_manage_complaints.this, admin_suspend_user.class);
-                intent.putExtra("chefName", complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
-                intent.putExtra("clientName", complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
+//                intent.putExtra("chefName", complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
+//                intent.putExtra("clientName", complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
                 startActivity(intent);
 
             }
@@ -87,6 +89,13 @@ public class admin_manage_complaints extends AppCompatActivity {
             }
         });
 
-
     }
+
+    public String getClientName() { return clientName; }
+
+    public String getChefName() { return chefName; }
+
+    public void setClientName(String clientName) { this.clientName = clientName; }
+
+    public void setChefName(String chefName) { this.chefName = chefName; }
 }
