@@ -67,7 +67,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
 
             }
         });
-        
+
         backToComplaints = (Button) findViewById(R.id.btn_backToComplaints);
         backToComplaints.setOnClickListener(this);
         confirmSuspension = (Button) findViewById(R.id.btn_confirmSuspension);
