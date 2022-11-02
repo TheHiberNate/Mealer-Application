@@ -11,9 +11,12 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mealer.R;
 import com.example.mealer.structure.Complaint;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +29,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
     private RadioGroup typeOfSuspension, durationOfSuspension;
     private Boolean specificTimeChecked;
     private String suspensionLength;
-    private String chefID, clientID, chefName, clientName;
+    private String chefID, clientID, chefName, clientName, complaintID;
     private DatabaseReference reference;
 
     //Instance Methods*************************************************
@@ -116,8 +119,6 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                 }
             }
         });
-
-
     }
 
     /**
@@ -135,9 +136,44 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
 //                confirmSuspension();
                 break;
             case R.id.btn_ignoreComplaint:
-//                ignoreComplaint();
+                ignoreComplaint();
                 break;
         }
+    }
+
+//    private void confirmSuspension() {
+//
+//    }
+
+    /**
+     * Method to ignore complaint
+     * Determines which complaint we want to delete based on the complaintID.
+     * Will delete that complaint from the Database.
+     */
+    private void ignoreComplaint() {
+        Bundle extras = getIntent().getExtras();
+        complaintID = extras.getString("complaintID");
+        DatabaseReference complaintReference = FirebaseDatabase.getInstance().getReference("Complaints").child(complaintID);
+
+        complaintReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                snapshot.getRef().removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(admin_suspend_user.this, "Complaint Successfully Ignored.", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(admin_suspend_user.this, admin_manage_complaints.class));
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 }
