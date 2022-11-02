@@ -8,6 +8,8 @@ public class User {
     private String role;
     private int payment;
 
+    public User() {}
+
     public User(String firstName, String lastName, String email, String address, String role) {
         this.firstName = firstName;
         this.lastName = lastName;

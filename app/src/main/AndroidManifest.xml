@@ -10,6 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mealer">
         <activity
+            android:name=".activities.admin_suspend_user"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.admin_manage_complaints"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activities.home_page_admin"
             android:exported="false">
             <meta-data

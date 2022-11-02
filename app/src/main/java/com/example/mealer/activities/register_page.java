@@ -72,11 +72,6 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                }
             }
         });
-        // RadioButton
-//        radioButtonChef = (RadioButton) findViewById(R.id.radioBtnChef);
-//        radioButtonChef.setOnClickListener(this);
-//        radioButtonClient = (RadioButton) findViewById(R.id.radioBtnClient);
-//        radioButtonClient.setOnClickListener(this);
     }
 
     @Override
@@ -210,6 +205,5 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                     });
         }
     }
-
 
 }
