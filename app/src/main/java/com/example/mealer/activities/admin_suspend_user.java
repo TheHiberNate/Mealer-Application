@@ -30,7 +30,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
     private Boolean specificTimeChecked;
     private String suspensionLength;
     private String chefID, clientID, chefName, clientName, complaintID;
-    private DatabaseReference reference;
+    private DatabaseReference reference, complaintReference;
 
     //Instance Methods*************************************************
 
@@ -142,7 +142,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
     }
 
 //    private void confirmSuspension() {
-//
+//        DatabaseReference referenceChef = reference.child(chefID);
 //    }
 
     /**
@@ -153,7 +153,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
     private void ignoreComplaint() {
         Bundle extras = getIntent().getExtras();
         complaintID = extras.getString("complaintID");
-        DatabaseReference complaintReference = FirebaseDatabase.getInstance().getReference("Complaints").child(complaintID);
+        complaintReference = FirebaseDatabase.getInstance().getReference("Complaints").child(complaintID);
 
         complaintReference.addValueEventListener(new ValueEventListener() {
             @Override
