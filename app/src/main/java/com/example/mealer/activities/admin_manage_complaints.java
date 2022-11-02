@@ -54,15 +54,6 @@ public class admin_manage_complaints extends AppCompatActivity {
 
                 chefID = complaints.get(position).getChefID();
                 clientID = complaints.get(position).getClientID();
-                System.out.println(chefID);
-                System.out.println(clientID);
-
-//                setChefName(complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
-//                setClientName(complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
-//                System.out.println(chefName);
-//                System.out.println(clientName);
-
-//                complaints.get(position).getChefID();
 
                 Intent intent = new Intent(admin_manage_complaints.this, admin_suspend_user.class);
                 intent.putExtra("chefName", chefID);

@@ -1,5 +1,6 @@
 package com.example.mealer.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,15 +14,20 @@ import android.widget.TextView;
 
 import com.example.mealer.R;
 import com.example.mealer.structure.Complaint;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class admin_suspend_user extends AppCompatActivity implements View.OnClickListener {
-    private TextView chefName, clientName;
+    private TextView textViewChefName, textViewClientName;
     private Button backToComplaints, confirmSuspension, ignoreComplaint;
     private RadioGroup typeOfSuspension, durationOfSuspension;
     private Boolean specificTimeChecked;
     private String suspensionLength;
-    private String chefID, clientID;
-    private admin_manage_complaints complaint;
+    private String chefID, clientID, chefName, clientName;
+    private DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,23 +38,36 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
     }
 
     private void initializeVariables() {
+
         Bundle extras = getIntent().getExtras();
         chefID = extras.getString("chefName");
         clientID = extras.getString("clientName");
 
-        chefName = (TextView) findViewById(R.id.textViewChefName);
-        clientName = (TextView) findViewById(R.id.textViewClientName);
+        textViewChefName = (TextView) findViewById(R.id.textViewChefName);
+        textViewClientName = (TextView) findViewById(R.id.textViewClientName);
 
-//        complaint = new admin_manage_complaints();
-//        chef = complaint.getChefName();
-//        client = complaint.getClientName();
-//        System.out.println(chef);
-//        System.out.println(client);
+        reference = FirebaseDatabase.getInstance().getReference("Users");
 
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                final String tempchefFirstName = snapshot.child(chefID).child("firstName").getValue().toString();
+                final String tempchefLastName = snapshot.child(chefID).child("lastName").getValue().toString();
+                final String tempclientFirstName = snapshot.child(clientID).child("firstName").getValue().toString();
+                final String tempclientLastName = snapshot.child(clientID).child("lastName").getValue().toString();
+                setChefName(tempchefFirstName + " " + tempchefLastName);
+                setClientName(tempclientFirstName + " " + tempclientLastName);
+                textViewClientName.setText("Complaint filed by: " + clientName);
+                textViewChefName.setText("Complaint against: " + chefName);
 
-        chefName.setText(chefID);
-        clientName.setText(clientID);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        
         backToComplaints = (Button) findViewById(R.id.btn_backToComplaints);
         backToComplaints.setOnClickListener(this);
         confirmSuspension = (Button) findViewById(R.id.btn_confirmSuspension);
@@ -86,6 +105,8 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                 }
             }
         });
+
+
     }
 
     @Override
@@ -102,4 +123,8 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
+
+    public void setChefName(String chefName) { this.chefName = chefName; }
+
+    public void setClientName(String clientName) { this.clientName = clientName; }
 }

@@ -23,17 +23,13 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
 
     ArrayList<Complaint> complaints;
     private Activity context;
-    private FirebaseDatabase database1, database2;
-    private String chefFirstName, chefLastName, clientFirstName, clientLastName;
+    private DatabaseReference reference;
+    private String chefName, clientName;
 
     public ComplaintAdapter(Activity context, ArrayList<Complaint> complaints) {
         super(context, R.layout.complaint_adapter, complaints);
         this.context = context;
         this.complaints = complaints;
-//        this.chefFirstName = chefFirstName;
-//        this.chefLastName = chefLastName;
-//        this.clientFirstName = clientFirstName;
-//        this.clientLastName = clientLastName;
     }
 
     @Override
@@ -51,40 +47,22 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
         String chefID = complaint.getChefID();
         String clientID = complaint.getClientID();
 
+        reference = FirebaseDatabase.getInstance().getReference("Users");
 
-        database1 = FirebaseDatabase.getInstance();
-        database2 = FirebaseDatabase.getInstance();
-
-        DatabaseReference referenceChef = database1.getReference("Users").child(chefID);
-        DatabaseReference referenceClient = database2.getReference("Users").child(clientID);
-
-        referenceChef.addValueEventListener(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                final String tempchefFirstName = snapshot.child("firstName").getValue().toString();
-                final String tempchefLastName = snapshot.child("lastName").getValue().toString();
-                setChefFirstName(tempchefFirstName);
-                setChefLastName(tempchefLastName);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        referenceClient.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                final String tempclientFirstName = snapshot.child("firstName").getValue().toString();
-                final String tempclientLastName = snapshot.child("lastName").getValue().toString();
-                setClientFirstName(tempclientFirstName);
-                setClientLastName(tempclientLastName);
+                final String tempchefFirstName = snapshot.child(chefID).child("firstName").getValue().toString();
+                final String tempchefLastName = snapshot.child(chefID).child("lastName").getValue().toString();
+                final String tempclientFirstName = snapshot.child(clientID).child("firstName").getValue().toString();
+                final String tempclientLastName = snapshot.child(clientID).child("lastName").getValue().toString();
+                setChefName(tempchefFirstName + " " + tempchefLastName);
+                setClientName(tempclientFirstName + " " + tempclientLastName);
 
                 title.setText(complaint.getTitle());
-                chefName.setText("Complaint Against Chef: " + getChefFirstName() + " " + getChefLastName());
+                chefName.setText("Complaint Against Chef: " + getChefName());
                 description.setText("Description: " + complaint.getDescription());
-                clientName.setText("Complaint filed by Client: " + getClientFirstName() + " " + getClientLastName());
+                clientName.setText("Complaint filed by Client: " + getClientName());
             }
 
             @Override
@@ -96,19 +74,11 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
         return listViewItem;
     }
 
-    public String getChefFirstName() { return chefFirstName; }
+    public String getChefName() { return chefName; }
 
-    public void setChefFirstName(String chefFirstName) { this.chefFirstName = chefFirstName; }
+    public String getClientName() { return clientName; }
 
-    public String getChefLastName() { return chefLastName; }
+    public void setChefName(String chefName) { this.chefName = chefName; }
 
-    public void setChefLastName(String chefLastName) { this.chefLastName = chefLastName; }
-
-    public String getClientFirstName() { return clientFirstName; }
-
-    public void setClientFirstName(String clientFirstName) { this.clientFirstName = clientFirstName; }
-
-    public String getClientLastName() { return clientLastName; }
-
-    public void setClientLastName(String clientLastName) { this.clientLastName = clientLastName; }
+    public void setClientName(String clientName) { this.clientName = clientName; }
 }
