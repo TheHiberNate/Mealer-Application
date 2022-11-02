@@ -20,7 +20,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
     private RadioGroup typeOfSuspension, durationOfSuspension;
     private Boolean specificTimeChecked;
     private String suspensionLength;
-    private String chef, client;
+    private String chefID, clientID;
     private admin_manage_complaints complaint;
 
     @Override
@@ -32,21 +32,22 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
     }
 
     private void initializeVariables() {
-//        Bundle extras = getIntent().getExtras();
-//        chef = extras.getString("chefName");
-//        client = extras.getString("clientName");
+        Bundle extras = getIntent().getExtras();
+        chefID = extras.getString("chefName");
+        clientID = extras.getString("clientName");
 
         chefName = (TextView) findViewById(R.id.textViewChefName);
         clientName = (TextView) findViewById(R.id.textViewClientName);
 
-        complaint = new admin_manage_complaints();
-        chef = complaint.getChefName();
-        client = complaint.getClientName();
-        System.out.println(chef);
-        System.out.println(client);
+//        complaint = new admin_manage_complaints();
+//        chef = complaint.getChefName();
+//        client = complaint.getClientName();
+//        System.out.println(chef);
+//        System.out.println(client);
 
-        chefName.setText(chef);
-        clientName.setText(client);
+
+        chefName.setText(chefID);
+        clientName.setText(clientID);
 
         backToComplaints = (Button) findViewById(R.id.btn_backToComplaints);
         backToComplaints.setOnClickListener(this);

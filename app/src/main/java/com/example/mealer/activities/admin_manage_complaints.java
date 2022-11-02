@@ -32,6 +32,7 @@ public class admin_manage_complaints extends AppCompatActivity {
     private Complaint complaint;
     private ComplaintAdapter complaintAdapter;
     private String chefName, clientName;
+    private String chefID, clientID;
 
     public admin_manage_complaints() { }
 
@@ -51,16 +52,21 @@ public class admin_manage_complaints extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                setChefName(complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
-                setClientName(complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
-                System.out.println(chefName);
-                System.out.println(clientName);
+                chefID = complaints.get(position).getChefID();
+                clientID = complaints.get(position).getClientID();
+                System.out.println(chefID);
+                System.out.println(clientID);
+
+//                setChefName(complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
+//                setClientName(complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
+//                System.out.println(chefName);
+//                System.out.println(clientName);
 
 //                complaints.get(position).getChefID();
 
                 Intent intent = new Intent(admin_manage_complaints.this, admin_suspend_user.class);
-//                intent.putExtra("chefName", complaintAdapter.getChefFirstName() + " " + complaintAdapter.getChefLastName());
-//                intent.putExtra("clientName", complaintAdapter.getClientFirstName() + " " + complaintAdapter.getClientLastName());
+                intent.putExtra("chefName", chefID);
+                intent.putExtra("clientName", clientID);
                 startActivity(intent);
 
             }
