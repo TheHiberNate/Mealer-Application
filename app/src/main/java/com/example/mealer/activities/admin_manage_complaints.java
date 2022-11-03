@@ -27,12 +27,13 @@ public class admin_manage_complaints extends AppCompatActivity {
 
     private ListView complaintsListView;
     private TextView noComplaints;
-    private ArrayList<Complaint> complaints;
+    private ArrayList<Complaint> complaintsList;
+    private ArrayList<String> complaintsIDList;
     private DatabaseReference complaintsReference;
     private Complaint complaint;
     private ComplaintAdapter complaintAdapter;
     private String chefName, clientName;
-    private String chefID, clientID;
+    private String chefID, clientID, complaintID;
 
     public admin_manage_complaints() { }
 
@@ -44,22 +45,25 @@ public class admin_manage_complaints extends AppCompatActivity {
         complaint = new Complaint();
         // initialize list view & array list
         complaintsListView = (ListView) findViewById(R.id.complaintsListView);
-        complaints = new ArrayList<>();
+        complaintsList = new ArrayList<>();
+        complaintsIDList = new ArrayList<>();
         complaintsReference = FirebaseDatabase.getInstance().getReference("Complaints");
-        complaintAdapter = new ComplaintAdapter(admin_manage_complaints.this, complaints);
+        complaintAdapter = new ComplaintAdapter(admin_manage_complaints.this, complaintsList);
 
         complaintsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                chefID = complaints.get(position).getChefID();
-                clientID = complaints.get(position).getClientID();
+                chefID = complaintsList.get(position).getChefID();
+                clientID = complaintsList.get(position).getClientID();
+                complaintID = complaintsIDList.get(position);
 
                 Intent intent = new Intent(admin_manage_complaints.this, admin_suspend_user.class);
                 intent.putExtra("chefName", chefID);
                 intent.putExtra("clientName", clientID);
-                startActivity(intent);
+                intent.putExtra("complaintID", complaintID);
 
+                startActivity(intent);
             }
         });
 
@@ -74,10 +78,15 @@ public class admin_manage_complaints extends AppCompatActivity {
         complaintsReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                complaints.clear();
+                complaintsList.clear();
+                complaintsIDList.clear();
                 for (DataSnapshot ds: snapshot.getChildren()) {
+                    //Store all the complaints
                     complaint = ds.getValue(Complaint.class);
-                    complaints.add(complaint);
+                    complaintsList.add(complaint);
+
+                    //Store all the complaintID's
+                    complaintsIDList.add(ds.getKey());
                 }
                 complaintsListView.setAdapter(complaintAdapter);
             }

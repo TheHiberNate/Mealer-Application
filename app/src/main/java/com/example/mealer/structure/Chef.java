@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Chef extends User {
     private String description;
     private ArrayList<Complaint> listOfComplaints;
+    private int numberOfComplaints;
+    private Boolean isSuspended = false;
 
 
     public Chef(String firstName, String lastName, String email, String address, int payment, String description) {
@@ -12,6 +14,7 @@ public class Chef extends User {
         setPayment(payment);
         this.description = description;
         listOfComplaints = new ArrayList<>();
+        this.numberOfComplaints = 0;
     }
 
     public String getDescription() { return description; }
