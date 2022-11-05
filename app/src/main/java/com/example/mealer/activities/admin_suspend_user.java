@@ -24,13 +24,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class admin_suspend_user extends AppCompatActivity implements View.OnClickListener {
+
+    //Instance Variables***********************************************
     private TextView textViewChefName, textViewClientName;
     private Button backToComplaints, confirmSuspension, ignoreComplaint;
     private RadioGroup typeOfSuspension, durationOfSuspension;
     private Boolean specificTimeChecked;
-    private String suspensionLength;
+    private String suspensionLength = "indefinite";
     private String chefID, clientID, chefName, clientName, complaintID;
-    private DatabaseReference reference, complaintReference;
+    private DatabaseReference reference, complaintReference, referenceChef, complaintRef;
 
     //Instance Methods*************************************************
 
@@ -100,6 +102,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                 } else {
                     durationOfSuspension.setVisibility(View.INVISIBLE);
                     specificTimeChecked = false;
+                    suspensionLength = "indefinite";
                 }
             }
         });
@@ -109,13 +112,13 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.radBtn_1year) {
-                    suspensionLength = "1year";
+                    suspensionLength = "1 year";
                 } else if (checkedId == R.id.radBtn_1Week) {
-                    suspensionLength = "1week";
+                    suspensionLength = "1 week";
                 } else if (checkedId == R.id.radBtn_1month) {
-                    suspensionLength = "1month";
+                    suspensionLength = "1 month";
                 } else {
-                    suspensionLength = "1day";
+                    suspensionLength = "1 day";
                 }
             }
         });
@@ -133,7 +136,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                 startActivity(new Intent(this, admin_manage_complaints.class));
                 break;
             case R.id.btn_confirmSuspension:
-//                confirmSuspension();
+                confirmSuspension();
                 break;
             case R.id.btn_ignoreComplaint:
                 ignoreComplaint();
@@ -141,9 +144,50 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
         }
     }
 
-//    private void confirmSuspension() {
-//        DatabaseReference referenceChef = reference.child(chefID);
-//    }
+    /**
+     * Method to suspend a chef
+     * Gives a suspension for a chef based on a specified amount of time.
+     */
+    private void confirmSuspension() {
+        Bundle extras = getIntent().getExtras();
+        complaintID = extras.getString("complaintID");
+        complaintRef = FirebaseDatabase.getInstance().getReference("Complaints").child(complaintID);
+        DatabaseReference referenceChef = reference.child(chefID);
+
+        referenceChef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                activateTimer();
+                snapshot.getRef().child("suspended").setValue("true");
+                snapshot.getRef().child("suspensionLength").setValue(suspensionLength);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        complaintRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                snapshot.getRef().removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(admin_suspend_user.this, "New Suspension Successfully Added", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(admin_suspend_user.this, admin_manage_complaints.class));
+                        }
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     /**
      * Method to ignore complaint
