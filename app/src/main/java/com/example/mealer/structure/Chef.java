@@ -3,23 +3,34 @@ package com.example.mealer.structure;
 import java.util.ArrayList;
 
 public class Chef extends User {
-    private String description;
+    private String description, suspensionLength;
     private ArrayList<Complaint> listOfComplaints;
     private int numberOfComplaints;
-    private Boolean isSuspended = false;
+    private Boolean isSuspended;
 
+    public Chef() { }
 
     public Chef(String firstName, String lastName, String email, String address, int payment, String description) {
         super(firstName, lastName, email, address, "Chef");
         setPayment(payment);
         this.description = description;
+        suspensionLength = "none";
+        isSuspended = false;
         listOfComplaints = new ArrayList<>();
         this.numberOfComplaints = 0;
     }
 
+    public String getSuspensionLength() { return suspensionLength; }
+
+    public void setSuspensionLength(String suspensionLength) { this.suspensionLength = suspensionLength; }
+
     public String getDescription() { return description; }
 
     public void setDescription(String description) { this.description = description; }
+
+    public Boolean getSuspended() { return isSuspended; }
+
+    public void setSuspended(Boolean suspended) { isSuspended = suspended; }
 
     public ArrayList<Complaint> getListOfComplaints() { return listOfComplaints; }
 
