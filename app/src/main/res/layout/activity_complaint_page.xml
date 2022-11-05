@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.home_page_admin"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/complaint_management"
+        style="@style/buttonDesign"
+        android:text="Complaint Management"
+        android:background="@android:color/holo_red_dark"
+        android:textColor="@android:color/white">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/USER_management"
+        style="@style/buttonDesign"
+        android:text="User Management"
+        android:background="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white">
+    </Button>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:id="@+id/Client_management"
+        style="@style/buttonDesign"
+        android:text="Client Management"
+        android:background="@android:color/holo_orange_dark"
+        android:textColor="@android:color/white">
+    </Button>
+
+</LinearLayout>
