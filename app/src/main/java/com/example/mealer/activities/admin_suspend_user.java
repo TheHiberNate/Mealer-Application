@@ -174,7 +174,7 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                             snapshot.getRef().child("suspended").setValue("false");
                             snapshot.getRef().child("suspensionLength").setValue("none");
                         }
-                    }, 10000);
+                    }, length);
                 }
             }
 
