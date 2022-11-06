@@ -34,7 +34,6 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
     private TextView textViewChefName, textViewClientName;
     private Button backToComplaints, confirmSuspension, ignoreComplaint;
     private RadioGroup typeOfSuspension, durationOfSuspension;
-    private Boolean justChangedStatus = false;
     private String suspensionLength = "indefinite";
     private String chefID, clientID, chefName, clientName, complaintID;
     private DatabaseReference reference, complaintReference, referenceChef, complaintRef;
@@ -167,15 +166,16 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 snapshot.getRef().child("suspended").setValue("true");
                 snapshot.getRef().child("suspensionLength").setValue(suspensionLength);
-                Timer timer = new Timer();
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        snapshot.getRef().child("suspended").setValue("false");
-                        snapshot.getRef().child("suspensionLength").setValue("none");
-                        justChangedStatus = true;
-                    }
-                }, 30000); // 30 seconds to test
+                if (!suspensionLength.equals("indefinite")) {
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            snapshot.getRef().child("suspended").setValue("false");
+                            snapshot.getRef().child("suspensionLength").setValue("none");
+                        }
+                    }, 10000);
+                }
             }
 
             @Override
