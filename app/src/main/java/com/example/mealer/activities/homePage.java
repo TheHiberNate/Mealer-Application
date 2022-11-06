@@ -140,7 +140,7 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
             isValid = false;
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email_check).matches()){
+        if(!Validation.validateEmail(email_check)){
             email.setError("Please enter a valid email!");
             email.requestFocus();
             isValid = false;
