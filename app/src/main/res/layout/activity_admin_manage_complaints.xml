@@ -23,8 +23,23 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="@string/currently_no_chef_complaints"
-        android:visibility="invisible"
         android:textColor="@color/white"
+        android:visibility="invisible"
         tools:visibility="invisible"></TextView>
+
+
+    <TextView
+        android:id="@+id/textView_BacktoAdminHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:text="BACK TO HOME"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="visible"
+        tools:visibility="visible"></TextView>
+
 
 </RelativeLayout>

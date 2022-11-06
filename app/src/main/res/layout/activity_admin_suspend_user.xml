@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_Dark"
+    android:background="@color/cardview_dark_background"
     tools:context=".activities.admin_suspend_user">
 
     <TextView
@@ -111,11 +111,11 @@
 
     <RadioGroup
         android:id="@+id/radioGroupSpecifiedTime"
-        android:layout_width="331dp"
-        android:layout_height="56dp"
+        android:layout_width="381dp"
+        android:layout_height="55dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupAmountOfTime">
@@ -126,8 +126,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="24 hours"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
 
         <RadioButton
             android:id="@+id/radBtn_5days"
@@ -135,15 +134,17 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="5 days"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
 
         <RadioButton
             android:id="@+id/radBtn_10days"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="10 days" />
+            android:text="10 days"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            tools:visibility="visible" />
 
         <RadioButton
             android:id="@+id/radBtn_15days"
@@ -151,8 +152,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="15 days"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
     </RadioGroup>
 
     <LinearLayout
