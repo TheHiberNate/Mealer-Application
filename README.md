@@ -24,4 +24,6 @@ Email: admin@email.com <br />
 Password: mealeradmin09! <br />
 
 Ce livrable a pour but d'implémenter la plupart de la fonctionalité de l'administrateur. L'administrateur peut voir une liste de plainte associée à différentes cuisiniers (chefs) et peut suspendre un chef pour un temps spécifique (1, 5, ou 15 jours ou une suspension indéfinie). L'administrateur peut aussi ignorer la plainte.
+<img src = app/src/Images/UML2.jpg>
+
 

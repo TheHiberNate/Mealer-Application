@@ -28,9 +28,9 @@ public class Chef extends User {
 
     public void setDescription(String description) { this.description = description; }
 
-    public Boolean getSuspended() { return isSuspended; }
+    public Boolean getIsSuspended() { return this.isSuspended; }
 
-    public void setSuspended(Boolean suspended) { isSuspended = suspended; }
+    public void setIsSuspended(Boolean isSuspended) { this.isSuspended = isSuspended; }
 
     public ArrayList<Complaint> getListOfComplaints() { return listOfComplaints; }
 
