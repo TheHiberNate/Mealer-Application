@@ -23,7 +23,8 @@ Le 1er livrable a pour but de modéliser l'inscription et la connexion d'un nouv
 Email: admin@email.com <br />
 Password: mealeradmin09! <br />
 
-Ce livrable a pour but d'implémenter la plupart de la fonctionalité de l'administrateur. L'administrateur peut voir une liste de plainte associée à différentes cuisiniers (chefs) et peut suspendre un chef pour un temps spécifique (1, 5, ou 15 jours ou une suspension indéfinie). L'administrateur peut aussi ignorer la plainte.
+Ce livrable a pour but d'implémenter la plupart de la fonctionalité de l'administrateur. L'administrateur peut voir une liste de plainte associée à différentes cuisiniers (chefs) et peut suspendre un chef pour un temps spécifique (1, 5, ou 15 jours ou une suspension indéfinie). L'administrateur peut aussi ignorer la plainte. Il est important à noter qu'une liste de plainte à été créée dans Firebase (Voir Image ci-dessous).
+<img src = app/src/Images/ComplaintList.jpg>
 <img src = app/src/Images/UML2.jpg>
 
 
