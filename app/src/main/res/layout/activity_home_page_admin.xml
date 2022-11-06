@@ -5,6 +5,7 @@
     android:id="@+id/btn_viewComplaints"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_Dark"
     tools:context=".activities.home_page_admin">
 
     <LinearLayout
@@ -25,14 +26,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/click_here_to_manage_users" />
+            android:text="@string/click_here_to_manage_users"
+            android:textColor="@color/white"
+            android:textAlignment="center"/>
 
         <Button
             android:id="@+id/btn_manageUsers"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/manage_users" />
+            android:text="@string/manage_users"
+            android:textColor="@color/white"
+            android:background="@drawable/button_style"
+            android:backgroundTint="@color/green"/>
 
         <Space
             android:layout_width="match_parent"
@@ -44,14 +50,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/click_here_to_manage_the_complaints" />
+            android:text="@string/click_here_to_manage_the_complaints"
+            android:textColor="@color/white"
+            android:textAlignment="center"/>
 
         <Button
             android:id="@+id/btn_manageComplaints"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/manage_complaints" />
+            android:text="@string/manage_complaints"
+            android:background="@drawable/button_style"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 
@@ -61,16 +72,22 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="@string/logout"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/green"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989" />
+        app:layout_constraintVertical_bias="0.989"
+        />
 
     <TextView
         android:id="@+id/textViewWelcomeAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/welcome_administrator_you_re_in_charge"
+        android:textAlignment="center"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

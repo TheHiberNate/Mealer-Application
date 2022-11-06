@@ -12,6 +12,9 @@
         android:layout_height="wrap_content"
         android:foregroundGravity="bottom"
         android:scrollbarSize="20dp"
+        android:listSelector="@color/green"
+        android:fitsSystemWindows="true"
+
         android:stackFromBottom="false"/>
 
     <TextView
@@ -21,6 +24,7 @@
         android:layout_centerInParent="true"
         android:text="@string/currently_no_chef_complaints"
         android:visibility="invisible"
+        android:textColor="@color/white"
         tools:visibility="invisible"></TextView>
 
 </RelativeLayout>
