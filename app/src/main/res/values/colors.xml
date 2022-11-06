@@ -11,4 +11,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Light_green">#8BC34A</color>
     <color name="Light_grey">#CFCFCF</color>
+    <color name="blue_Dark">#050529</color>
+    <color name="blue_Dark_for_Frames">#15154E</color>
 </resources>
