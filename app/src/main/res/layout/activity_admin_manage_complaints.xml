@@ -9,13 +9,13 @@
     <ListView
         android:id="@+id/complaintsListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:foregroundGravity="bottom"
-        android:scrollbarSize="20dp"
-        android:listSelector="@color/green"
+        android:layout_height="685dp"
         android:fitsSystemWindows="true"
+        android:foregroundGravity="bottom"
+        android:listSelector="@color/green"
+        android:scrollbarSize="20dp"
 
-        android:stackFromBottom="false"/>
+        android:stackFromBottom="false" />
 
     <TextView
         android:id="@+id/textView_NoComplaints"
@@ -31,11 +31,11 @@
     <TextView
         android:id="@+id/textView_BacktoAdminHome"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_centerInParent="true"
         android:text="BACK TO HOME"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
         android:visibility="visible"
