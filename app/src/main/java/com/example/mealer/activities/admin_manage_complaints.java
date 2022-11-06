@@ -23,10 +23,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class admin_manage_complaints extends AppCompatActivity {
+public class admin_manage_complaints extends AppCompatActivity implements View.OnClickListener {
 
     private ListView complaintsListView;
-    private TextView noComplaints;
+    private TextView noComplaints, backHome;
     private ArrayList<Complaint> complaintsList;
     private ArrayList<String> complaintsIDList;
     private DatabaseReference complaintsReference;
@@ -41,6 +41,9 @@ public class admin_manage_complaints extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_manage_complaints);
+
+        backHome = (TextView) findViewById(R.id.textView_BacktoAdminHome);
+        backHome.setOnClickListener(this);
 
         complaint = new Complaint();
         // initialize list view & array list
@@ -106,4 +109,13 @@ public class admin_manage_complaints extends AppCompatActivity {
     public void setClientName(String clientName) { this.clientName = clientName; }
 
     public void setChefName(String chefName) { this.chefName = chefName; }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.textView_BacktoAdminHome:
+                startActivity(new Intent(this, home_page_admin.class));
+                break;
+        }
+    }
 }
