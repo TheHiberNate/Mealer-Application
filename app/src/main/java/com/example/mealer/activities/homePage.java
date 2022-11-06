@@ -57,7 +57,6 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
         referenceDatabase = FirebaseDatabase.getInstance().getReference("Users");
     }
 
-
         @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -102,11 +101,12 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
                                                 final String suspensionLength = dataSnapshot.child("suspensionLength").getValue().toString();
                                                 intentUserWelcome = new Intent(homePage.this, home_page_chef.class);
                                                 intentUserWelcome.putExtra("isSuspended", isSuspended);
-//                                                if (isSuspended == "true") {
+                                                intentUserWelcome.putExtra("suspensionLength", suspensionLength);
+                                                if (isSuspended.equals("true")) {
                                                     intentUserWelcome.putExtra("suspension", "Sorry " + role + " " + firstName + " You are currently suspended " + "(" + suspensionLength + " suspension)");
-//                                                } else {
+                                                } else {
                                                     intentUserWelcome.putExtra("welcomeChef", "Welcome " + role + " " + firstName + "! Ready to make some Food?!");
-//                                                }
+                                                }
                                                 intentUserWelcome.putExtra("userID", id);
                                             }
                                             startActivity(intentUserWelcome);
