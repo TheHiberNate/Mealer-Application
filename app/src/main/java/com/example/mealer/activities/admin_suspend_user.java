@@ -145,13 +145,6 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.btn_confirmSuspension:
                 confirmSuspension();
-//                Timer timer1 = new Timer();
-//                timer1.schedule(new TimerTask() {
-//                    @Override
-//                    public void run() {
-//                        justChangedStatus = false;
-//                    }
-//                }, 20000);
                 break;
             case R.id.btn_ignoreComplaint:
                 ignoreComplaint();
@@ -179,9 +172,10 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                     @Override
                     public void run() {
                         snapshot.getRef().child("suspended").setValue("false");
+                        snapshot.getRef().child("suspensionLength").setValue("none");
                         justChangedStatus = true;
                     }
-                }, 20000); // 20 seconds to test
+                }, 30000); // 30 seconds to test
             }
 
             @Override
