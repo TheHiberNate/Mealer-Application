@@ -115,25 +115,25 @@
             android:text="24 hours" />
 
         <RadioButton
-            android:id="@+id/radBtn_1Week"
+            android:id="@+id/radBtn_5days"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="1 week" />
+            android:text="5 days" />
 
         <RadioButton
-            android:id="@+id/radBtn_1month"
+            android:id="@+id/radBtn_10days"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="1 month" />
+            android:text="10 days" />
 
         <RadioButton
-            android:id="@+id/radBtn_1year"
+            android:id="@+id/radBtn_15days"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="1 year" />
+            android:text="15 days" />
     </RadioGroup>
 
     <LinearLayout

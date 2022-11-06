@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,16 +19,12 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class home_page_chef extends AppCompatActivity implements View.OnClickListener {
-    //Class Variables**************************************************
-    private static final double DAY = 8.64e+7;
-    private static final double WEEK = 6.048e+8;
-    private static final double MONTH = 2.592e+9;
-    private static final double YEAR = 3.154e+10;
 
     //Instance Variables***********************************************
+    private double length;
     private Button logout;
     private TextView welcome;
-    private String welcomeMessage, suspensionMessage, chefID, isSuspended;
+    private String welcomeMessage, suspensionMessage, chefID, isSuspended, suspensionLength;
     private double activatedAt = Double.MAX_VALUE;
     private DatabaseReference reference;
 
@@ -45,14 +42,16 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
 
         chefID = extras.getString("userID");
         isSuspended = extras.getString("isSuspended");
-        suspensionMessage = extras.getString("suspension");
-        welcomeMessage = extras.getString("welcomeChef");
+        suspensionLength = extras.getString("suspensionLength");
 
         if (isSuspended.equals("true")) {
+            suspensionMessage = extras.getString("suspension");
             welcome.setText(suspensionMessage);
         } else {
+            welcomeMessage = extras.getString("welcomeChef");
             welcome.setText(welcomeMessage);
         }
+
     }
 
     @Override
@@ -63,20 +62,4 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
                 break;
         }
     }
-//
-//    public void activateTimer() { activatedAt = System.currentTimeMillis(); }
-//
-//    public boolean isActive() {
-//        double activeFor = System.currentTimeMillis() - activatedAt;
-//        if (suspensionLength == "1year") {
-//            return activeFor >=0 && activeFor <= YEAR;
-//        } else if (suspensionLength == "1month") {
-//            return activeFor >= 0 && activeFor <= MONTH;
-//        } else if (suspensionLength == "1week") {
-//            return activeFor >= 0 && activeFor <= WEEK;
-//        } else {
-//            return activeFor >= 0 && activeFor <= DAY;
-//        }
-//    }
-
 }

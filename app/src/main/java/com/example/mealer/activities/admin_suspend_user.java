@@ -5,16 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mealer.R;
-import com.example.mealer.structure.Complaint;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -23,16 +20,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class admin_suspend_user extends AppCompatActivity implements View.OnClickListener {
+    //Class Variables**************************************************
+    private static final long DAY = 86400000;
+    private static final long FIVEDAYS = 432000000;
+    private static final long TENDAYS = 864000000;
+    private static final long FIFTEENDAYS = 1296000000;
 
     //Instance Variables***********************************************
     private TextView textViewChefName, textViewClientName;
     private Button backToComplaints, confirmSuspension, ignoreComplaint;
     private RadioGroup typeOfSuspension, durationOfSuspension;
-    private Boolean specificTimeChecked;
+    private Boolean justChangedStatus = false;
     private String suspensionLength = "indefinite";
     private String chefID, clientID, chefName, clientName, complaintID;
     private DatabaseReference reference, complaintReference, referenceChef, complaintRef;
+    private long length;
 
     //Instance Methods*************************************************
 
@@ -98,10 +104,8 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.radBtn_specificTime) {
                     durationOfSuspension.setVisibility(View.VISIBLE);
-                    specificTimeChecked = true;
                 } else {
                     durationOfSuspension.setVisibility(View.INVISIBLE);
-                    specificTimeChecked = false;
                     suspensionLength = "indefinite";
                 }
             }
@@ -111,14 +115,18 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
         durationOfSuspension.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if (checkedId == R.id.radBtn_1year) {
-                    suspensionLength = "1 year";
-                } else if (checkedId == R.id.radBtn_1Week) {
-                    suspensionLength = "1 week";
-                } else if (checkedId == R.id.radBtn_1month) {
-                    suspensionLength = "1 month";
+                if (checkedId == R.id.radBtn_15days) {
+                    suspensionLength = "15 days";
+                    length = FIFTEENDAYS;
+                } else if (checkedId == R.id.radBtn_5days) {
+                    suspensionLength = "5 days";
+                    length = FIVEDAYS;
+                } else if (checkedId == R.id.radBtn_10days) {
+                    suspensionLength = "10 days";
+                    length = TENDAYS;
                 } else {
                     suspensionLength = "1 day";
+                    length = DAY;
                 }
             }
         });
@@ -137,6 +145,13 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
                 break;
             case R.id.btn_confirmSuspension:
                 confirmSuspension();
+//                Timer timer1 = new Timer();
+//                timer1.schedule(new TimerTask() {
+//                    @Override
+//                    public void run() {
+//                        justChangedStatus = false;
+//                    }
+//                }, 20000);
                 break;
             case R.id.btn_ignoreComplaint:
                 ignoreComplaint();
@@ -154,12 +169,19 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
         complaintRef = FirebaseDatabase.getInstance().getReference("Complaints").child(complaintID);
         DatabaseReference referenceChef = reference.child(chefID);
 
-        referenceChef.addValueEventListener(new ValueEventListener() {
+        referenceChef.addListenerForSingleValueEvent(new ValueEventListener() { // for a single event
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                activateTimer();
                 snapshot.getRef().child("suspended").setValue("true");
                 snapshot.getRef().child("suspensionLength").setValue(suspensionLength);
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        snapshot.getRef().child("suspended").setValue("false");
+                        justChangedStatus = true;
+                    }
+                }, 20000); // 20 seconds to test
             }
 
             @Override
