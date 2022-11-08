@@ -24,7 +24,7 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
     private double length;
     private Button logout;
     private TextView welcome;
-    private String welcomeMessage, suspensionMessage, chefID, isSuspended, suspensionLength;
+    private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
     private double activatedAt = Double.MAX_VALUE;
     private DatabaseReference reference;
 
@@ -33,25 +33,27 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_chef);
 
-        logout = (Button) findViewById(R.id.btn_Logout_Chef);
+        logout = findViewById(R.id.btn_Logout_Chef);
         logout.setOnClickListener(this);
 
         welcome = (TextView) findViewById(R.id.textViewChefWelcome);
 
         Bundle extras = getIntent().getExtras();
 
+        welcome = findViewById(R.id.textViewChefWelcome);
+        welcome.setText(welcomeMessage);
+
         chefID = extras.getString("userID");
-        isSuspended = extras.getString("isSuspended");
+        suspended = extras.getString("suspended");
         suspensionLength = extras.getString("suspensionLength");
 
-        if (isSuspended.equals("true")) {
+        if (suspended.equals("true")) {
             suspensionMessage = extras.getString("suspension");
             welcome.setText(suspensionMessage);
         } else {
             welcomeMessage = extras.getString("welcomeChef");
             welcome.setText(welcomeMessage);
         }
-
     }
 
     @Override

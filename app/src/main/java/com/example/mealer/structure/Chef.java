@@ -6,16 +6,16 @@ public class Chef extends User {
     private String description, suspensionLength;
     private ArrayList<Complaint> listOfComplaints;
     private int numberOfComplaints;
-    private Boolean isSuspended;
+    private Boolean suspended;
 
     public Chef() { }
 
-    public Chef(String firstName, String lastName, String email, String address, int payment, String description) {
+    public Chef(String firstName, String lastName, String email, String address, String payment, String description) {
         super(firstName, lastName, email, address, "Chef");
         setPayment(payment);
         this.description = description;
         suspensionLength = "none";
-        isSuspended = false;
+        suspended = false;
         listOfComplaints = new ArrayList<>();
         this.numberOfComplaints = 0;
     }
@@ -28,9 +28,9 @@ public class Chef extends User {
 
     public void setDescription(String description) { this.description = description; }
 
-    public Boolean getIsSuspended() { return this.isSuspended; }
+    public Boolean getSuspended() { return this.suspended; }
 
-    public void setIsSuspended(Boolean isSuspended) { this.isSuspended = isSuspended; }
+    public void setIsSuspended(Boolean suspended) { this.suspended = suspended; }
 
     public ArrayList<Complaint> getListOfComplaints() { return listOfComplaints; }
 

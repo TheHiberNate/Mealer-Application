@@ -17,7 +17,7 @@ public class home_page_admin extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_admin);
 
-        logout = (Button) findViewById(R.id.btnLogoutAdmin);
+        logout = findViewById(R.id.btnLogoutAdmin);
         logout.setOnClickListener(this);
 
         manageComplaints = (Button) findViewById(R.id.btn_manageComplaints);

@@ -20,13 +20,13 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_client);
 
-        logout = (Button) findViewById(R.id.btn_Logout_Client);
+        logout = findViewById(R.id.btn_Logout_Client);
         logout.setOnClickListener(this);
 
         Bundle extras = getIntent().getExtras();
         welcomeMessage = extras.getString("welcomeClient");
 
-        welcome = (TextView) findViewById(R.id.textViewWelcomeClient);
+        welcome = findViewById(R.id.textViewWelcomeClient);
         welcome.setText(welcomeMessage);
     }
 

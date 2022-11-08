@@ -21,10 +21,10 @@
         android:ems="10"
         android:hint="@string/name"
         android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:minHeight="48dp"
         android:textAlignment="center"
-        android:textColor="@color/green"
+        android:textColor="@color/black"
         android:textColorHint="#757575"
         app:layout_constraintBottom_toTopOf="@+id/editTextLastName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,21 +80,21 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="376dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginBottom="10dp"
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="@string/address"
         android:importantForAutofill="no"
-
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:minHeight="48dp"
         android:textAlignment="center"
         android:textColorHint="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/editTextPayment"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="TextContrastCheck" />
 
     <EditText
@@ -109,10 +109,10 @@
         android:ems="10"
         android:hint="@string/last_name"
         android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
+        android:inputType="text"
         android:minHeight="48dp"
         android:textAlignment="center"
-        android:textColor="@color/green"
+        android:textColor="@color/black"
         android:textColorHint="#757575"
         app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
         app:layout_constraintEnd_toEndOf="parent"
@@ -141,33 +141,11 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/editTextPayment"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/button_style"
-        android:backgroundTint="@color/white"
-        android:ems="10"
-        android:hint="@string/payment_information"
-
-        android:importantForAutofill="no"
-        android:inputType="number"
-        android:minHeight="48dp"
-        android:textAlignment="center"
-        android:textColorHint="#757575"
-        app:layout_constraintBottom_toTopOf="@+id/editTextDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TextContrastCheck" />
-
-    <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="367dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/button_style"
         android:backgroundTint="@color/white"
@@ -177,12 +155,12 @@
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         android:textAlignment="center"
-        android:textColor="@color/green"
+        android:textColor="@color/black"
         android:textColorHint="#757575"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEnterCredentials"
+        app:layout_constraintTop_toBottomOf="@+id/editTextAddress"
         tools:ignore="TextContrastCheck" />
 
     <TextView
@@ -253,12 +231,12 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/btn_Register2"
+        android:id="@+id/btn_Continue"
         android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:background="@drawable/button_style"
         android:backgroundTint="#8BC34A"
-        android:text="@string/btn_REGISTER"
+        android:text="CONTINUE"
         android:textColor="#4527A0"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -283,7 +261,8 @@
         android:id="@+id/btnBackHome"
         android:layout_width="64dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_marginTop="173dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button_style"
         android:backgroundTint="@color/Light_green"
         android:foreground="@drawable/abc_vector_test"
@@ -291,8 +270,10 @@
         android:textColor="@color/Light_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDescription"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
