@@ -71,11 +71,6 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                }
             }
         });
-        // RadioButton
-//        radioButtonChef = (RadioButton) findViewById(R.id.radioBtnChef);
-//        radioButtonChef.setOnClickListener(this);
-//        radioButtonClient = (RadioButton) findViewById(R.id.radioBtnClient);
-//        radioButtonClient.setOnClickListener(this);
     }
     public  String getFirstName(){
         return  editTextName.getText().toString().trim();
@@ -201,6 +196,5 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         }
         return isValid;
     }
-
 
 }
