@@ -36,10 +36,10 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
     }
 
     private void initializeVariables(){
-        accountnumber = (EditText) findViewById(R.id.accountnumber);
-        succursalenumber = (EditText) findViewById(R.id.succursalenumber);
-        banknumber = (EditText) findViewById(R.id.banknumber);
-        registerchef = (Button) findViewById(R.id.registerchef);
+        accountnumber = findViewById(R.id.accountnumber);
+        succursalenumber = findViewById(R.id.succursalenumber);
+        banknumber = findViewById(R.id.banknumber);
+        registerchef = findViewById(R.id.registerchef);
         registerchef.setOnClickListener(this);
     }
 

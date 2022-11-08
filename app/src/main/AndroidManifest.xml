@@ -10,14 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mealer">
         <activity
-            android:name=".Informationspaiementchef"
+            android:name=".activities.Informationspaiementchef"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".InformationsPaiement"
+            android:name=".activities.InformationsPaiement"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

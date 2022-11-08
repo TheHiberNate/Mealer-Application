@@ -36,11 +36,11 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
     }
 
     private void initializeVariables(){
-        register = (Button) findViewById(R.id.registerclient);
+        register = findViewById(R.id.registerclient);
         register.setOnClickListener(this);
-        textpayment = (EditText) findViewById(R.id.textpayment);
-        expirationdate = (EditText) findViewById(R.id.expirationdate);
-        codeCVCC = (EditText) findViewById(R.id.codeCVCC);
+        textpayment = findViewById(R.id.textpayment);
+        expirationdate = findViewById(R.id.expirationdate);
+        codeCVCC = findViewById(R.id.codeCVCC);
     }
 
     public void onClick(View v){
@@ -113,7 +113,8 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = createUser(role, firstName, lastName, email, address, paymentclient, description);
+                                final User user = new Client( firstName, lastName, email, address, paymentclient);
+                                // final User user = createUser(role, firstName, lastName, email, address, paymentclient, description);
 //                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")

@@ -22,13 +22,13 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_chef);
 
-        logout = (Button) findViewById(R.id.btn_Logout_Chef);
+        logout = findViewById(R.id.btn_Logout_Chef);
         logout.setOnClickListener(this);
 
         Bundle extras = getIntent().getExtras();
         welcomeMessage = extras.getString("welcomeChef");
 
-        welcome = (TextView) findViewById(R.id.textViewChefWelcome);
+        welcome = findViewById(R.id.textViewChefWelcome);
         welcome.setText(welcomeMessage);
     }
 

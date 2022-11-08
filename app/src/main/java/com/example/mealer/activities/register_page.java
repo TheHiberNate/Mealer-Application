@@ -45,20 +45,20 @@ public class register_page extends AppCompatActivity implements View.OnClickList
         // Firebase
         mAuth =  FirebaseAuth.getInstance();
         // Button
-        register = (Button) findViewById(R.id.btn_Continue);
+        register = findViewById(R.id.btn_Continue);
         register.setOnClickListener(this);
-        btnhomePage = (Button) findViewById(R.id.btnBackHome);
+        btnhomePage = findViewById(R.id.btnBackHome);
         btnhomePage.setOnClickListener(this);
         // EditText
-        editTextName = (EditText) findViewById(R.id.editTextName);
-        editTextLastName = (EditText) findViewById(R.id.editTextLastName);
-        editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        editTextAddress = (EditText) findViewById(R.id.editTextAddress);
+        editTextName = findViewById(R.id.editTextName);
+        editTextLastName = findViewById(R.id.editTextLastName);
+        editTextEmail = findViewById(R.id.editTextEmail);
+        editTextPassword = findViewById(R.id.editTextPassword);
+        editTextAddress = findViewById(R.id.editTextAddress);
 
-        editTextDescription = (EditText) findViewById(R.id.editTextDescription);
+        editTextDescription = findViewById(R.id.editTextDescription);
         // RadioGroup
-        usersRadioGroup = (RadioGroup) findViewById(R.id.radioGroupUsers);
+        usersRadioGroup = findViewById(R.id.radioGroupUsers);
         usersRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -110,17 +110,17 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.btn_Continue:
                 if (validCredentials()) {
-                    startActivity(new Intent(this, InformationsPaiement.class));
+                    if (chefIsChecked==false) {
+                        startActivity(new Intent(this, InformationsPaiement.class));
+                        break;
+                    }
+                    else {
+                        startActivity(new Intent(this, Informationspaiementchef.class));
+                        break;
+                    }
                 }
 
-//                if (chefIsChecked==false) {
-//                    startActivity(new Intent(this, InformationsPaiement.class));
-//                    break;
-//                }
-//                else {
-//                    startActivity(new Intent(this, Informationspaiementchef.class));
-//                    break;
-//                }
+
 
         }
     }

@@ -44,14 +44,14 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void initializeVariables() {
-        register = (Button) findViewById(R.id.btn_Register);
+        register = findViewById(R.id.btn_Register);
         register.setOnClickListener(this);
 
-        signIn = (Button) findViewById(R.id.btn_Login);
+        signIn = findViewById(R.id.btn_Login);
         signIn.setOnClickListener(this);
 
-        email = (EditText) findViewById(R.id.editTextTextEmailAddress2);
-        password = (EditText) findViewById(R.id.editTextTextPassword2);
+        email = findViewById(R.id.editTextTextEmailAddress2);
+        password = findViewById(R.id.editTextTextPassword2);
 
         mAuth = FirebaseAuth.getInstance();
         referenceDatabase = FirebaseDatabase.getInstance().getReference("Users");
