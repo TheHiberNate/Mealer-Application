@@ -75,16 +75,16 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
             textpayment.requestFocus();
             isValid = false;
         } else if ( payment.length()!=16){
-            textpayment.setError("Please enter valid card");
+            textpayment.setError("Please enter valid card (Must have 16 digits)");
             textpayment.requestFocus();
             isValid = false;
         }if (expdate.length()!=4){
-            textpayment.setError("Please Enter valid date");
+            textpayment.setError("Please Enter Valid Date (Day + Month + Year) Must have 4 digits)");
             textpayment.requestFocus();
             isValid = false;
         }
         if (code.length()!=3) {
-            textpayment.setError("Please Enter valid code");
+            textpayment.setError("Please Enter valid code (Must be 3 digits)");
             textpayment.requestFocus();
             isValid = false;
         }
