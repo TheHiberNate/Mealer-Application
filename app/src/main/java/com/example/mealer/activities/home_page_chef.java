@@ -24,7 +24,7 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
     private double length;
     private Button logout;
     private TextView welcome;
-    private String welcomeMessage, suspensionMessage, chefID, isSuspended, suspensionLength;
+    private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
     private double activatedAt = Double.MAX_VALUE;
     private DatabaseReference reference;
 
@@ -44,10 +44,10 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         welcome.setText(welcomeMessage);
 
         chefID = extras.getString("userID");
-        isSuspended = extras.getString("isSuspended");
+        suspended = extras.getString("suspended");
         suspensionLength = extras.getString("suspensionLength");
 
-        if (isSuspended.equals("true")) {
+        if (suspended.equals("true")) {
             suspensionMessage = extras.getString("suspension");
             welcome.setText(suspensionMessage);
         } else {

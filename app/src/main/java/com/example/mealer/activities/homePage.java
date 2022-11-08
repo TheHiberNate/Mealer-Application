@@ -96,13 +96,12 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
                                                 intentUserWelcome = new Intent(homePage.this, home_page_client.class);
                                                 intentUserWelcome.putExtra("welcomeClient", "Welcome Customer " + firstName + "! Ready to order some Food?!");
                                             } else {
-                                                final String isSuspended = dataSnapshot.child("suspended").getValue().toString();
-                                                System.out.println(isSuspended);
+                                                final String suspended = dataSnapshot.child("suspended").getValue().toString();
                                                 final String suspensionLength = dataSnapshot.child("suspensionLength").getValue().toString();
                                                 intentUserWelcome = new Intent(homePage.this, home_page_chef.class);
-                                                intentUserWelcome.putExtra("isSuspended", isSuspended);
+                                                intentUserWelcome.putExtra("suspended", suspended);
                                                 intentUserWelcome.putExtra("suspensionLength", suspensionLength);
-                                                if (isSuspended.equals("true")) {
+                                                if (suspended.equals("true")) {
                                                     intentUserWelcome.putExtra("suspension", "Sorry " + role + " " + firstName + " You are currently suspended " + "(" + suspensionLength + " suspension)");
                                                 } else {
                                                     intentUserWelcome.putExtra("welcomeChef", "Welcome " + role + " " + firstName + "! Ready to make some Food?!");
