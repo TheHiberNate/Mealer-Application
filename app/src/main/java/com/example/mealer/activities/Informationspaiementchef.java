@@ -36,6 +36,7 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
     }
 
     private void initializeVariables(){
+        mAuth = FirebaseAuth.getInstance();
         accountnumber = findViewById(R.id.accountnumber);
         succursalenumber = findViewById(R.id.succursalenumber);
         banknumber = findViewById(R.id.banknumber);
@@ -84,15 +85,17 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
     }
 
     private void registerUser(){
-        register_page tempinfo = new register_page();
-        final String firstName = tempinfo.getFirstName();
-        final String lastName = tempinfo.getLastName();
-        final String email = tempinfo.getEmail();
-        final String password = tempinfo.getPassword();
-        final String address = tempinfo.getAdress();
+        Bundle extras = getIntent().getExtras();
+
+        final String firstName = extras.getString("firstname");
+        final String lastName = extras.getString("lastname");
+        final String email = extras.getString("email");
+        final String password = extras.getString("password");
+
+        final String address = extras.getString("adress");
         final String paymentchef = getPayment();
-        final String description = tempinfo.getDescription();
-        final String role = tempinfo.getRole();
+        final String description = extras.getString("description");
+
 
         if (validCredentials()) {
             mAuth.createUserWithEmailAndPassword(email, password)
@@ -101,7 +104,7 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = createUser(role, firstName, lastName, email, address, paymentchef, description);
+                                final User user = new Chef( firstName, lastName, email, address, paymentchef, description);
 //                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")

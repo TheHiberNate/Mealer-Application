@@ -102,6 +102,7 @@ public class register_page extends AppCompatActivity implements View.OnClickList
          return role;
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -111,11 +112,29 @@ public class register_page extends AppCompatActivity implements View.OnClickList
             case R.id.btn_Continue:
                 if (validCredentials()) {
                     if (chefIsChecked==false) {
-                        startActivity(new Intent(this, InformationsPaiement.class));
+                        Intent intent = new Intent(this,InformationsPaiement.class);
+                        intent.putExtra("firstname",getFirstName());
+                        intent.putExtra("lastname",getLastName());
+                        intent.putExtra("email",getEmail());
+                        intent.putExtra("adress",getAdress());
+                        intent.putExtra("password",getPassword());
+
+
+
+                        startActivity(intent);
+
                         break;
                     }
                     else {
-                        startActivity(new Intent(this, Informationspaiementchef.class));
+                        Intent intent = new Intent(this,Informationspaiementchef.class);
+                        intent.putExtra("firstname",getFirstName());
+                        intent.putExtra("lastname",getLastName());
+                        intent.putExtra("email",getEmail());
+                        intent.putExtra("adress",getAdress());
+                        intent.putExtra("description",getDescription());
+                        intent.putExtra("password",getPassword());
+                        startActivity(intent);
+                        System.out.println(getFirstName() + " " + getLastName());
                         break;
                     }
                 }

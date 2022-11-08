@@ -36,6 +36,7 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
     }
 
     private void initializeVariables(){
+        mAuth = FirebaseAuth.getInstance();
         register = findViewById(R.id.registerclient);
         register.setOnClickListener(this);
         textpayment = findViewById(R.id.textpayment);
@@ -47,7 +48,6 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
         switch (v.getId()){
             case R.id.registerclient:
                 registerUser();
-//                startActivity(new Intent(this, home_page_client.class));
                 break;
         }
     }
@@ -96,15 +96,16 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
     }
 
     private void registerUser(){
-        register_page tempinfo = new register_page();
-        final String firstName = tempinfo.getFirstName();
-        final String lastName = tempinfo.getLastName();
-        final String email = tempinfo.getEmail();
-        final String password = tempinfo.getPassword();
-        final String address = tempinfo.getAdress();
+        Bundle extras = getIntent().getExtras();
+
+        final String firstName = extras.getString("firstname");
+        final String lastName = extras.getString("lastname");
+        final String email = extras.getString("email");
+        final String password = extras.getString("password");
+
+        final String address = extras.getString("adress");
         final String paymentclient = getPayment();
-        final String description = tempinfo.getDescription();
-        final String role = tempinfo.getRole();
+
 
         if (validCredentials()) {
             mAuth.createUserWithEmailAndPassword(email, password)
