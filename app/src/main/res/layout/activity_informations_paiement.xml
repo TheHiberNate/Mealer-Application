@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/imagepaymentcard"
-        android:layout_width="241dp"
-        android:layout_height="181dp"
+        android:layout_width="274dp"
+        android:layout_height="190dp"
         android:layout_marginBottom="450dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

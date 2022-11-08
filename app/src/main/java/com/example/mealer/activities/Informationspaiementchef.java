@@ -57,31 +57,27 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
         String account = accountnumber.getText().toString().trim();
         String bank = banknumber.getText().toString().trim();
         String succursale = succursalenumber.getText().toString().trim();
+        if (bank.isEmpty() || bank.length()!=3) {
+            banknumber.setError("Please Enter a Valid Bank Number (Must have 3 digits)");
+            banknumber.requestFocus();
+            isValid = false;
+        }
+        if (succursale.isEmpty() || succursale.length()!=5){
+            succursalenumber.setError("Please Enter Valid Succursale Number (Must have 5 digits)");
+            succursalenumber.requestFocus();
+            isValid = false;
+        }
         if (account.isEmpty() || account.length()!=7){
-            accountnumber.setError("Please Enter valid accountnumber");
+            accountnumber.setError("Please Enter Valid Account Number (Must have 7 digits)");
             accountnumber.requestFocus();
             isValid = false;
-        } if (bank.isEmpty() || bank.length()!=3){
-            banknumber.setError("Please Enter valid bankmuber");
-            isValid = false;
-        } if (succursale.isEmpty() || succursale.length()!=5){
-            succursalenumber.setError("Please Enter valid succursalenumber");
-            isValid = false;
         }
+
         return isValid;
     }
-    public boolean getValidCredentials(){
-        return validCredentials();
-    }
+
     public String getPayment(){
         return accountnumber.getText().toString().trim();
-    }
-    private User createUser(String role, String firstName, String lastName, String email, String address, String payment, String description) {
-        if (role.equals("Client")) {
-            return new Client(firstName, lastName, email, address, payment);
-        } else {
-            return new Chef(firstName, lastName, email, address, payment, description);
-        }
     }
 
     private void registerUser(){
@@ -104,7 +100,7 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = new Chef( firstName, lastName, email, address, paymentchef, description);
+                                final User user = new Chef(firstName, lastName, email, address, paymentchef, description);
 //                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")
@@ -128,15 +124,5 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
                         }
                     });
         }
-
-
-
     }
-
-
-
-
-
-
-
 }

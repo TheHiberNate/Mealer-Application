@@ -56,14 +56,6 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
         return textpayment.getText().toString().trim();
     }
 
-    private User createUser(String role, String firstName, String lastName, String email, String address, String payment, String description) {
-        if (role.equals("Client")) {
-            return new Client(firstName, lastName, email, address, payment);
-        } else {
-            return new Chef(firstName, lastName, email, address, payment, description);
-        }
-    }
-
     private boolean validCredentials(){
         boolean isValid = true;
         String payment = textpayment.getText().toString().trim();
@@ -74,25 +66,32 @@ public class InformationsPaiement extends AppCompatActivity implements View.OnCl
             textpayment.setError("Please Enter Payment Information");
             textpayment.requestFocus();
             isValid = false;
-        } else if ( payment.length()!=16){
-            textpayment.setError("Please enter valid card (Must have 16 digits)");
-            textpayment.requestFocus();
-            isValid = false;
-        }if (expdate.length()!=4){
-            textpayment.setError("Please Enter Valid Date (Day + Month + Year) Must have 4 digits)");
+        } else if (payment.length()!=16){
+            textpayment.setError("Please Enter Valid Card Number (Must have 16 digits)");
             textpayment.requestFocus();
             isValid = false;
         }
-        if (code.length()!=3) {
-            textpayment.setError("Please Enter valid code (Must be 3 digits)");
-            textpayment.requestFocus();
+        if (expdate.isEmpty()) {
+            expirationdate.setError("Please Enter an Expiry Date (Month + Year)");
+            expirationdate.requestFocus();
+            isValid = false;
+        } else if (expdate.length()!=4){
+            expirationdate.setError("Please Enter a Valid Expiry Date (Must have 4 digits)");
+            expirationdate.requestFocus();
+            isValid = false;
+        }
+
+        if (code.isEmpty()) {
+            codeCVCC.setError("Please Enter a Code");
+            codeCVCC.requestFocus();
+            isValid = false;
+        } else if (code.length()!=3) {
+            codeCVCC.setError("Please Enter Valid Code (Must be 3 digits)");
+            codeCVCC.requestFocus();
             isValid = false;
         }
 
         return isValid;
-    }
-    public boolean getValidCredentials(){
-        return validCredentials();
     }
 
     private void registerUser(){
