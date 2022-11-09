@@ -3,13 +3,13 @@ package com.example.mealer.structure;
 import java.util.ArrayList.*;
 
 public class Menu {
-    private String name;
+    private String title;
     private double price;
-    String description;
+    private String description;
 
 
-    public Menu (String name, float price, String description){
-        this.name=name;
+    public Menu (String title, double price, String description){
+        this.title = title;
         this.price=price;
         this.description=description;
     }
@@ -29,10 +29,10 @@ public class Menu {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.title = name;
     }
     public String getName() {
-        return name;
+        return title;
     }
 
 }
