@@ -34,4 +34,10 @@
     <string name="click_here_to_manage_the_complaints">Click Here to Manage the Complaints</string>
     <string name="click_here_to_manage_users">Click Here to Manage Users</string>
     <string name="currently_no_chef_complaints">Currently no Chef complaints</string>
+    <string name="you_have_new_complaints_what_is_your_decision">You have new complaints.What is your decision</string>
+    <string name="manage_suspension">Manage Suspension</string>
+    <string name="you_are_in_charge">You are in charge.</string>
+    <string name="hi_admin_welcome_back">Hi,Admin! Welcome back</string>
+    <string name="todo">TODO</string>
+    <string name="daily_activities">Daily activities</string>
 </resources>
