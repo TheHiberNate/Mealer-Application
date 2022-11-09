@@ -3,8 +3,8 @@ package com.example.mealer.structure;
 import java.util.ArrayList.*;
 
 public class Menu {
-    String name;
-    float price;
+    private String name;
+    private double price;
     String description;
 
 
@@ -21,10 +21,10 @@ public class Menu {
         return description;
     }
 
-    public void setPrice(float price){
+    public void setPrice(double price){
         this.price=price;
     }
-    public float getPrice(){
+    public double getPrice(){
         return price;
     }
 
