@@ -42,12 +42,11 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="cursive"
-                android:text="Hi,Admin! Welcome back"
-                android:textSize="20dp" />
+                android:text="@string/hi_admin_welcome_back"
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -56,11 +55,10 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="20dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="177dp"
                 android:fontFamily="cursive"
-                android:text="You are in charge." />
+                android:text="@string/you_are_in_charge" />
 
 
         </RelativeLayout>
@@ -92,17 +90,16 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="24dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="26dp"
-                android:text="Daily activities"
+                android:text="@string/daily_activities"
                 android:textSize="20sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
                 android:layout_below="@id/activity"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal">
 
@@ -110,32 +107,33 @@
                     android:id="@+id/comment"
                     android:layout_width="38dp"
                     android:layout_height="26dp"
-                    android:layout_marginLeft="0dp"
-                    android:src="@drawable/ic_notifications_active_24" />
+                    android:layout_marginStart="0dp"
+                    android:src="@drawable/ic_notifications_active_24"
+                    android:contentDescription="@string/todo" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"
 
                     android:layout_marginBottom="57dp"
-                    android:text="Manage Suspension"
-                    android:textSize="12dp"
+                    android:text="@string/manage_suspension"
+                    android:textSize="12sp"
                     app:layout_constraintLeft_toRightOf="@id/comment" />
 
                 <TextView
                     android:id="@+id/complaintsMessage"
                     android:layout_width="239dp"
-                    android:layout_height="33dp"
+                    android:layout_height="40dp"
                     android:layout_below="@id/comment"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginStart="23dp"
-                    android:layout_marginLeft="23dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="You have new complaints.What is your decision" />
+                    android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:text="@string/you_have_new_complaints_what_is_your_decision" />
 
             </RelativeLayout>
 
@@ -149,11 +147,11 @@
                 android:layout_marginStart="61dp"
                 android:layout_marginEnd="71dp"
                 android:layout_marginBottom="0dp"
-                android:layout_weight="1"
                 android:background="@drawable/button_style"
                 android:backgroundTint="@color/green"
                 android:text="@string/manage_complaints"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                tools:ignore="TextContrastCheck" />
 
 
         </RelativeLayout>
@@ -175,7 +173,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintVertical_bias="0.03"
+        tools:ignore="TextContrastCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
