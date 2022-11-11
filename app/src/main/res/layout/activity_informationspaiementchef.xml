@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_Dark"
     tools:context=".activities.Informationspaiementchef">
 
     <EditText
@@ -12,6 +13,10 @@
         android:layout_height="60dp"
         android:layout_marginTop="25dp"
         android:hint="Entrez le numero de votre banque (Ex : 012)"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/white"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,8 +29,11 @@
         android:layout_height="60dp"
         android:layout_marginTop="25dp"
         android:hint="Entrez le numero de succursale (Ex : 12345)"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/white"
         android:inputType="number"
         android:minHeight="48dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/banknumber" />
@@ -36,13 +44,18 @@
         android:layout_height="60dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="240dp"
+        android:background="@drawable/button_style"
+        android:backgroundTint="@color/white"
         android:hint="Entrez le numero de compte (Ex : 1234567)"
+        android:textAlignment="center"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/succursalenumber" />
+        app:layout_constraintTop_toBottomOf="@+id/succursalenumber"
+        app:layout_constraintVertical_bias="0.082" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -61,8 +74,9 @@
         android:layout_height="48dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="140dp"
-        android:backgroundTint="#8BC34A"
+        android:backgroundTint="@color/Light_green"
         android:text="Register"
+        android:background="@drawable/button_style"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
