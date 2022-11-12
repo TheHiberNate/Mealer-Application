@@ -15,7 +15,7 @@ public class ChefSuspensionFunctionalityTesting {
 
     @Test
     public void verifyNoChefSuspension() {
-        Chef chef = new Chef("Nathan", "Nathan", "nate@cool.ca", "45 Cool Street", "902902", "Super Cool", new Menu("Cool", "Spanish Food"));
+        Chef chef = new Chef("Nathan", "Nathan", "nate@cool.ca", "45 Cool Street", "902902", "Super Cool", new Menu());
         Boolean IsSuspended = chef.getSuspended();
         assertFalse("Verify chef has no suspension", IsSuspended);
     }

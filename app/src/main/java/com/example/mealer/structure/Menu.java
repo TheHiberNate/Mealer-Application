@@ -8,14 +8,10 @@ public class Menu {
     private String description;
     private List<Meal> meals;
 
-    public Menu() {}
-
-    public Menu (String title, String description){
-        this.title = title;
-        this.description = description;
+    public Menu (){
         meals = new ArrayList<>();
-        addMeal(new Meal("Mexican","Italian Specialty", "45.0"));
-        addMeal(new Meal("Greek","Greek Specialty", "25.0"));
+//        addMeal(new Meal("Mexican","Italian Specialty", "45.0"));
+//        addMeal(new Meal("Greek","Greek Specialty", "25.0"));
     }
 
     public void addMeal(Meal meal) { meals.add(meal); }

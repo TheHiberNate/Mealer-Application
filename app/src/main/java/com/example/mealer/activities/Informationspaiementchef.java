@@ -101,7 +101,7 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = new Chef(firstName, lastName, email, address, paymentchef, description, new Menu("test", "description"));
+                                final User user = new Chef(firstName, lastName, email, address, paymentchef, description, new Menu());
 //                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")
