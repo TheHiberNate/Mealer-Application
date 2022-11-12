@@ -22,8 +22,8 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
 
     //Instance Variables***********************************************
     private double length;
-    private Button logout;
-    private TextView welcome;
+    private Button logout, menu;
+    private TextView welcome, editMenu;
     private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
     private double activatedAt = Double.MAX_VALUE;
     private DatabaseReference reference;
@@ -35,6 +35,8 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
 
         logout = findViewById(R.id.btn_Logout_Chef);
         logout.setOnClickListener(this);
+        menu = findViewById(R.id.btnUpdateMenu);
+        menu.setOnClickListener(this);
 
         welcome = (TextView) findViewById(R.id.textViewChefWelcome);
 
@@ -42,6 +44,7 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
 
         welcome = findViewById(R.id.textViewChefWelcome);
         welcome.setText(welcomeMessage);
+        editMenu = findViewById(R.id.textViewEditMenu);
 
         chefID = extras.getString("userID");
         suspended = extras.getString("suspended");
@@ -50,6 +53,8 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         if (suspended.equals("true")) {
             suspensionMessage = extras.getString("suspension");
             welcome.setText(suspensionMessage);
+            menu.setVisibility(View.INVISIBLE);
+            editMenu.setVisibility(View.VISIBLE);
         } else {
             welcomeMessage = extras.getString("welcomeChef");
             welcome.setText(welcomeMessage);
@@ -62,6 +67,8 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_Logout_Chef:
                 startActivity(new Intent(this, homePage.class));
                 break;
+            case R.id.btnUpdateMenu:
+                startActivity(new Intent(this, ChefMenu.class));
         }
     }
 }

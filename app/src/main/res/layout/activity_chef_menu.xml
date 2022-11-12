@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.ChefMenu">
+
+    <Switch
+        android:id="@+id/switchAvailableMeal"
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/switchVegetarian"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="103dp"
+        android:minHeight="48dp"
+        android:text="Currently Available Meal" />
+
+    <EditText
+        android:id="@+id/editTextMealName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewInfoNewMeal"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Meal Name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/editTextMealDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextMealDescription2"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Price"
+        android:inputType="textPersonName"
+        android:minHeight="48dp" />
+
+    <EditText
+        android:id="@+id/editTextMealDescription2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextMealName"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Description (Max. 100 characters)"
+        android:inputType="textPersonName"
+        android:minHeight="48dp" />
+
+    <Switch
+        android:id="@+id/switchVegetarian"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextMealDescription"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="129dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="129dp"
+        android:minHeight="48dp"
+        android:text="Vegetarian Meal" />
+
+    <Button
+        android:id="@+id/btnAddToMenu"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/switchAvailableMeal"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="80dp"
+        android:text="Add to Menu" />
+
+    <Button
+        android:id="@+id/btnEditMenu"
+        android:layout_width="235dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewInfoEditMenu"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="82dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="78dp"
+        android:text="Edit Menu" />
+
+    <TextView
+        android:id="@+id/textViewInfoNewMeal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="32dp"
+        android:text="Fill out the form and click the button below to add to a new meal to the menu"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewInfoEditMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAddToMenu"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="105dp"
+        android:text="Click Below to modify the current menu"
+        android:textAlignment="center"
+        android:textColor="@color/purple_500"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnBackToChefHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnEditMenu"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="21dp"
+        android:layout_marginTop="111dp"
+        android:layout_marginEnd="302dp"
+        android:layout_marginBottom="16dp"
+        android:text="Back" />
+
+</RelativeLayout>
