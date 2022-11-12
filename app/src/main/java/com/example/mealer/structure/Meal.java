@@ -8,6 +8,8 @@ public class Meal {
     private Boolean available;
 //    private String menuID;
 
+    public Meal() {}
+
     public Meal(String mealName, String mealDescription, String mealPrice) {
         this.mealName = mealName;
         this.mealDescription = mealDescription;
@@ -15,7 +17,6 @@ public class Meal {
         setVegeterian(false);
         setAvailable(false);
     }
-
 
     public String getMealName() { return mealName; }
     public String getMealDescription() { return mealDescription; }

@@ -25,7 +25,6 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
     private Button logout, menu;
     private TextView welcome, editMenu;
     private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
-    private double activatedAt = Double.MAX_VALUE;
     private DatabaseReference reference;
 
     @Override
@@ -68,7 +67,9 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
                 startActivity(new Intent(this, homePage.class));
                 break;
             case R.id.btnUpdateMenu:
-                startActivity(new Intent(this, ChefMenu.class));
+                Intent intent = new Intent(this, ChefMenu.class);
+                intent.putExtra("chefID", chefID);
+                startActivity(intent);
         }
     }
 }
