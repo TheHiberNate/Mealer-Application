@@ -10,7 +10,7 @@ public class Menu {
 
     public Menu (){
         meals = new ArrayList<>();
-        addMeal(new Meal("", "", ""));
+//        addMeal(new Meal("", "", ""));
     }
 
     public void addMeal(Meal meal) { meals.add(meal); }

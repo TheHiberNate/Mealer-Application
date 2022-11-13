@@ -1,5 +1,7 @@
 package com.example.mealer.activities;
 
+import static com.example.mealer.activities.home_page_chef.login;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.mealer.R;
 import com.example.mealer.structure.Chef;
@@ -24,7 +27,7 @@ import java.util.ArrayList;
 public class ChefMenu extends AppCompatActivity implements View.OnClickListener {
     private EditText mealName, mealDescription, mealPrice;
     private Switch vegetarian, availableMeal;
-    private Button addMeal,editMenu;
+    private Button addMeal,editMenu, backHome;
     private String chefID;
     private ArrayList<Meal> menu;
     private DatabaseReference databaseMeals;
@@ -39,6 +42,12 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void initializeVariables() {
+        if (login) {
+            Bundle extras = getIntent().getExtras();
+            chefID = extras.getString("chefID");
+            databaseMeals = FirebaseDatabase.getInstance().getReference("Users").child(chefID);
+        }
+
         mealName = (EditText) findViewById(R.id.editTextMealName);
         mealDescription = (EditText) findViewById(R.id.editTextMealDescription);
         mealPrice = (EditText) findViewById(R.id.editTextMealPrice);
@@ -50,10 +59,8 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
         addMeal.setOnClickListener(this);
         editMenu = (Button) findViewById(R.id.btnEditMenu);
         editMenu.setOnClickListener(this);
-
-        Bundle extras = getIntent().getExtras();
-        chefID = extras.getString("chefID");
-        databaseMeals = FirebaseDatabase.getInstance().getReference("Users").child(chefID);
+        backHome = (Button) findViewById(R.id.btnBackToChefHome);
+        backHome.setOnClickListener(this);
     }
 
     @Override
@@ -63,8 +70,12 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
                 updateMenu();
                 break;
             case R.id.btnEditMenu:
-                startActivity(new Intent(this, ChefUpdateMenu.class));
+                Intent intent = new Intent(this, ChefUpdateMenu.class);
+                intent.putExtra("ChefID", chefID);
+                startActivity(intent);
                 break;
+            case R.id.btnBackToChefHome:
+                startActivity(new Intent(this, home_page_chef.class));
         }
     }
 
@@ -92,7 +103,8 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
                     Chef chef = snapshot.getValue(Chef.class);
                     chef.getMenu().addMeal(meal);
                     snapshot.getRef().child("menu").setValue(chef.getMenu());
-                    System.out.println(chef.getSuspensionLength() + " " + chef.getMenu().getMeals().get(1).getMealName());
+//                    System.out.println(chef.getSuspensionLength() + " " + chef.getMenu().getMeals().get(1).getMealName());
+                    Toast.makeText(ChefMenu.this, "New Meal Added to Menu!", Toast.LENGTH_LONG).show();
                 }
 
                 @Override

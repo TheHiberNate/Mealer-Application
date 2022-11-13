@@ -38,12 +38,14 @@ public class MenuAdapter extends ArrayAdapter<Meal> {
         TextView mealDescription = listViewItem.findViewById(R.id.mealDescription);
         TextView mealPrice = listViewItem.findViewById(R.id.mealPrice);
         TextView mealVegetarian = listViewItem.findViewById(R.id.mealVegetarian);
+        TextView mealAvailable = listViewItem.findViewById(R.id.mealAvailability);
 
         Meal meal = meals.get(position);
         mealName.setText(meal.getMealName());
         mealDescription.setText(meal.getMealDescription());
         mealPrice.setText(meal.getMealPrice());
         if (meal.getVegeterian()) { mealVegetarian.setVisibility(View.VISIBLE); }
+        if (meal.getAvailable()) { mealAvailable.setText("Meal is Available"); }
 
         return listViewItem;
     }

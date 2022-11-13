@@ -27,6 +27,8 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
     private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
     private DatabaseReference reference;
 
+    public static Boolean login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +71,7 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
             case R.id.btnUpdateMenu:
                 Intent intent = new Intent(this, ChefMenu.class);
                 intent.putExtra("chefID", chefID);
+                login = true;
                 startActivity(intent);
         }
     }
