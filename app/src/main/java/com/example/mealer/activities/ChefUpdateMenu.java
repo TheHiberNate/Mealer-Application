@@ -56,7 +56,6 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
                 } else {
                     Meal meal = menuList.get(position);
                     String mealID = String.valueOf(position);
-//                System.out.println(meal.getMealName());
                     showUpdateDeleteDialog(meal.getMealName(), mealID);
                 }
             }
