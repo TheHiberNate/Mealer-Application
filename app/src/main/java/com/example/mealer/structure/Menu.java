@@ -10,7 +10,9 @@ public class Menu {
 
     public Menu (){
         meals = new ArrayList<>();
-//        addMeal(new Meal("", "", ""));
+        Meal meal = new Meal("NAME OF MEAL HERE", "Description of Meal (this is just a template of what a meal would look like, it will not be displayed on your menu)", "none");
+        meal.setVegeterian(true);
+        addMeal(meal);
     }
 
     public void addMeal(Meal meal) { meals.add(meal); }

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mealer.R;
 import com.example.mealer.adapters.MenuAdapter;
@@ -49,9 +50,14 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Meal meal = menuList.get(position);
-                System.out.println(meal.getMealName());
-                showUpdateDeleteDialog(meal.getMealName());
+                if (position == 0) {
+                    Toast.makeText(getApplicationContext(), "You cannot change the template meal!", Toast.LENGTH_LONG).show();
+                } else {
+                    Meal meal = menuList.get(position);
+                    String mealID = String.valueOf(position);
+//                System.out.println(meal.getMealName());
+                    showUpdateDeleteDialog(meal.getMealName(), mealID);
+                }
             }
         });
 
@@ -96,7 +102,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    public void showUpdateDeleteDialog(String mealName) {
+    public void showUpdateDeleteDialog(String mealName, String mealID) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -120,7 +126,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
                 String description = newDescription.getText().toString().trim();
                 String price = newPrice.getText().toString();
 //                if (!TextUtils.isEmpty(name)) {
-                    updateProduct(name, description, price);
+                    updateMeal(name, description, price);
                     b.dismiss();
 //                }
             }
@@ -129,16 +135,19 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteProduct();
+                deleteMeal(mealID);
                 b.dismiss();
             }
         });
     }
 
-    private void deleteProduct() {
+    private boolean deleteMeal(String mealID) {
+        menuReference.child("meals").child(mealID).removeValue();
+        Toast.makeText(getApplicationContext(), "Product Deleted", Toast.LENGTH_LONG).show();
+        return true;
     }
 
-    private void updateProduct(String name, String description, String price) {
+    private void updateMeal(String name, String description, String price) {
 
     }
 }
