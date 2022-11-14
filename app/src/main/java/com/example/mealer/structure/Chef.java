@@ -4,20 +4,23 @@ import java.util.ArrayList;
 
 public class Chef extends User {
     private String description, suspensionLength;
-    private ArrayList<Complaint> listOfComplaints;
-    private int numberOfComplaints;
+//    private ArrayList<Complaint> listOfComplaints;
+//    private int numberOfComplaints;
     private Boolean suspended;
+    private Menu menu;
 
     public Chef() { }
 
-    public Chef(String firstName, String lastName, String email, String address, String payment, String description) {
+    public Chef(String firstName, String lastName, String email, String address, String payment, String description, Menu menu) {
         super(firstName, lastName, email, address, "Chef");
         setPayment(payment);
         this.description = description;
-        suspensionLength = "none";
-        suspended = false;
-        listOfComplaints = new ArrayList<>();
-        this.numberOfComplaints = 0;
+        this.suspensionLength = "none";
+        this.suspended = false;
+        this.menu = menu;
+
+//        listOfComplaints = new ArrayList<>();
+//        this.numberOfComplaints = 0;
     }
 
     public String getSuspensionLength() { return suspensionLength; }
@@ -32,14 +35,18 @@ public class Chef extends User {
 
     public void setIsSuspended(Boolean suspended) { this.suspended = suspended; }
 
-    public ArrayList<Complaint> getListOfComplaints() { return listOfComplaints; }
+    public Menu getMenu() { return menu; }
 
-    public void setListOfComplaints(ArrayList<Complaint> listOfComplaints) { this.listOfComplaints = listOfComplaints; }
+    public void setMenu(Menu menu) { this.menu = menu; }
 
-    public void addNewComplaint(Complaint complaint) { listOfComplaints.add(complaint); }
+    //    public ArrayList<Complaint> getListOfComplaints() { return listOfComplaints; }
 
-    public void removeComplaint(Complaint complaint) { listOfComplaints.remove(complaint); }
+//    public void setListOfComplaints(ArrayList<Complaint> listOfComplaints) { this.listOfComplaints = listOfComplaints; }
 
-    public int getNumberOfComplaints() { return listOfComplaints.size(); }
+//    public void addNewComplaint(Complaint complaint) { listOfComplaints.add(complaint); }
+//
+//    public void removeComplaint(Complaint complaint) { listOfComplaints.remove(complaint); }
+//
+//    public int getNumberOfComplaints() { return listOfComplaints.size(); }
 
 }

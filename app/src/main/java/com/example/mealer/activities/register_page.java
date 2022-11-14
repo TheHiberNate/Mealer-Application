@@ -114,8 +114,6 @@ public class register_page extends AppCompatActivity implements View.OnClickList
                         intent.putExtra("adress",getAdress());
                         intent.putExtra("password",getPassword());
 
-
-
                         startActivity(intent);
 
                         break;

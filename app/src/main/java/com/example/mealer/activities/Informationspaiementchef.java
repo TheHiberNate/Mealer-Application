@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.mealer.R;
 import com.example.mealer.structure.Chef;
 import com.example.mealer.structure.Client;
+import com.example.mealer.structure.Menu;
 import com.example.mealer.structure.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -100,7 +101,7 @@ public class Informationspaiementchef extends AppCompatActivity implements View.
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
 
-                                final User user = new Chef(firstName, lastName, email, address, paymentchef, description);
+                                final User user = new Chef(firstName, lastName, email, address, paymentchef, description, new Menu());
 //                                User user = new User(firstName, lastName, email, address,"Chef");
 
                                 FirebaseDatabase.getInstance().getReference("Users")

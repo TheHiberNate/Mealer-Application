@@ -7,14 +7,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mealer.R;
 import com.example.mealer.adapters.ComplaintAdapter;
 import com.example.mealer.structure.Complaint;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -70,7 +68,7 @@ public class admin_manage_complaints extends AppCompatActivity implements View.O
             }
         });
 
-        noComplaints = (TextView) findViewById(R.id.textView_NoComplaints);
+        noComplaints = (TextView) findViewById(R.id.textView_NoMeals);
         complaintsListView.setEmptyView(noComplaints);
     }
 
