@@ -98,7 +98,6 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.btn_backToMenuHome:
                 finish();
-//                startActivity(new Intent(this, ChefMenu.class));
         }
     }
 
@@ -125,10 +124,8 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
                 String name = newName.getText().toString().trim();
                 String description = newDescription.getText().toString().trim();
                 String price = newPrice.getText().toString();
-//                if (!TextUtils.isEmpty(name)) {
-                    updateMeal(name, description, price);
-                    b.dismiss();
-//                }
+                updateMeal(name, description, price);
+                b.dismiss();
             }
         });
 

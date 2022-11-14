@@ -72,7 +72,6 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.btnBackToChefHome:
                 finish();
-//                startActivity(new Intent(this, home_page_chef.class));
         }
     }
 
@@ -87,20 +86,13 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
             databaseMeals.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    menu.clear();
-//                    for (DataSnapshot postSnapshot : snapshot.getChildren()) {
-//                        Meal tempMeal = postSnapshot.getValue(Meal.class);
-//                        menu.add(tempMeal);
-//                    }
                     Meal meal = new Meal(name, description, price);
                     meal.setVegeterian(vegetarianState);
                     meal.setAvailable(availableState);
-//                    menu.add(meal);
 
                     Chef chef = snapshot.getValue(Chef.class);
                     chef.getMenu().addMeal(meal);
                     snapshot.getRef().child("menu").setValue(chef.getMenu());
-//                    System.out.println(chef.getSuspensionLength() + " " + chef.getMenu().getMeals().get(1).getMealName());
                     mealName.setText("");
                     mealDescription.setText("");
                     mealPrice.setText("");
