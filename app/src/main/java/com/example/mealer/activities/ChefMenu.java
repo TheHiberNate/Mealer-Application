@@ -63,7 +63,7 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnAddToMenu:
-                updateMenu();
+                addMeal();
                 break;
             case R.id.btnEditMenu:
                 Intent intent = new Intent(this, ChefUpdateMenu.class);
@@ -76,7 +76,7 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    private void updateMenu() {
+    private void addMeal() {
         if (validCredentials()) {
             final String name = mealName.getText().toString().trim();
             final String description = mealDescription.getText().toString().trim();
@@ -101,6 +101,9 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
                     chef.getMenu().addMeal(meal);
                     snapshot.getRef().child("menu").setValue(chef.getMenu());
 //                    System.out.println(chef.getSuspensionLength() + " " + chef.getMenu().getMeals().get(1).getMealName());
+                    mealName.setText("");
+                    mealDescription.setText("");
+                    mealPrice.setText("");
                     Toast.makeText(ChefMenu.this, "New Meal Added to Menu!", Toast.LENGTH_LONG).show();
                 }
 
