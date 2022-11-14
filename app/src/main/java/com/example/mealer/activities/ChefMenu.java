@@ -87,7 +87,7 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     Meal meal = new Meal(name, description, price);
-                    meal.setVegeterian(vegetarianState);
+                    meal.setVegetarian(vegetarianState);
                     meal.setAvailable(availableState);
 
                     Chef chef = snapshot.getValue(Chef.class);

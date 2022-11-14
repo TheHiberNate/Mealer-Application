@@ -55,7 +55,7 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
             suspensionMessage = extras.getString("suspension");
             welcome.setText(suspensionMessage);
             menu.setVisibility(View.INVISIBLE);
-            editMenu.setVisibility(View.VISIBLE);
+            editMenu.setVisibility(View.INVISIBLE);
         } else {
             welcomeMessage = extras.getString("welcomeChef");
             welcome.setText(welcomeMessage);

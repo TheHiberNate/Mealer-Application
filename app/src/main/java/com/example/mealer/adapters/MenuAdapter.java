@@ -44,7 +44,7 @@ public class MenuAdapter extends ArrayAdapter<Meal> {
         mealName.setText(meal.getMealName());
         mealDescription.setText(meal.getMealDescription());
         mealPrice.setText(meal.getMealPrice());
-        if (meal.getVegeterian()) { mealVegetarian.setVisibility(View.VISIBLE); }
+        if (meal.getVegetarian()) { mealVegetarian.setVisibility(View.VISIBLE); }
         if (meal.getAvailable()) { mealAvailable.setText("Meal is Available"); }
 
         return listViewItem;

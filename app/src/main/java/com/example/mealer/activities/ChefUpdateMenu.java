@@ -144,15 +144,24 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
     }
 
     private boolean deleteMeal(String mealID) {
-        menuReference.child("meals").child(mealID).removeValue();
-        Toast.makeText(getApplicationContext(), "Product Deleted", Toast.LENGTH_LONG).show();
+        menuReference.child(mealID).removeValue();
+        Toast.makeText(getApplicationContext(), "Meal Deleted From Menu", Toast.LENGTH_LONG).show();
         return true;
     }
 
     private void updateMeal(String mealID,String name, String description, String price, Boolean vegetarianChecked, Boolean availableChecked) {
-        DatabaseReference mealReference = menuReference.child("meals").child(mealID);
+        DatabaseReference mealReference = menuReference.child(mealID);
         if (!name.isEmpty()) {
-
+            mealReference.child("mealName").setValue(name);
         }
+        if (!description.isEmpty()) {
+            mealReference.child("mealDescription").setValue(description);
+        }
+        if (!price.isEmpty()) {
+            mealReference.child("mealPrice").setValue(price);
+        }
+        mealReference.child("vegetarian").setValue(vegetarianChecked);
+        mealReference.child("available").setValue(availableChecked);
+        Toast.makeText(getApplicationContext(), "Meal Updated", Toast.LENGTH_LONG).show();
     }
 }
