@@ -6,7 +6,6 @@ public class Meal {
     private String mealPrice;
     private Boolean isVegetarian;
     private Boolean available;
-//    private String menuID;
 
     public Meal() {}
 

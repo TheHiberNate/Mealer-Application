@@ -27,9 +27,8 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
     private Switch vegetarian, availableMeal;
     private Button addMeal,editMenu, backHome;
     private String chefID;
-    private ArrayList<Meal> menu;
+//    private ArrayList<Meal> menu;
     private DatabaseReference databaseMeals;
-//    private Boolean vegetarianState, availableState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

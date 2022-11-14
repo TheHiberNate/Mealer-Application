@@ -25,9 +25,6 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
     private Button logout, menu;
     private TextView welcome, editMenu;
     private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
-    private DatabaseReference reference;
-
-//    public static Boolean login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
