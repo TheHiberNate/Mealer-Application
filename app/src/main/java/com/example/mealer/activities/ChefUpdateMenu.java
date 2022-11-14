@@ -56,7 +56,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
                 } else {
                     Meal meal = menuList.get(position);
                     String mealID = String.valueOf(position);
-                    showUpdateDeleteDialog(meal.getMealName(), mealID);
+                    showUpdateDeleteDialog(meal.getMealName(), mealID, position);
                 }
             }
         });
@@ -101,7 +101,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    public void showUpdateDeleteDialog(String mealName, String mealID) {
+    public void showUpdateDeleteDialog(String mealName, String mealID, int position) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -136,16 +136,20 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteMeal(mealID);
+                deleteMeal(mealID, position);
                 b.dismiss();
             }
         });
     }
 
-    private boolean deleteMeal(String mealID) {
-        menuReference.child(mealID).removeValue();
-        Toast.makeText(getApplicationContext(), "Meal Deleted From Menu", Toast.LENGTH_LONG).show();
-        return true;
+    private void deleteMeal(String mealID, int position) {
+        Boolean mealAvailability = menuList.get(position).getAvailable();
+        if (mealAvailability) {
+            Toast.makeText(getApplicationContext(), "Cannot delete a currently available meal!", Toast.LENGTH_LONG).show();
+        } else {
+            menuReference.child(mealID).removeValue();
+            Toast.makeText(getApplicationContext(), "Meal Deleted From Menu", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void updateMeal(String mealID,String name, String description, String price, Boolean vegetarianChecked, Boolean availableChecked) {
