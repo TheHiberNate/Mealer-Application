@@ -1,7 +1,5 @@
 package com.example.mealer.activities;
 
-import static com.example.mealer.activities.home_page_chef.login;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -42,11 +40,9 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
     }
 
     private void initializeVariables() {
-        if (login) {
-            Bundle extras = getIntent().getExtras();
-            chefID = extras.getString("chefID");
-            databaseMeals = FirebaseDatabase.getInstance().getReference("Users").child(chefID);
-        }
+        Bundle extras = getIntent().getExtras();
+        chefID = extras.getString("chefID");
+        databaseMeals = FirebaseDatabase.getInstance().getReference("Users").child(chefID);
 
         mealName = (EditText) findViewById(R.id.editTextMealName);
         mealDescription = (EditText) findViewById(R.id.editTextMealDescription);
@@ -71,11 +67,12 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
                 break;
             case R.id.btnEditMenu:
                 Intent intent = new Intent(this, ChefUpdateMenu.class);
-                intent.putExtra("ChefID", chefID);
+                intent.putExtra("chefID", chefID);
                 startActivity(intent);
                 break;
             case R.id.btnBackToChefHome:
-                startActivity(new Intent(this, home_page_chef.class));
+                finish();
+//                startActivity(new Intent(this, home_page_chef.class));
         }
     }
 

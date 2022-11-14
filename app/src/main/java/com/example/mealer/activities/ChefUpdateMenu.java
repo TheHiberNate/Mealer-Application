@@ -1,7 +1,5 @@
 package com.example.mealer.activities;
 
-import static com.example.mealer.activities.home_page_chef.login;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,11 +55,8 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
             }
         });
 
-        if (login) {
-            Bundle extras = getIntent().getExtras();
-            chefID = extras.getString("ChefID");
-        }
-
+        Bundle extras = getIntent().getExtras();
+        chefID = extras.getString("chefID");
 
         menuReference = FirebaseDatabase.getInstance().getReference("Users").child(chefID).child("menu").child("meals");
         menuAdapter = new MenuAdapter(ChefUpdateMenu.this, menuList);
@@ -96,7 +91,8 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_backToMenuHome:
-                startActivity(new Intent(this, ChefMenu.class));
+                finish();
+//                startActivity(new Intent(this, ChefMenu.class));
         }
     }
 
