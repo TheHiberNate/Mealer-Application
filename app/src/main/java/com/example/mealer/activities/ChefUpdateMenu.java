@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -113,6 +114,8 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         final EditText newPrice = (EditText) dialogView.findViewById(R.id.editTextNewMealPrice);
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.btnUpdate);
         final Button buttonDelete = (Button) dialogView.findViewById(R.id.btnDeleteMeal);
+        final Switch updateAvailable = (Switch) dialogView.findViewById(R.id.switchUpdateAvailability);
+        final Switch updateVegetarian = (Switch) dialogView.findViewById(R.id.switchUpdateVegetarian);
 
         dialogBuilder.setTitle(mealName);
         final AlertDialog b = dialogBuilder.create();
@@ -124,7 +127,9 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
                 String name = newName.getText().toString().trim();
                 String description = newDescription.getText().toString().trim();
                 String price = newPrice.getText().toString();
-                updateMeal(name, description, price);
+                Boolean vegetarianChecked = updateVegetarian.isChecked();
+                Boolean availableChecked = updateAvailable.isChecked();
+                updateMeal(mealID, name, description, price, vegetarianChecked, availableChecked);
                 b.dismiss();
             }
         });
@@ -144,7 +149,10 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         return true;
     }
 
-    private void updateMeal(String name, String description, String price) {
+    private void updateMeal(String mealID,String name, String description, String price, Boolean vegetarianChecked, Boolean availableChecked) {
+        DatabaseReference mealReference = menuReference.child("meals").child(mealID);
+        if (!name.isEmpty()) {
 
+        }
     }
 }
