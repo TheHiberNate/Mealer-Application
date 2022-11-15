@@ -21,4 +21,18 @@ public class MenuTesting {
         Boolean isAvailable=meal.getAvailable();
         assertFalse("the meal name is not available", isAvailable);
     }
+
+    @Test
+    public void vegetarianMeal(){
+        Meal meal= new Meal("salad", "tomatoes+onion+carrots", "5dollars");
+        Boolean isVegetarian=meal.getVegetarian();
+        assertFalse("not vegetarian meal", isVegetarian);
+    }
+
+    @Test
+    public void verifyVegetarianMeal(){
+        Meal meal= new Meal("none", "none", "none");
+        Boolean isVegetarian=meal.getVegetarian();
+        assertFalse("the meal is not vegetarian", isVegetarian);
+    }
 }
