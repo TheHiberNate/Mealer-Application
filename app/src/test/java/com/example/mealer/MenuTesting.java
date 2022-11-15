@@ -9,30 +9,32 @@ import org.junit.Test;
 public class MenuTesting {
 
     @Test
-    public void verifyMeal(){
+    public void verifyNotVegetarianMeal(){
         Meal meal= new Meal("poutine", "frites+fromage+sauce", "10dollars");
-        Boolean isVegetarian=meal.getVegetarian();
-        assertTrue("the meal is vegetarian", isVegetarian);
-    }
-
-    @Test
-    public void verifyAvailableMeal(){
-        Meal meal=new Meal("sushi", "rice+avocado+soyasauce", "25dollars");
-        Boolean isAvailable=meal.getAvailable();
-        assertFalse("the meal name is not available", isAvailable);
-    }
-
-    @Test
-    public void vegetarianMeal(){
-        Meal meal= new Meal("salad", "tomatoes+onion+carrots", "5dollars");
-        Boolean isVegetarian=meal.getVegetarian();
-        assertFalse("not vegetarian meal", isVegetarian);
+        Boolean isVegetarian = meal.getVegetarian();
+        assertFalse("Verify that the meal is not vegetarian", isVegetarian);
     }
 
     @Test
     public void verifyVegetarianMeal(){
-        Meal meal= new Meal("none", "none", "none");
-        Boolean isVegetarian=meal.getVegetarian();
-        assertFalse("the meal is not vegetarian", isVegetarian);
+        Meal meal = new Meal("Salad", "Plain salad with cucumbers and tomatoes", "none");
+        meal.setVegetarian(true);
+        Boolean isVegetarian = meal.getVegetarian();
+        assertTrue("Verify that the meal is vegetarian", isVegetarian);
+    }
+
+    @Test
+    public void verifyUnavailableMeal(){
+        Meal meal = new Meal("sushi", "rice+avocado+soyasauce", "25dollars");
+        Boolean isAvailable = meal.getAvailable();
+        assertFalse("Verify that the meal is unavailable", isAvailable);
+    }
+
+    @Test
+    public void verifyAvailableMeal(){
+        Meal meal = new Meal("salad", "tomatoes+onion+carrots", "5dollars");
+        meal.setAvailable(true);
+        Boolean isVegetarian = meal.getAvailable();
+        assertTrue("Verify that the meal is available", isVegetarian);
     }
 }
