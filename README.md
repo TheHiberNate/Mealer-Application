@@ -31,7 +31,11 @@ Ce livrable a pour but d'implémenter la plupart de la fonctionalité de l'admin
 **Administrator Login Credentials:** <br />
 Email: admin@email.com <br />
 Password: mealeradmin09! <br />
+**Chef Login Credentials:** <br />
+Email: admin@email.com <br />
+Password: mealeradmin09! <br />
 
 Le livrable 3 a pour but d'implémenter la fonctionalité du cuisinier. Un cuisinier est maintenant capable d'ajouter des repas à un menu. Il a le choix de mettre un repas disponible pour être acheter par les clients. Le cuisinier peut aussi enlever et modifier des repas dans son menu. Il n'est pas possible d'enlever un repas disponible du menu, mais il faut changer la disponibilité de ce repas en premier, puis on peut l'enlever du menu. Chaque chef possède un objet de type menu (Voir Image ci-dessous). 
 <img src = app/src/Images/Livrable3Image.jpg>
 
+<img src = app/src/Images/UML3.jpg>
