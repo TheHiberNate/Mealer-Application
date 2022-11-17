@@ -24,7 +24,8 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
     private double length;
     private Button logout, menu;
     private TextView welcome, editMenu;
-    private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
+    private String welcomeMessage, suspensionMessage, chefID, suspensionLength;
+    private Boolean suspended;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +46,10 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         editMenu = findViewById(R.id.textViewEditMenu);
 
         chefID = extras.getString("userID");
-        suspended = extras.getString("suspended");
+        suspended = Boolean.valueOf(extras.getString("suspended"));
         suspensionLength = extras.getString("suspensionLength");
 
-        if (suspended.equals(true)) {
+        if (suspended) {
             suspensionMessage = extras.getString("suspension");
             welcome.setText(suspensionMessage);
             menu.setVisibility(View.INVISIBLE);
