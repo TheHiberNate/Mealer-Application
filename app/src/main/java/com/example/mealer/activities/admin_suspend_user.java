@@ -164,14 +164,14 @@ public class admin_suspend_user extends AppCompatActivity implements View.OnClic
         referenceChef.addListenerForSingleValueEvent(new ValueEventListener() { // for a single event
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                snapshot.getRef().child("suspended").setValue("true");
+                snapshot.getRef().child("suspended").setValue(true);
                 snapshot.getRef().child("suspensionLength").setValue(suspensionLength);
                 if (!suspensionLength.equals("indefinite")) {
                     Timer timer = new Timer();
                     timer.schedule(new TimerTask() {
                         @Override
                         public void run() {
-                            snapshot.getRef().child("suspended").setValue("false");
+                            snapshot.getRef().child("suspended").setValue(false);
                             snapshot.getRef().child("suspensionLength").setValue("none");
                         }
                     }, length);
