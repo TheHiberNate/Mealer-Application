@@ -4,49 +4,166 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fond_cuisne2"
+
     tools:context=".activities.home_page_chef">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="248dp"
+        android:backgroundTint="@color/green"
+        android:src="@drawable/ic_baseline_menu_24"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Logout_Chef"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_Logout_Chef"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
+        android:backgroundTint="@color/green"
         android:text="@string/logout"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.949"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989" />
+        app:layout_constraintVertical_bias="0.018" />
 
-    <TextView
-        android:id="@+id/textViewChefWelcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome_to_mealer_chef_name"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.054" />
+</LinearLayout>
 
-    <Button
-        android:id="@+id/btnUpdateMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="470dp"
-        android:text="Menu"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEditMenu" />
 
-    <TextView
-        android:id="@+id/textViewEditMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Click Here to Update your Yummy Food Menu!"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/thefirst"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:padding="20dp"
+
+        app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewChefWelcome" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:background="@drawable/fond_cuisne2">
+
+            <TextView
+                android:id="@+id/textViewChefWelcome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="29dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="cursive"
+                android:text="@string/welcome_to_mealer_chef_name"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:background="@color/white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewChefWelcome"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="cursive"
+                android:text="What are you cooking today?"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:background="@color/white"/>
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/sec"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginEnd="60dp"
+        android:gravity="center"
+        android:padding="20dp"
+
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/mess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="26dp"
+
+            android:text="Take a look to your menu!"
+            android:textSize="18sp"
+            />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mess"
+
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="40dp"
+            >
+
+
+
+            <TextView
+                android:id="@+id/updateMessage"
+                android:layout_width="239dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:gravity="center"
+                android:text="Update your menu to attract more customers." />
+
+            <Button
+                android:id="@+id/btnUpdateMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Menu"
+                android:layout_below="@id/updateMessage"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="70dp"
+                app:layout_constraintTop_toTopOf="@id/updateMessage"
+                android:background="@color/green"
+
+                />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
