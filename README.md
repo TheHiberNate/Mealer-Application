@@ -34,7 +34,6 @@ Password: mealeradmin09! <br />
 **Chef Login Credentials:** <br />
 Email: bob@jeff.ca <br />
 Password: bobjeff <br />
-To suspend this chef, you can login as administrator and deal with the complaint against the chef Bob by suspending him. When you re-login as Chef Bob Jeff, you will no longer have access to edit your menu, but will see a suspension message on the home screen and an option to logout of the application.
 
 Le livrable 3 a pour but d'implémenter la fonctionalité du cuisinier. Un cuisinier est maintenant capable d'ajouter des repas à un menu. Il a le choix de mettre un repas disponible pour être acheter par les clients. Le cuisinier peut aussi enlever et modifier des repas dans son menu. Il n'est pas possible d'enlever un repas disponible du menu, mais il faut changer la disponibilité de ce repas en premier, puis on peut l'enlever du menu. Chaque chef possède un objet de type menu (Voir Image ci-dessous). 
 <img src = app/src/Images/Livrable3Image.jpg>
