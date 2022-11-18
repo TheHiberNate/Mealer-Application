@@ -95,6 +95,8 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
                     mealName.setText("");
                     mealDescription.setText("");
                     mealPrice.setText("");
+                    vegetarian.setChecked(false);
+                    availableMeal.setChecked(false);
                     Toast.makeText(ChefMenu.this, "New Meal Added to Menu!", Toast.LENGTH_LONG).show();
                 }
 
