@@ -2,6 +2,7 @@ package com.example.mealer.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,9 +24,11 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
     //Instance Variables***********************************************
     private double length;
     private Button logout, menu;
-    private TextView welcome, editMenu;
-    private String welcomeMessage, suspensionMessage, chefID, suspensionLength;
-    private Boolean suspended;
+
+    private TextView welcome, introMsg;
+    private CardView menuCardView;
+    private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,9 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
 
         welcome = findViewById(R.id.textViewChefWelcome);
         welcome.setText(welcomeMessage);
-        editMenu = findViewById(R.id.textViewEditMenu);
+
+        introMsg = findViewById(R.id.introMesg);
+        menuCardView = (CardView) findViewById(R.id.sec);
 
         chefID = extras.getString("userID");
         suspended = Boolean.valueOf(extras.getString("suspended"));
@@ -52,8 +57,8 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         if (suspended) {
             suspensionMessage = extras.getString("suspension");
             welcome.setText(suspensionMessage);
-            menu.setVisibility(View.INVISIBLE);
-            editMenu.setVisibility(View.INVISIBLE);
+            menuCardView.setVisibility(View.INVISIBLE);
+            introMsg.setVisibility(View.INVISIBLE);
         } else {
             welcomeMessage = extras.getString("welcomeChef");
             welcome.setText(welcomeMessage);
