@@ -80,6 +80,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/introMesg"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textViewChefWelcome"
@@ -150,7 +151,7 @@
                 android:text="Don't forget to choose the available meals which your clients can buy" />
 
             <TextView
-                android:id="@+id/updateMessage"
+                android:id="@+id/textViewEditMenu"
                 android:layout_width="239dp"
                 android:layout_height="40dp"
                 android:layout_alignParentStart="true"
@@ -166,7 +167,7 @@
                 android:id="@+id/btnUpdateMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/updateMessage"
+                android:layout_below="@id/textViewEditMenu"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginStart="75dp"
@@ -175,7 +176,7 @@
                 android:layout_marginEnd="75dp"
                 android:background="@color/green"
                 android:text="Menu"
-                app:layout_constraintTop_toTopOf="@id/updateMessage" />
+                app:layout_constraintTop_toTopOf="@id/textViewEditMenu" />
 
         </RelativeLayout>
 
