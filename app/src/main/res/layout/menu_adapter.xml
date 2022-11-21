@@ -19,8 +19,8 @@
 
     <TextView
         android:id="@+id/mealDescription"
-        android:layout_width="280dp"
-        android:layout_height="74dp"
+        android:layout_width="290dp"
+        android:layout_height="56dp"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal|top"
         android:text="Meal description here"

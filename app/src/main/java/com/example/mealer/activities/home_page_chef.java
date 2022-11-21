@@ -24,9 +24,11 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
     //Instance Variables***********************************************
     private double length;
     private Button logout, menu;
+
     private TextView welcome, introMsg;
     private CardView menuCardView;
     private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +51,10 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         menuCardView = (CardView) findViewById(R.id.sec);
 
         chefID = extras.getString("userID");
-        suspended = extras.getString("suspended");
+        suspended = Boolean.valueOf(extras.getString("suspended"));
         suspensionLength = extras.getString("suspensionLength");
 
-        if (suspended.equals("true")) {
+        if (suspended) {
             suspensionMessage = extras.getString("suspension");
             welcome.setText(suspensionMessage);
             menuCardView.setVisibility(View.INVISIBLE);

@@ -32,9 +32,10 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
     private Button backToMenuHome;
     private ListView menuListView;
     private ArrayList<Meal> menuList;
+    private ArrayList<String> mealIDs;
     private Meal meal;
     private MenuAdapter menuAdapter;
-    private String chefID;
+    private String chefID, mealID;
     private DatabaseReference menuReference;
 
     @Override
@@ -44,6 +45,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
 
         menuListView = (ListView) findViewById(R.id.mealList);
         menuList = new ArrayList<>();
+        mealIDs = new ArrayList<>();
 
         backToMenuHome = (Button) findViewById(R.id.btn_backToMenuHome);
         backToMenuHome.setOnClickListener(this);
@@ -55,7 +57,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(getApplicationContext(), "You cannot change the template meal!", Toast.LENGTH_LONG).show();
                 } else {
                     Meal meal = menuList.get(position);
-                    String mealID = String.valueOf(position);
+                    String mealID = mealIDs.get(position);
                     showUpdateDeleteDialog(meal.getMealName(), mealID, position);
                 }
             }
@@ -79,9 +81,12 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 menuList.clear();
+                mealIDs.clear();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     meal = ds.getValue(Meal.class);
+                    mealID = ds.getKey();
                     menuList.add(meal);
+                    mealIDs.add(mealID);
                 }
                 menuListView.setAdapter(menuAdapter);
             }

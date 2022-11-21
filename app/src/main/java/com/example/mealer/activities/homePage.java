@@ -101,7 +101,7 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
                                                 intentUserWelcome = new Intent(homePage.this, home_page_chef.class);
                                                 intentUserWelcome.putExtra("suspended", suspended);
                                                 intentUserWelcome.putExtra("suspensionLength", suspensionLength);
-                                                if (suspended.equals("true")) {
+                                                if (Boolean.valueOf(suspended)) {
                                                     intentUserWelcome.putExtra("suspension", "Sorry " + role + " " + firstName + " You are currently suspended " + "(" + suspensionLength + " suspension)");
                                                 } else {
                                                     intentUserWelcome.putExtra("welcomeChef", "Welcome " + role + " " + firstName + "! Ready to make some Food?!");

@@ -95,6 +95,8 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
                     mealName.setText("");
                     mealDescription.setText("");
                     mealPrice.setText("");
+                    vegetarian.setChecked(false);
+                    availableMeal.setChecked(false);
                     Toast.makeText(ChefMenu.this, "New Meal Added to Menu!", Toast.LENGTH_LONG).show();
                 }
 
@@ -121,6 +123,7 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
         if (description.isEmpty()) {
             mealDescription.setError("Please Enter a Meal Description");
             mealDescription.requestFocus();
+            isValid = false;
         } else if (description.length() > 101) {
             mealDescription.setError("Maximum length is 100 characters!");
             mealDescription.requestFocus();
@@ -128,6 +131,7 @@ public class ChefMenu extends AppCompatActivity implements View.OnClickListener 
         if (price.isEmpty()) {
             mealPrice.setError("Please Enter a price for the meal");
             mealPrice.requestFocus();
+            isValid = false;
         }
         return isValid;
     }
