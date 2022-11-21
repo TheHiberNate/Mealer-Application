@@ -27,7 +27,8 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
 
     private TextView welcome, introMsg;
     private CardView menuCardView;
-    private String welcomeMessage, suspensionMessage, chefID, suspended, suspensionLength;
+    private String welcomeMessage, suspensionMessage, chefID, suspensionLength;
+    private Boolean suspended;
 
 
     @Override
