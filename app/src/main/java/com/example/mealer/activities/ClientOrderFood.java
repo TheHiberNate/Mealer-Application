@@ -12,7 +12,7 @@ import android.widget.Toast;
 import com.example.mealer.R;
 
 public class ClientOrderFood extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    private String [] categories = {"Chef","Meal","Vegetarian","No filter"};
+    private String [] categories = {"No Filter", "Chef","Meal","Vegetarian"};
     private Spinner options;
 
 
