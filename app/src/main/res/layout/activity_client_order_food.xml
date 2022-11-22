@@ -32,7 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginTop="52dp"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/NavigatorSearch"
