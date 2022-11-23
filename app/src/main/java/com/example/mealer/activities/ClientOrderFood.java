@@ -132,6 +132,7 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
                                     chefList.add(chef);
                                     listMealID.add(mealID);
                                     listChefID.add(chefID);
+                                    System.out.println(meal.getMealName());
                                 }
                             }
                         }
