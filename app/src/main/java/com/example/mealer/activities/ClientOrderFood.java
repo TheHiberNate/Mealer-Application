@@ -90,8 +90,8 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mealList.clear();
-                mealList.clear();
-                chef.clear();
+                listMealID.clear();
+                listChefID.clear();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if (ds.child("role").getValue().equals("Chef") && ds.child("suspended").getValue().equals(false)) {
                         // No Filter search criteria
