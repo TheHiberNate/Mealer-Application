@@ -16,6 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mealer.R;
+import com.example.mealer.adapters.MealSearchAdapter;
+import com.example.mealer.adapters.MenuAdapter;
 import com.example.mealer.structure.Chef;
 import com.example.mealer.structure.Complaint;
 import com.example.mealer.structure.Meal;
@@ -29,17 +31,18 @@ import java.util.ArrayList;
 
 public class ClientOrderFood extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private String[] categories = {"No Filter", "Chef", "Meal", "Vegetarian"};
-    private String searchFilterm, mealID;
+    private String searchFilter, mealID;
     private Spinner options;
     private EditText searchEditText;
     private TextView noMeals;
     private ListView searchResultsListView;
     private Button searchBtn, backBtn;
     private ArrayList<Meal> mealList;
-    private ArrayList<String> ListMealID, ListChefID;
+    private ArrayList<String> listMealID, listChefID;
     private Meal meal;
     private Chef chef;
     private DatabaseReference reference;
+    private MealSearchAdapter mealSearchAdapter;
 
 
     @Override
@@ -59,9 +62,6 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
 
         searchResultsListView = findViewById(R.id.ListViewSearchResults);
 
-        noMeals = findViewById(R.id.textViewNoMeals);
-        searchResultsListView.setEmptyView(noMeals);
-
         searchBtn = findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(this);
         backBtn = findViewById(R.id.backBtn);
@@ -70,10 +70,15 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
         searchEditText = findViewById(R.id.NavigatorSearch);
 
         mealList = new ArrayList<>();
-        mealIDs = new ArrayList<>();
-        chefIDs = new ArrayList<>(); // id for the chefs of the search result meals
+        listChefID = new ArrayList<>();
+        listMealID = new ArrayList<>(); // id for the chefs of the search result meals
 
         reference = FirebaseDatabase.getInstance().getReference("Users");
+        mealSearchAdapter = new MealSearchAdapter(ClientOrderFood.this, mealList);
+
+        noMeals = findViewById(R.id.textViewNoMeals);
+        searchResultsListView.setEmptyView(noMeals);
+
     }
 
     @Override
@@ -85,8 +90,8 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mealList.clear();
-                mealIDs.clear();
-                chefIDs.clear();
+                mealList.clear();
+                chef.clear();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     if (ds.child("role").getValue().equals("Chef") && ds.child("suspended").getValue().equals(false)) {
                         // No Filter search criteria
@@ -97,14 +102,14 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
                                     mealID = ds.getKey();
                                     meal = ds.getValue(Meal.class);
                                     mealList.add(meal);
-                                    ListMealID.add(mealID);
+                                    listMealID.add(mealID);
                                 }
                             }
                         }
                         chef = ds.getValue(Chef.class);
                     }
                 }
-                menuListView.setAdapter(menuAdapter);
+                searchResultsListView.setAdapter(mealSearchAdapter);
             }
 
             @Override
