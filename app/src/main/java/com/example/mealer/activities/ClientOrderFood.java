@@ -86,6 +86,34 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
     @Override
     protected void onStart() {
         super.onStart();
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    if (ds.child("role").getValue().equals("Chef") && ds.child("suspended").getValue().equals(false)) {
+                        chef = ds.getValue(Chef.class);
+                        chefID = ds.getKey();
+                        DataSnapshot meals = ds.child("menu").child("meals");
+                        for (DataSnapshot n : meals.getChildren()) {
+                            if (!n.getKey().equals("0")) {
+                                mealID = ds.getKey();
+                                meal = ds.getValue(Meal.class);
+                                mealList.add(meal);
+                                chefList.add(chef);
+                                listMealID.add(mealID);
+                                listChefID.add(chefID);
+                                System.out.println(meal.getMealName());
+                            }
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 
