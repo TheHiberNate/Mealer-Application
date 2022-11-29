@@ -111,6 +111,7 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
                                 if (!ds2.getKey().equals("0")) {
                                     meal = ds2.getValue(Meal.class);
                                     mealList.add(meal);
+                                    System.out.println(meal.getMealName());
                                     listMealID.add(ds2.getKey());
                                     chefList.add(chef);
                                     listChefID.add(chefID);
