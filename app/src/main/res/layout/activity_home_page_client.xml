@@ -32,7 +32,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Appuyez ici pour voir les menus proposés par nos chefs !"
+        android:text="Click Here to See Available Meals Offered by the Chefs!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -46,11 +46,11 @@
         android:layout_height="51dp"
         android:layout_marginBottom="368dp"
         android:background="@color/green"
-        android:text="Order here !"
+        android:text="Order here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.486" />
 </androidx.constraintlayout.widget.ConstraintLayout>

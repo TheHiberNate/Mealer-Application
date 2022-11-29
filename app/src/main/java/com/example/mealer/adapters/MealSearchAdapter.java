@@ -40,14 +40,16 @@ public class MealSearchAdapter extends ArrayAdapter<Meal> {
         TextView mealDescription = listViewItem.findViewById(R.id.mealDescriptionSearch);
         TextView mealPrice = listViewItem.findViewById(R.id.mealPriceSearch);
         TextView mealVegetarian = listViewItem.findViewById(R.id.mealVegetarianSearch);
+        TextView mealRating = listViewItem.findViewById(R.id.mealRatingSearch);
 
         Chef chef = chefs.get(position);
         Meal meal = searchResults.get(position);
-        chefName.setText("Offered by: " + chef.getFirstName() + " " + chef.getLastName());
+        chefName.setText("Meal Offered by: " + chef.getFirstName() + " " + chef.getLastName());
         mealName.setText(meal.getMealName());
         mealDescription.setText(meal.getMealDescription());
-        mealPrice.setText(meal.getMealPrice());
+        mealPrice.setText("Price: " + meal.getMealPrice() + "$");
         if (meal.getVegetarian()) { mealVegetarian.setVisibility(View.VISIBLE); }
+//        mealRating.setText(meal.getRating());
 
         return listViewItem;
     }

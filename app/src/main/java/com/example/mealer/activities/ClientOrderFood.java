@@ -30,11 +30,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 
 public class ClientOrderFood extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private String[] categories = {"No Filter", "Chef", "Meal", "Vegetarian"};
-    private String searchFilter, mealID, chefID;
+    private String searchFilter, searchText;
     private Spinner options;
     private EditText searchEditText;
     private TextView noMeals;
@@ -43,8 +44,6 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
     private ArrayList<Meal> mealList;
     private ArrayList<Chef> chefList;
     private ArrayList<String> listMealID, listChefID;
-    private Meal meal;
-    private Chef chef;
     private DatabaseReference reference;
     private MealSearchAdapter mealSearchAdapter;
 
@@ -65,6 +64,13 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
         options.setAdapter(adapter);
 
         searchResultsListView = findViewById(R.id.ListViewSearchResults);
+        searchResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // send information with intents to next page
+                // start new activity to order meals
+            }
+        });
 
         searchBtn = findViewById(R.id.searchBtn);
         searchBtn.setOnClickListener(this);
@@ -97,25 +103,23 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
                 listChefID.clear();
                 mealList.clear();
                 listMealID.clear();
-
                 for (DataSnapshot ds1 : snapshot.getChildren()) {
                     String role = (String) ds1.child("role").getValue();
-                    if (role.equals("Chef")) {
-                        Boolean suspended = (Boolean) ds1.child("suspended").getValue();
+                    Boolean suspended = (Boolean) ds1.child("suspended").getValue();
+                    if (role.equals("Chef") && Boolean.FALSE.equals(suspended)) {
                         System.out.println(role + " " + suspended);
-                        if (!suspended) {
-                            chef = ds1.getValue(Chef.class);
-                            chefID = ds1.getKey();
-                            DataSnapshot mealSnapshot = ds1.child("menu").child("meals");
-                            for (DataSnapshot ds2 : mealSnapshot.getChildren()) {
-                                if (!ds2.getKey().equals("0")) {
-                                    meal = ds2.getValue(Meal.class);
-                                    mealList.add(meal);
-                                    System.out.println(meal.getMealName());
-                                    listMealID.add(ds2.getKey());
-                                    chefList.add(chef);
-                                    listChefID.add(chefID);
-                                }
+                        Chef chef = ds1.getValue(Chef.class);
+                        String chefID = ds1.getKey();
+                        DataSnapshot mealSnapshot = ds1.child("menu").child("meals");
+                        for (DataSnapshot ds2 : mealSnapshot.getChildren()) {
+                            Boolean available = (Boolean) ds2.child("available").getValue();
+                            if (!ds2.getKey().equals("0") && available) {
+                                Meal meal = ds2.getValue(Meal.class);
+                                mealList.add(meal);
+//                                    System.out.println(meal.getMealName());
+                                listMealID.add(ds2.getKey());
+                                chefList.add(chef);
+                                listChefID.add(chefID);
                             }
                         }
                     }
@@ -145,24 +149,6 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
 
             }
         });
-//        reference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot ds : snapshot.getChildren()) {
-//                    if (!ds.getKey().equals("0")) {
-//                        meal = ds.getValue(Meal.class);
-//                        mealList.add(meal);
-//                        listMealID.add(ds.getKey());
-//                    }
-//                }
-//                searchResultsListView.setAdapter(mealSearchAdapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
     }
 
 
@@ -185,30 +171,93 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
     }
 
     private void searchMeals() {
-        searchFilter = searchEditText.getText().toString();
+        searchText = searchEditText.getText().toString().toLowerCase(Locale.ROOT);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                chefList.clear();
+                listChefID.clear();
                 mealList.clear();
                 listMealID.clear();
-                listChefID.clear();
+                for (DataSnapshot ds1 : snapshot.getChildren()) {
+                    String role = (String) ds1.child("role").getValue();
+                    Boolean suspended = (Boolean) ds1.child("suspended").getValue();
+                    if (role.equals("Chef") && Boolean.FALSE.equals(suspended)) {
+                        Chef chef = ds1.getValue(Chef.class);
+                        String chefID = ds1.getKey();
 
-                if (searchFilter.equals(categories[0])) {
-                    for (DataSnapshot ds : snapshot.getChildren()) {
-                        chef = ds.getValue(Chef.class);
-                        chefID = ds.getKey();
-                        if (ds.child("role").getValue().equals("Chef") && ds.child("suspended").getValue().equals(false)) {
-                            DataSnapshot meals = ds.child("menu").child("meals");
-                            for (DataSnapshot n : meals.getChildren()) {
-                                if (!n.getKey().equals("0")) {
-                                    mealID = ds.getKey();
-                                    meal = ds.getValue(Meal.class);
+                        // Search Filter by Chef (first name or last name)
+                        if (searchFilter.equals(categories[1])) {
+                            String chefFirstName = chef.getFirstName().toLowerCase(Locale.ROOT);
+                            String chefLastName = chef.getLastName().toLowerCase(Locale.ROOT);
+
+                            if (chefFirstName.startsWith(searchText) || chefLastName.startsWith(searchText)) {
+                                DataSnapshot mealSnapshot = ds1.child("menu").child("meals");
+                                for (DataSnapshot ds2 : mealSnapshot.getChildren()) {
+                                    Boolean available = (Boolean) ds2.child("available").getValue();
+                                    if (!ds2.getKey().equals("0") && available) {
+                                        Meal meal = ds2.getValue(Meal.class);
+                                        mealList.add(meal);
+//                                    System.out.println(meal.getMealName());
+                                        listMealID.add(ds2.getKey());
+                                        chefList.add(chef);
+                                        listChefID.add(chefID);
+                                    }
+                                }
+                            }
+                        }
+
+                        // Search Filter by Meal Name
+                        else if (searchFilter.equals(categories[2])) {
+                            DataSnapshot mealSnapshot = ds1.child("menu").child("meals");
+                            for (DataSnapshot ds2 : mealSnapshot.getChildren()) {
+                                Boolean available = (Boolean) ds2.child("available").getValue();
+                                if (!ds2.getKey().equals("0") && available) {
+                                    Meal meal = ds2.getValue(Meal.class);
+                                    String mealName = meal.getMealName().toLowerCase(Locale.ROOT);
+                                    if (mealName.startsWith(searchText)) {
+                                        mealList.add(meal);
+                                        listMealID.add(ds2.getKey());
+                                        chefList.add(chef);
+                                        listChefID.add(chefID);
+                                    }
+                                }
+                            }
+                        }
+
+                        // Search Filter by Vegetarian Meal
+                        else if (searchFilter.equals(categories[3])) {
+                            DataSnapshot mealSnapshot = ds1.child("menu").child("meals");
+                            for (DataSnapshot ds2 : mealSnapshot.getChildren()) {
+                                Boolean available = (Boolean) ds2.child("available").getValue();
+                                if (!ds2.getKey().equals("0") && available) {
+                                    Meal meal = ds2.getValue(Meal.class);
+                                    Boolean vegetarianMeal = meal.getVegetarian();
+                                    String mealName = meal.getMealName().toLowerCase(Locale.ROOT);
+                                    String chefFirstName = chef.getFirstName().toLowerCase(Locale.ROOT);
+                                    String chefLastName = chef.getLastName().toLowerCase(Locale.ROOT);
+                                    if (vegetarianMeal & (mealName.startsWith(searchText) || chefFirstName.startsWith(searchText) || chefLastName.startsWith(searchText))) {
+                                        mealList.add(meal);
+                                        listMealID.add(ds2.getKey());
+                                        chefList.add(chef);
+                                        listChefID.add(chefID);
+                                    }
+                                }
+                            }
+                        }
+
+                        // No Search Filter
+                        else {
+                            DataSnapshot mealSnapshot = ds1.child("menu").child("meals");
+                            for (DataSnapshot ds2 : mealSnapshot.getChildren()) {
+                                Boolean available = (Boolean) ds2.child("available").getValue();
+                                if (!ds2.getKey().equals("0") && available) {
+                                    Meal meal = ds2.getValue(Meal.class);
                                     mealList.add(meal);
+                                    listMealID.add(ds2.getKey());
                                     chefList.add(chef);
-                                    listMealID.add(mealID);
                                     listChefID.add(chefID);
-                                    System.out.println(meal.getMealName());
                                 }
                             }
                         }
