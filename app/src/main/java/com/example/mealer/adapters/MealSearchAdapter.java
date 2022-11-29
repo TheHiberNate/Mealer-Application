@@ -43,7 +43,7 @@ public class MealSearchAdapter extends ArrayAdapter<Meal> {
 
         Chef chef = chefs.get(position);
         Meal meal = searchResults.get(position);
-        chefName.setText(chef.getFirstName() + " " + chef.getLastName());
+        chefName.setText("Offered by: " + chef.getFirstName() + " " + chef.getLastName());
         mealName.setText(meal.getMealName());
         mealDescription.setText(meal.getMealDescription());
         mealPrice.setText(meal.getMealPrice());
