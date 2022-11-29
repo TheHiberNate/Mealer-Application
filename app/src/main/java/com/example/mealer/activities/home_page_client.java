@@ -41,7 +41,7 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(this, homePage.class));
                 break;
             case R.id.orderbutton:
-                startActivity(new Intent (this,ClientOrderFood.class));
+                startActivity(new Intent (this, ClientSearchMeal.class));
         }
     }
 }

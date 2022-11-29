@@ -3,9 +3,7 @@ package com.example.mealer.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,15 +12,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.mealer.R;
 import com.example.mealer.adapters.MealSearchAdapter;
-import com.example.mealer.adapters.MenuAdapter;
 import com.example.mealer.structure.Chef;
-import com.example.mealer.structure.Complaint;
 import com.example.mealer.structure.Meal;
-import com.example.mealer.structure.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,9 +25,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Locale;
-import java.util.Objects;
 
-public class ClientOrderFood extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
+public class ClientSearchMeal extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private String[] categories = {"No Filter", "Chef", "Meal", "Vegetarian"};
     private String searchFilter, searchText;
     private Spinner options;
@@ -51,7 +44,7 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_order_food);
+        setContentView(R.layout.activity_client_search_meal);
 
         initializeVariables();
     }
@@ -69,6 +62,7 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // send information with intents to next page
                 // start new activity to order meals
+
             }
         });
 
@@ -86,7 +80,7 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
 
         reference = FirebaseDatabase.getInstance().getReference("Users");
 
-        mealSearchAdapter = new MealSearchAdapter(ClientOrderFood.this, mealList, chefList);
+        mealSearchAdapter = new MealSearchAdapter(ClientSearchMeal.this, mealList, chefList);
 
         noMeals = findViewById(R.id.textViewNoMeals);
         searchResultsListView.setEmptyView(noMeals);
