@@ -90,7 +90,7 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
     @Override
     protected void onStart() {
         super.onStart();
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+        reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chefList.clear();
