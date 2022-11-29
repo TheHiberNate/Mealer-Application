@@ -106,7 +106,7 @@ public class ClientOrderFood extends AppCompatActivity implements AdapterView.On
                         if (!suspended) {
                             chef = snapshot.getValue(Chef.class);
                             chefID = snapshot.getKey();
-                            DataSnapshot mealSnapshot = snapshot.child(chefID).child("menu").child("meals");
+                            DataSnapshot mealSnapshot = ds1.child(chefID).child("menu").child("meals");
                             for (DataSnapshot ds2 : mealSnapshot.getChildren()) {
                                 if (!ds2.getKey().equals("0")) {
                                     meal = ds2.getValue(Meal.class);
