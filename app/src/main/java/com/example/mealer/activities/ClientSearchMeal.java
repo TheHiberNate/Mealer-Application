@@ -119,23 +119,6 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                     }
                 }
                 searchResultsListView.setAdapter(mealSearchAdapter);
-
-//                chef = snapshot.child("ISR9Rk2I0JTMXfw3oAT3XlcBEjD2").getValue(Chef.class);
-//                chefList.add(chef);
-//                chefList.add(chef);
-//                chefList.add(chef);
-//                listChefID.add("ISR9Rk2I0JTMXfw3oAT3XlcBEjD2");
-//                listChefID.add("ISR9Rk2I0JTMXfw3oAT3XlcBEjD2");
-//                listChefID.add("ISR9Rk2I0JTMXfw3oAT3XlcBEjD2");
-//
-//                DataSnapshot mealSnapshot = snapshot.child("ISR9Rk2I0JTMXfw3oAT3XlcBEjD2").child("menu").child("meals");
-//                for (DataSnapshot ds : mealSnapshot.getChildren()) {
-//                    if (!ds.getKey().equals("0")) {
-//                        meal = ds.getValue(Meal.class);
-//                        mealList.add(meal);
-//                        listMealID.add(ds.getKey());
-//                    }
-//                }
             }
 
             @Override
@@ -145,7 +128,7 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
         });
     }
 
-
+    // Search Filter Selection For Dropdown menu
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) { searchFilter = categories[position]; }
 
