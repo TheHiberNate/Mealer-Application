@@ -231,10 +231,15 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                                 Boolean available = (Boolean) ds2.child("available").getValue();
                                 if (!ds2.getKey().equals("0") && available) {
                                     Meal meal = ds2.getValue(Meal.class);
-                                    mealList.add(meal);
-                                    listMealID.add(ds2.getKey());
-                                    chefList.add(chef);
-                                    listChefID.add(chefID);
+                                    String mealName = meal.getMealName().toLowerCase(Locale.ROOT);
+                                    String chefFirstName = chef.getFirstName().toLowerCase(Locale.ROOT);
+                                    String chefLastName = chef.getLastName().toLowerCase(Locale.ROOT);
+                                    if (mealName.startsWith(searchText) || chefFirstName.startsWith(searchText) || chefLastName.startsWith(searchText)) {
+                                        mealList.add(meal);
+                                        listMealID.add(ds2.getKey());
+                                        chefList.add(chef);
+                                        listChefID.add(chefID);
+                                    }
                                 }
                             }
                         }
