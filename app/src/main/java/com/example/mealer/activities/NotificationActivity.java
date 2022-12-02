@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.mealer.R;
 
-public class ClientOrderMeal extends AppCompatActivity {
+public class NotificationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_order_meal);
+        setContentView(R.layout.activity_notification);
     }
 }

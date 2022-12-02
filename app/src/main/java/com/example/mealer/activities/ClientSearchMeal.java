@@ -1,9 +1,21 @@
 package com.example.mealer.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.mealer.R;
@@ -25,6 +38,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Random;
 
 public class ClientSearchMeal extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private String[] categories = {"No Filter", "Chef", "Meal", "Vegetarian"};
@@ -62,7 +76,12 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // send information with intents to next page
                 // start new activity to order meals
-
+                Chef chef = chefList.get(position);
+                String chefID = listChefID.get(position);
+                Meal meal = mealList.get(position);
+//                String mealRating = meal.getRating();
+                String mealID = listMealID.get(position);
+                showOrderMealDialog(chef, chefID, meal, mealID, position); // +meal rating
             }
         });
 
@@ -254,5 +273,97 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
 
             }
         });
+    }
+
+    public void showOrderMealDialog(Chef chef, String chefID, Meal meal, String mealID, int position) {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.order_meal_dialog, null);
+        dialogBuilder.setView(dialogView);
+
+        final TextView mealName = (TextView) dialogView.findViewById(R.id.txtViewMealName);
+        final TextView chefName = (TextView) dialogView.findViewById(R.id.txtViewChefName);
+        final TextView mealPrice = (TextView) dialogView.findViewById(R.id.txtViewMealPrice);
+        final TextView mealRating = (TextView) dialogView.findViewById(R.id.txtViewMealRating);
+        final EditText mealQuantity = (EditText) dialogView.findViewById(R.id.editTxtQuantity);
+        final Button buttonOrder = (Button) dialogView.findViewById(R.id.btnOrder);
+        final Button buttonBack = (Button) dialogView.findViewById(R.id.btnBack);
+
+        final String nameChef = chef.getFirstName() + " " + chef.getLastName();
+        mealName.setText(" " + meal.getMealName());
+        chefName.setText("  Offered by Chef " + nameChef);
+        mealPrice.setText("  Price: " + meal.getMealPrice() + "$");
+//        mealRating.setText("  Rating: " + meal.getRating());
+
+//        dialogBuilder.setTitle("Order Meal");
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+
+        buttonOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String orderQuantity = mealQuantity.getText().toString();
+                if (orderQuantity.isEmpty() || orderQuantity.equals("0")) {
+                    mealQuantity.setError("Must Specify Quantity! (Cannot be 0)");
+                    mealQuantity.requestFocus();
+                } else {
+                    orderMeal(chef, chefID, meal, mealID, position, nameChef);
+                    b.dismiss();
+                }
+
+            }
+        });
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                b.dismiss();
+            }
+        });
+    }
+
+    private void orderConfirmationNotification(String nameChef) {
+        String id = "order_id";
+        NotificationManager notifManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notifChannel = notifManager.getNotificationChannel(id);
+            if (notifChannel == null) {
+                notifChannel = new NotificationChannel(id, "Order Sent to Chef", NotificationManager.IMPORTANCE_HIGH);
+                // info of notification
+                notifChannel.setDescription("Your order has been set to the chef!" + " Chef will confirm order soon...");
+                notifChannel.enableVibration(true);
+                notifChannel.setVibrationPattern(new long[]{100, 1000, 200, 340});
+                notifChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                notifManager.createNotificationChannel(notifChannel);
+            }
+        }
+        Intent notifIntent = new Intent(this, NotificationActivity.class);
+        notifIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifIntent, PendingIntent.FLAG_MUTABLE);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id)
+                .setSmallIcon(R.drawable.food_mealer)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.food_mealer))
+                .setStyle(new NotificationCompat.BigPictureStyle()
+                .bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.food_mealer)).bigLargeIcon(null))
+                .setContentTitle("Order Confirmation")
+                .setContentTitle("Your order has been set to chef " + nameChef + "!" + " Chef will confirm order soon...")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setVibrate(new long[]{100, 1000, 200, 340})
+                .setAutoCancel(false)
+                .setTicker("Notification");
+        builder.setContentIntent(contentIntent);
+        NotificationManagerCompat m = NotificationManagerCompat.from(getApplicationContext());
+        m.notify(new Random().nextInt(), builder.build());
+        System.out.println("Got here");
+//        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id)
+//                .setSmallIcon(R.drawable.food_mealer)
+//                .setContentTitle("Order Confirmation");
+
+    }
+
+    private void orderMeal(Chef chef, String chefID, Meal meal, String mealID, int position, String nameChef) {
+        orderConfirmationNotification(nameChef);
+
     }
 }
