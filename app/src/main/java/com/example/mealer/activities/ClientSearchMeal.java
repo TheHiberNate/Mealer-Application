@@ -347,7 +347,7 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                 .setStyle(new NotificationCompat.BigPictureStyle()
                 .bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.food_mealer)).bigLargeIcon(null))
                 .setContentTitle("Order Confirmation")
-                .setContentTitle("Your order has been set to chef " + nameChef + "!" + " Chef will confirm order soon...")
+                .setContentText("Your order has been set to chef " + nameChef + "!")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setVibrate(new long[]{100, 1000, 200, 340})
                 .setAutoCancel(false)
