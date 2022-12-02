@@ -1,6 +1,7 @@
 package com.example.mealer.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
@@ -10,6 +11,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -308,8 +310,9 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                     mealQuantity.setError("Must Specify Quantity! (Cannot be 0)");
                     mealQuantity.requestFocus();
                 } else {
-                    orderMeal(chef, chefID, meal, mealID, position, nameChef);
+                    orderMeal(chef, chefID, meal, mealID, position);
                     b.dismiss();
+                    createAlertDialog(nameChef);
                 }
 
             }
@@ -323,47 +326,62 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
         });
     }
 
-    private void orderConfirmationNotification(String nameChef) {
-        String id = "order_id";
-        NotificationManager notifManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notifChannel = notifManager.getNotificationChannel(id);
-            if (notifChannel == null) {
-                notifChannel = new NotificationChannel(id, "Order Sent to Chef", NotificationManager.IMPORTANCE_HIGH);
-                // info of notification
-                notifChannel.setDescription("Your order has been set to the chef!" + " Chef will confirm order soon...");
-                notifChannel.enableVibration(true);
-                notifChannel.setVibrationPattern(new long[]{100, 1000, 200, 340});
-                notifChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-                notifManager.createNotificationChannel(notifChannel);
+    private void createAlertDialog(String nameChef) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(ClientSearchMeal.this);
+
+        builder.setCancelable(true);
+        builder.setTitle("Order Sent to Chef");
+        builder.setMessage("Order has been sent to Chef " + nameChef + "! To see the status of your order, click on the 'My Orders' button on home page");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
             }
-        }
-        Intent notifIntent = new Intent(this, NotificationActivity.class);
-        notifIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifIntent, PendingIntent.FLAG_MUTABLE);
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id)
-                .setSmallIcon(R.drawable.food_mealer)
-                .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.food_mealer))
-                .setStyle(new NotificationCompat.BigPictureStyle()
-                .bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.food_mealer)).bigLargeIcon(null))
-                .setContentTitle("Order Confirmation")
-                .setContentText("Your order has been set to chef " + nameChef + "!")
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setVibrate(new long[]{100, 1000, 200, 340})
-                .setAutoCancel(false)
-                .setTicker("Notification");
-        builder.setContentIntent(contentIntent);
-        NotificationManagerCompat m = NotificationManagerCompat.from(getApplicationContext());
-        m.notify(new Random().nextInt(), builder.build());
-        System.out.println("Got here");
+        });
+        builder.show();
+    }
+
+
+    private void orderMeal(Chef chef, String chefID, Meal meal, String mealID, int position) {
+    }
+
+    // TRYING TO HAVE NOTIFICATION POPUP
+    //    @RequiresApi(api = Build.VERSION_CODES.S)
+//    private void orderConfirmationNotification(String nameChef) {
+//        String id = "order_id";
+//        NotificationManager notifManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            NotificationChannel notifChannel = notifManager.getNotificationChannel(id);
+//            if (notifChannel == null) {
+//                notifChannel = new NotificationChannel(id, "Order Sent to Chef", NotificationManager.IMPORTANCE_HIGH);
+//                // info of notification
+//                notifChannel.setDescription("Your order has been set to the chef!" + " Chef will confirm order soon...");
+//                notifChannel.enableVibration(true);
+//                notifChannel.setVibrationPattern(new long[]{100, 1000, 200, 340});
+//                notifChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+//                notifManager.createNotificationChannel(notifChannel);
+//            }
+//        }
+//        Intent notifIntent = new Intent(this, NotificationActivity.class);
+//        notifIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifIntent, PendingIntent.FLAG_MUTABLE);
 //        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id)
 //                .setSmallIcon(R.drawable.food_mealer)
-//                .setContentTitle("Order Confirmation");
+//                .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.food_mealer))
+//                .setStyle(new NotificationCompat.BigPictureStyle()
+//                .bigPicture(BitmapFactory.decodeResource(getResources(),R.drawable.food_mealer)).bigLargeIcon(null))
+//                .setContentTitle("Order Confirmation")
+//                .setContentText("Your order has been set to chef " + nameChef + "!")
+//                .setPriority(NotificationCompat.PRIORITY_HIGH)
+//                .setVibrate(new long[]{100, 1000, 200, 340})
+//                .setAutoCancel(false)
+//                .setTicker("Notification");
+//        builder.setContentIntent(contentIntent);
+//        NotificationManagerCompat m = NotificationManagerCompat.from(getApplicationContext());
+//        m.notify(new Random().nextInt(), builder.build());
+//        System.out.println("Got here");
+//
+//    }
 
-    }
-
-    private void orderMeal(Chef chef, String chefID, Meal meal, String mealID, int position, String nameChef) {
-        orderConfirmationNotification(nameChef);
-
-    }
 }
