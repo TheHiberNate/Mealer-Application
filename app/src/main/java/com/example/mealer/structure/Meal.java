@@ -20,7 +20,7 @@ public class Meal {
         this.mealPrice = mealPrice;
         setVegetarian(false);
         setAvailable(false);
-        setRating("No Ratings");
+        setRating("-1"); // -1 is for no ratings
         this.orders = new ArrayList<>();
     }
 
@@ -41,7 +41,7 @@ public class Meal {
     public void setOrders(List<Order> orders) { this.orders = orders; }
 
     public void addNewRating(String newRating) {
-        if (rating.equals("No ratings")) {
+        if (rating.equals("-1")) {
             this.rating = String.valueOf(Double.parseDouble(newRating));
         } else {
             this.rating = String.valueOf((Double.parseDouble(rating)+Double.parseDouble(newRating))/2);

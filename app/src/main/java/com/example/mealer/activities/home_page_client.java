@@ -13,7 +13,7 @@ import com.example.mealer.R;
 public class home_page_client extends AppCompatActivity implements View.OnClickListener {
     private Button logout, order;
     private TextView welcome;
-    private String welcomeMessage;
+    private String welcomeMessage, clientID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +26,12 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
         order = findViewById(R.id.orderbutton);
         order.setOnClickListener(this);
 
-
         Bundle extras = getIntent().getExtras();
         welcomeMessage = extras.getString("welcomeClient");
 
         welcome = findViewById(R.id.textViewWelcomeClient);
         welcome.setText(welcomeMessage);
+        clientID = extras.getString("userID");
     }
 
     @Override
@@ -41,7 +41,9 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(this, homePage.class));
                 break;
             case R.id.orderbutton:
-                startActivity(new Intent (this, ClientSearchMeal.class));
+                Intent intent = new Intent(this, ClientSearchMeal.class);
+                intent.putExtra("clientID", clientID);
+                startActivity(intent);
         }
     }
 }

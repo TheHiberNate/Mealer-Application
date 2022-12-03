@@ -9,7 +9,7 @@ public class Order {
 
     public Order() { }
 
-    public Order(Meal meal, int quantity, String status) {
+    public Order(Meal meal, int quantity) {
         this.meal = meal;
         this.quantity = quantity;
         this.status = statusOptions[0];

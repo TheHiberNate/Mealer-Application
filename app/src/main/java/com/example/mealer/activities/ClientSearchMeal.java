@@ -31,7 +31,9 @@ import android.widget.TextView;
 import com.example.mealer.R;
 import com.example.mealer.adapters.MealSearchAdapter;
 import com.example.mealer.structure.Chef;
+import com.example.mealer.structure.Client;
 import com.example.mealer.structure.Meal;
+import com.example.mealer.structure.Order;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,7 +46,7 @@ import java.util.Random;
 
 public class ClientSearchMeal extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     private String[] categories = {"No Filter", "Chef", "Meal", "Vegetarian"};
-    private String searchFilter, searchText;
+    private String searchFilter, searchText, clientID;
     private Spinner options;
     private EditText searchEditText;
     private TextView noMeals;
@@ -55,6 +57,8 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
     private ArrayList<String> listMealID, listChefID;
     private DatabaseReference reference;
     private MealSearchAdapter mealSearchAdapter;
+    private DatabaseReference clientRef;
+    private Client client;
 
 
     @Override
@@ -71,6 +75,23 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
         options.setOnItemSelectedListener(this);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, categories);
         options.setAdapter(adapter);
+
+        Bundle extras = getIntent().getExtras();
+        clientID = extras.getString("clientID");
+
+        clientRef = FirebaseDatabase.getInstance().getReference("Users").child(clientID);
+        clientRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                client = snapshot.getValue(Client.class);
+                System.out.println(client.getFirstName());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         searchResultsListView = findViewById(R.id.ListViewSearchResults);
         searchResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -305,12 +326,12 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
         buttonOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String orderQuantity = mealQuantity.getText().toString();
+                String orderQuantity = mealQuantity.getText().toString();
                 if (orderQuantity.isEmpty() || orderQuantity.equals("0")) {
                     mealQuantity.setError("Must Specify Quantity! (Cannot be 0)");
                     mealQuantity.requestFocus();
                 } else {
-                    orderMeal(chef, chefID, meal, mealID, position);
+                    orderMeal(chef, chefID, meal, mealID, Integer.valueOf(orderQuantity),position);
                     b.dismiss();
                     createAlertDialog(nameChef);
                 }
@@ -343,7 +364,11 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
     }
 
 
-    private void orderMeal(Chef chef, String chefID, Meal meal, String mealID, int position) {
+    private void orderMeal(Chef chef, String chefID, Meal meal, String mealID, int orderQuantity,int position) {
+        Order order = new Order(meal, orderQuantity);
+        client.addOrder(order);
+        chef.addOrder(order);
+
     }
 
     // TRYING TO HAVE NOTIFICATION POPUP

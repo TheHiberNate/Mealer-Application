@@ -45,13 +45,14 @@
         android:id="@+id/mealVegetarian"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="32dp"
         android:text="Vegetarian Plate"
+        android:textColor="#8BC34A"
         android:textSize="12sp"
-        android:textStyle="italic"
+        android:textStyle="bold|italic"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.827"
+        app:layout_constraintHorizontal_bias="0.814"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mealDescription"
         tools:visibility="invisible" />
@@ -70,14 +71,12 @@
         tools:visibility="visible" />
 
     <TextView
-        android:id="@+id/dollarSign"
+        android:id="@+id/mealRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="80dp"
-        android:text="$"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="60dp"
+        android:text="Rating"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.399"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mealDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

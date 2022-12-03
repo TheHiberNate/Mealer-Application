@@ -19,6 +19,8 @@ public class Chef extends User {
         this.suspended = false;
         this.menu = menu;
         this.orders = new ArrayList<>();
+        Order order = new Order(new Meal("IgnoreMe", "IgnoreMe", "0"), 0);
+        orders.add(order);
     }
 
     public String getSuspensionLength() { return suspensionLength; }
@@ -40,4 +42,8 @@ public class Chef extends User {
     public List<Order> getOrders() { return orders; }
 
     public void setOrders(List<Order> orders) { this.orders = orders; }
+
+    public void addOrder(Order order) {
+        orders.add(order);
+    }
 }
