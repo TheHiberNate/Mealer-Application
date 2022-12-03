@@ -1,13 +1,13 @@
 package com.example.mealer.structure;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Chef extends User {
     private String description, suspensionLength;
-//    private ArrayList<Complaint> listOfComplaints;
-//    private int numberOfComplaints;
     private Boolean suspended;
     private Menu menu;
+    private List<Order> orders;
 
     public Chef() { }
 
@@ -18,9 +18,7 @@ public class Chef extends User {
         this.suspensionLength = "none";
         this.suspended = false;
         this.menu = menu;
-
-//        listOfComplaints = new ArrayList<>();
-//        this.numberOfComplaints = 0;
+        this.orders = new ArrayList<>();
     }
 
     public String getSuspensionLength() { return suspensionLength; }
@@ -39,14 +37,7 @@ public class Chef extends User {
 
     public void setMenu(Menu menu) { this.menu = menu; }
 
-    //    public ArrayList<Complaint> getListOfComplaints() { return listOfComplaints; }
+    public List<Order> getOrders() { return orders; }
 
-//    public void setListOfComplaints(ArrayList<Complaint> listOfComplaints) { this.listOfComplaints = listOfComplaints; }
-
-//    public void addNewComplaint(Complaint complaint) { listOfComplaints.add(complaint); }
-//
-//    public void removeComplaint(Complaint complaint) { listOfComplaints.remove(complaint); }
-//
-//    public int getNumberOfComplaints() { return listOfComplaints.size(); }
-
+    public void setOrders(List<Order> orders) { this.orders = orders; }
 }

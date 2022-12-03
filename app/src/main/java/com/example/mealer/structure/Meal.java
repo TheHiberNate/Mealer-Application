@@ -1,12 +1,16 @@
 package com.example.mealer.structure;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Meal {
     private String mealName;
     private String mealDescription;
     private String mealPrice;
     private Boolean vegetarian;
     private Boolean available;
-//    private String rating;
+    private String rating;
+    private List<Order> orders;
 
     public Meal() {}
 
@@ -16,7 +20,8 @@ public class Meal {
         this.mealPrice = mealPrice;
         setVegetarian(false);
         setAvailable(false);
-//        setRating("No Ratings");
+        setRating("No Ratings");
+        this.orders = new ArrayList<>();
     }
 
     public String getMealName() { return mealName; }
@@ -24,12 +29,22 @@ public class Meal {
     public String getMealPrice() { return mealPrice; }
     public Boolean getVegetarian() { return vegetarian; }
     public Boolean getAvailable() { return available; }
-//    public String getRating() { return rating; }
+    public String getRating() { return rating; }
+    public List<Order> getOrders() { return orders; }
 
     public void setMealName(String mealName) { this.mealName = mealName; }
     public void setMealDescription(String mealDescription) { this.mealDescription = mealDescription; }
     public void setMealPrice(String mealPrice) { this.mealPrice = mealPrice; }
     public void setVegetarian(Boolean vegetarian) { this.vegetarian = vegetarian; }
     public void setAvailable(Boolean available) { this.available = available; }
-//    public void setRating(String newRating) { this.rating = String.valueOf((Double.valueOf(rating)+Double.valueOf(newRating))/2); }
+    public void setRating(String rating) { this.rating = rating; }
+    public void setOrders(List<Order> orders) { this.orders = orders; }
+
+    public void addNewRating(String newRating) {
+        if (rating.equals("No ratings")) {
+            this.rating = String.valueOf(Double.parseDouble(newRating));
+        } else {
+            this.rating = String.valueOf((Double.parseDouble(rating)+Double.parseDouble(newRating))/2);
+        }
+    }
 }

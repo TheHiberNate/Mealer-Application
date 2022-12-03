@@ -49,7 +49,7 @@ public class MealSearchAdapter extends ArrayAdapter<Meal> {
         mealDescription.setText(meal.getMealDescription());
         mealPrice.setText("Price: " + meal.getMealPrice() + "$");
         if (meal.getVegetarian()) { mealVegetarian.setVisibility(View.VISIBLE); }
-//        mealRating.setText(meal.getRating());
+        mealRating.setText(meal.getRating());
 
         return listViewItem;
     }
