@@ -19,7 +19,7 @@ public class Chef extends User {
         this.suspended = false;
         this.menu = menu;
         this.orders = new ArrayList<>();
-        Order order = new Order(new Meal("IgnoreMe", "IgnoreMe", "0"), 0);
+        Order order = new Order(new Meal("IgnoreMe", "IgnoreMe", "0"), "0");
         orders.add(order);
     }
 

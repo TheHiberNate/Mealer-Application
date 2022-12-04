@@ -78,20 +78,10 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
 
         Bundle extras = getIntent().getExtras();
         clientID = extras.getString("clientID");
+        System.out.println(clientID);
 
-        clientRef = FirebaseDatabase.getInstance().getReference("Users").child(clientID);
-        clientRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                client = snapshot.getValue(Client.class);
-                System.out.println(client.getFirstName());
-            }
+        clientRef = FirebaseDatabase.getInstance().getReference("Users");
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         searchResultsListView = findViewById(R.id.ListViewSearchResults);
         searchResultsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -143,7 +133,6 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                     String role = (String) ds1.child("role").getValue();
                     Boolean suspended = (Boolean) ds1.child("suspended").getValue();
                     if (role.equals("Chef") && Boolean.FALSE.equals(suspended)) {
-                        System.out.println(role + " " + suspended);
                         Chef chef = ds1.getValue(Chef.class);
                         String chefID = ds1.getKey();
                         DataSnapshot mealSnapshot = ds1.child("menu").child("meals");
@@ -331,7 +320,7 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                     mealQuantity.setError("Must Specify Quantity! (Cannot be 0)");
                     mealQuantity.requestFocus();
                 } else {
-                    orderMeal(chef, chefID, meal, mealID, Integer.valueOf(orderQuantity),position);
+                    orderMeal(chef, chefID, meal, mealID, orderQuantity);
                     b.dismiss();
                     createAlertDialog(nameChef);
                 }
@@ -364,11 +353,26 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
     }
 
 
-    private void orderMeal(Chef chef, String chefID, Meal meal, String mealID, int orderQuantity,int position) {
-        Order order = new Order(meal, orderQuantity);
-        client.addOrder(order);
-        chef.addOrder(order);
+    private void orderMeal(Chef chef, String chefID, Meal meal, String mealID, String orderQuantity) {
+        clientRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                DataSnapshot clientSnapshot = snapshot.child(clientID);
+                DataSnapshot chefSnapshot = snapshot.child(chefID);
 
+                client = clientSnapshot.getValue(Client.class);
+                Order order = new Order(meal, orderQuantity);
+                client.addOrder(order);
+                chef.addOrder(order);
+                clientSnapshot.getRef().child("orders").setValue(client.getOrders());
+                chefSnapshot.getRef().child("orders").setValue(client.getOrders());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     // TRYING TO HAVE NOTIFICATION POPUP

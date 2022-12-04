@@ -12,8 +12,8 @@ public class Client extends User{
         super(firstName, lastName, email, address, "Client");
         setPayment(payment);
         this.orders = new ArrayList<>();
-//        Order order = new Order(new Meal("IgnoreMe", "IgnoreMe", "0"), 0);
-//        orders.add(order);
+        Order order = new Order(new Meal("IgnoreMe", "IgnoreMe", "0"), "0");
+        orders.add(order);
     }
 
     public List<Order> getOrders() { return orders; }
