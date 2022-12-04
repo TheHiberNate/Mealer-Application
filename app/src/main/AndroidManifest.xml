@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mealer">
         <activity
-            android:name=".activities.ClientOrdersStatus"
+            android:name=".activities.ClientStatusOrders"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

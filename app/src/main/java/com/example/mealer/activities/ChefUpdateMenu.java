@@ -42,7 +42,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chef_update_menu);
 
-        menuListView = (ListView) findViewById(R.id.clientOrderList);
+        menuListView = (ListView) findViewById(R.id.clientOrderListView);
         menuList = new ArrayList<>();
         mealIDs = new ArrayList<>();
 
@@ -68,7 +68,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         menuReference = FirebaseDatabase.getInstance().getReference("Users").child(chefID).child("menu").child("meals");
         menuAdapter = new MenuAdapter(ChefUpdateMenu.this, menuList);
 
-        noMeals = (TextView) findViewById(R.id.textView_NoMeals);
+        noMeals = (TextView) findViewById(R.id.noOrderTxtView);
         menuListView.setEmptyView(noMeals);
     }
 

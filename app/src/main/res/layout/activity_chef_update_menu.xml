@@ -7,7 +7,7 @@
     tools:context=".activities.ChefUpdateMenu">
 
     <ListView
-        android:id="@+id/clientOrderList"
+        android:id="@+id/clientOrderListView"
         android:layout_width="match_parent"
         android:layout_height="587dp"
         android:layout_above="@+id/backClientHomeBtn"
@@ -31,7 +31,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/textView_NoMeals"
+        android:id="@+id/noOrderTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

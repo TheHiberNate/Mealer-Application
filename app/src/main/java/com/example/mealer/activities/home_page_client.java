@@ -52,11 +52,13 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.statusOrderBtn:
-                Intent newIntent = new Intent(this, ClientOrdersStatus.class);
+                Intent newIntent = new Intent(this, ClientStatusOrders.class);
+                newIntent.putExtra("clientID", clientID);
                 startActivity(newIntent);
                 break;
             case R.id.rateChefBtn:
                 //
+                break;
         }
     }
 }
