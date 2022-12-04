@@ -106,8 +106,8 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
                                                 } else {
                                                     intentUserWelcome.putExtra("welcomeChef", "Welcome " + role + " " + firstName + "! Ready to make some Food?!");
                                                 }
-                                                intentUserWelcome.putExtra("userID", id);
                                             }
+                                            intentUserWelcome.putExtra("userID", id);
                                             startActivity(intentUserWelcome);
                                         }
                                     }

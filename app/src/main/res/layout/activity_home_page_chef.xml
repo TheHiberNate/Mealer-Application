@@ -101,8 +101,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/sec"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="299dp"
+        android:layout_height="377dp"
         android:gravity="center"
         android:padding="20dp"
 
@@ -110,7 +110,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.579">
 
         <TextView
             android:id="@+id/mess"
@@ -126,8 +127,8 @@
             android:textSize="18sp" />
 
         <RelativeLayout
-            android:layout_width="264dp"
-            android:layout_height="186dp"
+            android:layout_width="259dp"
+            android:layout_height="328dp"
             android:layout_below="@id/mess"
 
             android:layout_marginStart="20dp"
@@ -141,13 +142,27 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="138dp"
-                android:layout_marginEnd="9dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginTop="111dp"
+                android:layout_marginEnd="12dp"
                 android:gravity="center"
-                android:text="Don't forget to choose the available meals which your clients can buy" />
+                android:text="Don't forget to choose the available meals which your clients can buy"
+                android:textColor="#2196F3"
+                android:textSize="12sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/updateMessage"
+                android:layout_width="239dp"
+                android:layout_height="40dp"
+                android:layout_below="@+id/updateMessage3"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginTop="56dp"
+                android:layout_marginEnd="14dp"
+                android:gravity="center"
+                android:text="Click below to deal with the incoming new food orders from your clients" />
 
             <TextView
                 android:id="@+id/textViewEditMenu"
@@ -160,7 +175,7 @@
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="10dp"
                 android:gravity="center"
-                android:text="Update your menu to attract more customers." />
+                android:text="Update your menu to attract more customers" />
 
             <Button
                 android:id="@+id/btnUpdateMenu"
@@ -177,15 +192,23 @@
                 android:text="Menu"
                 app:layout_constraintTop_toTopOf="@id/textViewEditMenu" />
 
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/updateMessage"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="75dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="75dp"
+                android:background="@color/green"
+                android:text="Orders" />
+
         </RelativeLayout>
 
 
     </androidx.cardview.widget.CardView>
-
-
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
