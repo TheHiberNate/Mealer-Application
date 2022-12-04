@@ -6,6 +6,7 @@ public class Order {
     private String status;
     private String[] statusOptions = {"order sent to chef" , "order confirmed by chef",
             "order being prepared", "order on the way", "order delivered", "order rejected"};
+    private String deliveryTime;
 
     public Order() { }
 
@@ -13,6 +14,7 @@ public class Order {
         this.meal = meal;
         this.quantity = quantity;
         this.status = statusOptions[0];
+        this.deliveryTime = "none";
     }
 
     public Meal getMeal() { return meal; }
@@ -23,4 +25,7 @@ public class Order {
 
     public String getStatus() { return status; }
     public void setStatus(String option) { this.status = option; }
+
+    public String getDeliveryTime() { return deliveryTime; }
+    public void setDeliveryTime(String deliveryTime) { this.deliveryTime = deliveryTime; }
 }
