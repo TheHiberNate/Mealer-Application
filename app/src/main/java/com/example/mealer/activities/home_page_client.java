@@ -23,7 +23,7 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
         logout = findViewById(R.id.btn_Logout_Client);
         logout.setOnClickListener(this);
 
-        order = findViewById(R.id.orderbutton);
+        order = findViewById(R.id.orderButton);
         order.setOnClickListener(this);
 
         Bundle extras = getIntent().getExtras();
@@ -40,7 +40,7 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
             case R.id.btn_Logout_Client:
                 startActivity(new Intent(this, homePage.class));
                 break;
-            case R.id.orderbutton:
+            case R.id.orderButton:
                 Intent intent = new Intent(this, ClientSearchMeal.class);
                 intent.putExtra("clientID", clientID);
                 startActivity(intent);
