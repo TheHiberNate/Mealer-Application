@@ -306,7 +306,11 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
         mealName.setText(" " + meal.getMealName());
         chefName.setText("  Offered by Chef " + nameChef);
         mealPrice.setText("  Price: " + meal.getMealPrice() + "$");
-//        mealRating.setText("  Rating: " + meal.getRating());
+        if (meal.getRating().equals("-1")) {
+            mealRating.setText("  No Ratings");
+        } else {
+            mealRating.setText("  Rating: " + meal.getRating() + " /5");
+        }
 
 //        dialogBuilder.setTitle("Order Meal");
         final AlertDialog b = dialogBuilder.create();
@@ -320,7 +324,7 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                     mealQuantity.setError("Must Specify Quantity! (Cannot be 0)");
                     mealQuantity.requestFocus();
                 } else {
-                    orderMeal(chef, chefID, meal, mealID, orderQuantity);
+                    orderMeal(chef, chefID, meal, orderQuantity);
                     b.dismiss();
                     createAlertDialog(nameChef);
                 }
@@ -353,7 +357,7 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
     }
 
 
-    private void orderMeal(Chef chef, String chefID, Meal meal, String mealID, String orderQuantity) {
+    private void orderMeal(Chef chef, String chefID, Meal meal, String orderQuantity) {
         clientRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -361,7 +365,7 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                 DataSnapshot chefSnapshot = snapshot.child(chefID);
 
                 client = clientSnapshot.getValue(Client.class);
-                Order order = new Order(meal, orderQuantity);
+                Order order = new Order(meal, orderQuantity, chefID, clientID);
                 client.addOrder(order);
                 chef.addOrder(order);
                 clientSnapshot.getRef().child("orders").setValue(client.getOrders());

@@ -12,7 +12,7 @@ public class Client extends User{
         super(firstName, lastName, email, address, "Client");
         setPayment(payment);
         this.orders = new ArrayList<>();
-        Order order = new Order(new Meal("IgnoreMe", "IgnoreMe", "0"), "0");
+        Order order = new Order(new Meal("IgnoreMe", "IgnoreMe", "0"), "0", "chefID", "clientID");
         orders.add(order);
     }
 
