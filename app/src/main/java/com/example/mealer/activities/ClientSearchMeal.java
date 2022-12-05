@@ -27,6 +27,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mealer.R;
 import com.example.mealer.adapters.MealSearchAdapter;
@@ -369,7 +370,7 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                 client.addOrder(order);
                 chef.addOrder(order);
                 clientSnapshot.getRef().child("orders").setValue(client.getOrders());
-                chefSnapshot.getRef().child("orders").setValue(client.getOrders());
+                chefSnapshot.getRef().child("orders").setValue(chef.getOrders());
             }
 
             @Override

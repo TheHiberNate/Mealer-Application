@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mealer.R;
 import com.example.mealer.adapters.ClientOrderAdapter;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 public class ClientStatusOrders extends AppCompatActivity implements View.OnClickListener{
     private String clientID;
     private ListView ordersListView;
-    private Button backBtn;
+    private Button backBtn, remove;
     private TextView noOrders;
     private ArrayList<Order> clientOrders;
     private ClientOrderAdapter clientOrderAdapter;
@@ -44,6 +45,9 @@ public class ClientStatusOrders extends AppCompatActivity implements View.OnClic
         backBtn = findViewById(R.id.backToChefHome);
         backBtn.setOnClickListener(this);
 
+        remove = findViewById(R.id.button);
+        remove.setOnClickListener(this);
+
         clientOrders = new ArrayList<>();
 
         Bundle extras = getIntent().getExtras();
@@ -53,7 +57,7 @@ public class ClientStatusOrders extends AppCompatActivity implements View.OnClic
 
         clientOrderAdapter = new ClientOrderAdapter(ClientStatusOrders.this, clientOrders);
 
-        noOrders = findViewById(R.id.noIncomingOrders);
+        noOrders = findViewById(R.id.txtViewNoOrders);
         ordersListView.setEmptyView(noOrders);
     }
 
@@ -62,6 +66,9 @@ public class ClientStatusOrders extends AppCompatActivity implements View.OnClic
         switch (v.getId()) {
             case R.id.backToChefHome:
                 finish();
+                break;
+            case R.id.button:
+                removeRejectedOrders();
                 break;
         }
     }
@@ -88,4 +95,26 @@ public class ClientStatusOrders extends AppCompatActivity implements View.OnClic
             }
         });
     }
+
+    private void removeRejectedOrders() {
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    Order order = ds.getValue(Order.class);
+                    if (order.getStatus().equals("Order Rejected")) {
+                        String orderToDelete = ds.getKey();
+                        reference.child(orderToDelete).removeValue();
+                    }
+                }
+                Toast.makeText(getApplicationContext(), "Removed Rejected Orders", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 }

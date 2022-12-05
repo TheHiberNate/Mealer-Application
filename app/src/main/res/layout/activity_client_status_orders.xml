@@ -5,47 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ClientStatusOrders">
+
     <ListView
         android:id="@+id/chefOrderListView"
         android:layout_width="match_parent"
-        android:layout_height="646dp"
+        android:layout_height="622dp"
         android:layout_above="@+id/backToChefHome"
         android:layout_below="@+id/txtView"
-        android:layout_marginTop="11dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:scrollbarSize="20dp" />
-
-    <TextView
-        android:id="@+id/noIncomingOrders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="You have no current food orders!"
-        android:textColor="@color/white"
-        android:visibility="invisible"
-        tools:visibility="invisible"></TextView>
 
     <TextView
         android:id="@+id/txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="7dp"
-        android:layout_marginTop="-1dp"
-        android:layout_marginEnd="258dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="255dp"
         android:text="Your Orders:"
         android:textSize="20sp" />
 
     <Button
         android:id="@+id/backToChefHome"
+        android:layout_width="154dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="57dp"
+        android:layout_marginBottom="1dp"
+        android:text="Back" />
+
+    <TextView
+        android:id="@+id/txtViewNoOrders"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="27dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginBottom="404dp"
+        android:text="You have no orders!"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="154dp"
+        android:layout_height="67dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginStart="214dp"
+        android:layout_marginEnd="43dp"
         android:layout_marginBottom="0dp"
-        android:text="Back" />
+        android:text="Remove Rejected Orders" />
+
 </RelativeLayout>
