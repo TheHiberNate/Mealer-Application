@@ -31,10 +31,12 @@ import java.util.ArrayList;
 
 public class ChefStatusOrders extends AppCompatActivity implements View.OnClickListener {
     private String chefID;
+    private String newStatus;
     private ListView ordersListView;
     private Button backBtn;
     private TextView noOrders;
     private ArrayList<Order> chefOrders;
+    private ArrayList<String> chefOrdersID;
     private ChefOrderAdapter chefOrderAdapter;
     private DatabaseReference reference;
 
@@ -46,23 +48,26 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
     }
 
     private void initializeVariables() {
+        // List View
         ordersListView = findViewById(R.id.chefOrderListView);
         ordersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showOrderDialog(chefOrders.get(position));
+                showOrderDialog(chefOrders.get(position), chefOrdersID.get(position));
             }
         });
 
+        // Back Button
         backBtn = findViewById(R.id.backToChefHome);
         backBtn.setOnClickListener(this);
 
         chefOrders = new ArrayList<>();
+        chefOrdersID = new ArrayList<>();
 
         Bundle extras = getIntent().getExtras();
         chefID = extras.getString("chefID");
 
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(chefID).child("orders");
+        reference = FirebaseDatabase.getInstance().getReference("Users");
 
         chefOrderAdapter = new ChefOrderAdapter(ChefStatusOrders.this, chefOrders);
 
@@ -86,10 +91,13 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chefOrders.clear();
-                for (DataSnapshot ds : snapshot.getChildren()) {
+                chefOrdersID.clear();
+                DataSnapshot dataSnapshot = snapshot.child(chefID).child("orders");
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (!ds.getKey().equals("0")) {
                         Order order = ds.getValue(Order.class);
                         chefOrders.add(order);
+                        chefOrdersID.add(ds.getKey());
                     }
                 }
                 ordersListView.setAdapter(chefOrderAdapter);
@@ -102,7 +110,7 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
         });
     }
 
-    public void showOrderDialog(Order order) {
+    public void showOrderDialog(Order order, String orderID) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -123,18 +131,24 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
         final AlertDialog b = dialogBuilder.create();
         b.show();
 
+        orderStatusOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                newStatus = orderStatus[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                String orderQuantity = mealQuantity.getText().toString();
-//                if (orderQuantity.isEmpty() || orderQuantity.equals("0")) {
-//                    mealQuantity.setError("Must Specify Quantity! (Cannot be 0)");
-//                    mealQuantity.requestFocus();
-//                } else {
-////                    updateOrderStatus(Order order);
-//                    b.dismiss();
-////                    createAlertDialog(nameChef);
-//                }
+                String newETA = eta.getText().toString();
+                updateOrderStatus(order, orderID, newStatus, newETA);
+                eta.setText("");
             }
         });
 
@@ -146,7 +160,30 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
         });
     }
 
-    public void updateOrderStatus(Order order) {
+    public void updateOrderStatus(Order order, String orderID, String newStatus, String newETA) {
+        String clientID = order.getClientID();
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                DataSnapshot clientSnap = snapshot.child(clientID).child("orders").child(orderID);
+                DataSnapshot chefSnap = snapshot.child(chefID).child("orders").child(orderID);
 
+                // Set new Status of the order for the client and the chef
+                clientSnap.getRef().child("status").setValue(newStatus);
+                chefSnap.getRef().child("status").setValue(newStatus);
+
+                // Set new delivery time for the client and the chef
+                if (!newETA.isEmpty()) {
+                    clientSnap.getRef().child("deliveryTime").setValue(newETA);
+                    chefSnap.getRef().child("deliveryTime").setValue(newETA);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 }
