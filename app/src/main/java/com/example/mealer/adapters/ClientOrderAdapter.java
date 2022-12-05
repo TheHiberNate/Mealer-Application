@@ -47,7 +47,7 @@ public class ClientOrderAdapter extends ArrayAdapter<Order> {
         Order order = orders.get(position);
         System.out.println(order.getMeal().getMealName());
         orderMealName.setText(order.getMeal().getMealName());
-        orderDeliveryTime.setText("Estimated Delivery Time: " + order.getDeliveryTime());
+        orderDeliveryTime.setText("Estimated Delivery Time: " + order.getDeliveryTime() + " minutes");
         orderQuantity.setText("Quantity: " + order.getQuantity());
         orderStatus.setText("Order Status: " + order.getStatus());
 

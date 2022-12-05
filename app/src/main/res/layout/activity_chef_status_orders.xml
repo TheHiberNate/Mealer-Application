@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ChefStatusOrders">
+
     <ListView
         android:id="@+id/chefOrderListView"
         android:layout_width="match_parent"
         android:layout_height="646dp"
         android:layout_above="@+id/backToChefHome"
         android:layout_below="@+id/txtView"
-        android:layout_marginTop="11dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginBottom="12dp"
         android:scrollbarSize="20dp" />
 
     <TextView
@@ -27,28 +28,36 @@
 
     <TextView
         android:id="@+id/txtView"
-        android:layout_width="216dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="7dp"
         android:layout_marginTop="-1dp"
-        android:layout_marginEnd="188dp"
-        android:text="Incoming Orders:"
+        android:layout_marginEnd="132dp"
+        android:text="Incoming Client Orders:"
         android:textColor="@color/green"
         android:textSize="20sp"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/backToChefHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="51dp"
+        android:layout_marginBottom="2dp"
+        android:text="Back" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="176dp"
+        android:layout_height="60dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginEnd="140dp"
-        android:layout_marginBottom="0dp"
-        android:text="Back" />
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="2dp"
+        android:text="Remove Rejected Orders" />
 
 </RelativeLayout>
