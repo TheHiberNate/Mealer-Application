@@ -10,10 +10,10 @@
         android:id="@+id/ListViewSearchResults"
         android:layout_width="match_parent"
         android:layout_height="562dp"
-        android:layout_above="@+id/backBtn"
         android:layout_below="@+id/textView4"
+        android:layout_alignParentBottom="true"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="-5dp"
+        android:layout_marginBottom="42dp"
         android:scrollbarSize="20dp"></ListView>
 
     <TextView
