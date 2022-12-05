@@ -64,14 +64,14 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/backButton"
             android:layout_width="98dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Back" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/confirmButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -101,7 +101,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView17">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextTitleComplaint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -112,7 +112,7 @@
             android:textSize="14sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/editTextDescriptionComplaint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"

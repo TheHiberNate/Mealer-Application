@@ -12,11 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.mealer.R;
-import com.example.mealer.adapters.ClientOrderAdapter;
 import com.example.mealer.adapters.RateMealAdapter;
 import com.example.mealer.structure.Order;
 import com.google.firebase.database.DataSnapshot;
@@ -105,39 +103,45 @@ public class ClientRateChef extends AppCompatActivity implements View.OnClickLis
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.update_order_status_dialog, null);
+        final View dialogView = inflater.inflate(R.layout.rate_meal_dialog, null);
         dialogBuilder.setView(dialogView);
 
-        final Spinner orderStatusOptions = (Spinner) dialogView.findViewById(R.id.orderStatusSpinner);
-        final EditText eta = (EditText) dialogView.findViewById(R.id.editTextETA);
-        final Button buttonConfirm = (Button) dialogView.findViewById(R.id.confirmStatusModifications);
-        final Button buttonBack = (Button) dialogView.findViewById(R.id.backToOrdersChef);
-
-        String[] orderStatus = {"Order being prepared", "Order on the way", "Order Delivered", "Order Rejected"};
-
-        // Creating adapter for spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, orderStatus);
-        orderStatusOptions.setAdapter(adapter);
+        final EditText rating = dialogView.findViewById(R.id.editTextNewRating);
+        final EditText title = dialogView.findViewById(R.id.editTextTitleComplaint);
+        final EditText description = dialogView.findViewById(R.id.editTextDescriptionComplaint);
+        final Button buttonConfirm = dialogView.findViewById(R.id.confirmButton);
+        final Button buttonBack = dialogView.findViewById(R.id.backButton);
 
         final AlertDialog b = dialogBuilder.create();
         b.show();
 
-        orderStatusOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                newStatus = orderStatus[position];
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) { }
-        });
-
         buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String newETA = eta.getText().toString();
-                updateOrderStatus(order, orderID, newStatus, newETA);
-                eta.setText("");
+                String newRating = rating.getText().toString();
+                String complaintTitle = title.getText().toString();
+                String descriptionTitle = description.getText().toString();
+
+                if (newRating.isEmpty()) {
+                    rating.setError("Please enter a rating");
+                    rating.requestFocus();
+                } else {
+                    addNewRating(newRating);
+                    // check if user wants to add a complaint
+                    Boolean complaintToAdd = !complaintTitle.isEmpty() || !descriptionTitle.isEmpty();
+                    if (complaintToAdd) {
+                        if (complaintTitle.isEmpty()) {
+                            title.setError("Please enter a title to submit a complaint");
+                            title.requestFocus();
+                        } else if (descriptionTitle.isEmpty()){
+                            description.setError("Please enter a description to submit complaint");
+                            description.requestFocus();
+                        } else {
+                            addNewComplaint();
+                        }
+                    }
+                }
+
                 b.dismiss();
             }
         });
@@ -148,5 +152,12 @@ public class ClientRateChef extends AppCompatActivity implements View.OnClickLis
                 b.dismiss();
             }
         });
+    }
+
+    private void addNewComplaint() {
+    }
+
+    private void addNewRating(String newRating) {
+
     }
 }
