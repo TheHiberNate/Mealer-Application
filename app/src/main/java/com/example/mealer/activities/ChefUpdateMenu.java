@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,11 +42,11 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chef_update_menu);
 
-        menuListView = (ListView) findViewById(R.id.mealList);
+        menuListView = (ListView) findViewById(R.id.chefOrderListView);
         menuList = new ArrayList<>();
         mealIDs = new ArrayList<>();
 
-        backToMenuHome = (Button) findViewById(R.id.btn_backToMenuHome);
+        backToMenuHome = (Button) findViewById(R.id.backToChefHome);
         backToMenuHome.setOnClickListener(this);
 
         menuListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -69,7 +68,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         menuReference = FirebaseDatabase.getInstance().getReference("Users").child(chefID).child("menu").child("meals");
         menuAdapter = new MenuAdapter(ChefUpdateMenu.this, menuList);
 
-        noMeals = (TextView) findViewById(R.id.textView_NoMeals);
+        noMeals = (TextView) findViewById(R.id.noIncomingOrders);
         menuListView.setEmptyView(noMeals);
     }
 
@@ -101,7 +100,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_backToMenuHome:
+            case R.id.backToChefHome:
                 finish();
         }
     }

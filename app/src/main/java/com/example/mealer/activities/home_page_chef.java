@@ -22,9 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class home_page_chef extends AppCompatActivity implements View.OnClickListener {
 
     //Instance Variables***********************************************
-    private double length;
-    private Button logout, menu;
-
+    private Button logout, menu, orderStatus;
     private TextView welcome, introMsg;
     private CardView menuCardView;
     private String welcomeMessage, suspensionMessage, chefID, suspensionLength;
@@ -36,10 +34,16 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page_chef);
 
+        initializeVariables();
+    }
+
+    private void initializeVariables() {
         logout = findViewById(R.id.btn_Logout_Chef);
         logout.setOnClickListener(this);
         menu = findViewById(R.id.btnUpdateMenu);
         menu.setOnClickListener(this);
+        orderStatus = findViewById(R.id.btnOrders);
+        orderStatus.setOnClickListener(this);
 
         welcome = (TextView) findViewById(R.id.textViewChefWelcome);
 
@@ -66,6 +70,7 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -76,6 +81,12 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
                 Intent intent = new Intent(this, ChefMenu.class);
                 intent.putExtra("chefID", chefID);
                 startActivity(intent);
+                break;
+            case R.id.btnOrders:
+                Intent newIntent = new Intent(this, ChefStatusOrders.class);
+                newIntent.putExtra("chefID", chefID);
+                startActivity(newIntent);
+                break;
         }
     }
 }

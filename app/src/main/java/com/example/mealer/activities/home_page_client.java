@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.mealer.R;
 
 public class home_page_client extends AppCompatActivity implements View.OnClickListener {
-    private Button logout, order;
+    private Button logout, order, myOrders, rateChef;
     private TextView welcome;
     private String welcomeMessage, clientID;
 
@@ -25,6 +25,12 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
 
         order = findViewById(R.id.orderButton);
         order.setOnClickListener(this);
+
+        myOrders = findViewById(R.id.statusOrderBtn);
+        myOrders.setOnClickListener(this);
+
+        rateChef = findViewById(R.id.rateChefBtn);
+        rateChef.setOnClickListener(this);
 
         Bundle extras = getIntent().getExtras();
         welcomeMessage = extras.getString("welcomeClient");
@@ -44,6 +50,15 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
                 Intent intent = new Intent(this, ClientSearchMeal.class);
                 intent.putExtra("clientID", clientID);
                 startActivity(intent);
+                break;
+            case R.id.statusOrderBtn:
+                Intent newIntent = new Intent(this, ClientStatusOrders.class);
+                newIntent.putExtra("clientID", clientID);
+                startActivity(newIntent);
+                break;
+            case R.id.rateChefBtn:
+                //
+                break;
         }
     }
 }
