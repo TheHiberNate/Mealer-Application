@@ -38,15 +38,15 @@
         app:layout_constraintTop_toBottomOf="@+id/orderStatusSpinner" />
 
     <LinearLayout
-        android:layout_width="386dp"
-        android:layout_height="57dp"
+        android:layout_width="347dp"
+        android:layout_height="56dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.36"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView8"
-        app:layout_constraintVertical_bias="0.051">
+        app:layout_constraintVertical_bias="0.164">
 
         <Button
             android:id="@+id/backToOrdersChef"
@@ -64,16 +64,27 @@
     </LinearLayout>
 
     <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="120dp"
+        android:id="@+id/editTextETA"
+        android:layout_width="144dp"
         android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Time (in minutes)"
+        android:hint="Delivery Time"
         android:inputType="number"
         android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="(minutes)"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderStatusSpinner" />
+        app:layout_constraintHorizontal_bias="0.107"
+        app:layout_constraintStart_toEndOf="@+id/editTextETA"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

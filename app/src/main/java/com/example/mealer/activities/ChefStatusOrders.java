@@ -110,6 +110,7 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
         dialogBuilder.setView(dialogView);
 
         final Spinner orderStatusOptions = (Spinner) dialogView.findViewById(R.id.orderStatusSpinner);
+        final EditText eta = (EditText) dialogView.findViewById(R.id.editTextETA);
         final Button buttonConfirm = (Button) dialogView.findViewById(R.id.confirmStatusModifications);
         final Button buttonBack = (Button) dialogView.findViewById(R.id.backToOrdersChef);
 
