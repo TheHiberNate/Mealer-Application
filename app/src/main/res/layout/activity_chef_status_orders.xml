@@ -17,16 +17,6 @@
         android:scrollbarSize="20dp" />
 
     <TextView
-        android:id="@+id/noIncomingOrders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="You have no current food orders!"
-        android:textColor="@color/white"
-        android:visibility="invisible"
-        tools:visibility="invisible"></TextView>
-
-    <TextView
         android:id="@+id/txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,6 +30,32 @@
         android:textSize="20sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginEnd="115dp"
+        android:layout_marginBottom="300dp"
+        android:text="No Client Orders Yet!"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
+
+    <Button
+        android:id="@+id/removeRejectedOrders"
+        android:layout_width="176dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="2dp"
+        android:text="Remove Rejected Orders" />
+
     <Button
         android:id="@+id/backToChefHome"
         android:layout_width="150dp"
@@ -49,15 +65,5 @@
         android:layout_marginStart="51dp"
         android:layout_marginBottom="2dp"
         android:text="Back" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="176dp"
-        android:layout_height="60dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="2dp"
-        android:text="Remove Rejected Orders" />
 
 </RelativeLayout>

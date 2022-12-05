@@ -45,9 +45,12 @@ public class ChefOrderAdapter extends ArrayAdapter<Order> {
         TextView orderStatus = listViewItem.findViewById(R.id.orderStatusChef);
 
         Order order = orders.get(position);
-        System.out.println(order.getMeal().getMealName());
         orderMealName.setText(order.getMeal().getMealName());
-        orderDeliveryTime.setText("Estimated Delivery Time: " + order.getDeliveryTime() + " minutes");
+        if (!order.getDeliveryTime().equals("none")) {
+            orderDeliveryTime.setText("Estimated Delivery Time: " + order.getDeliveryTime() + " minutes");
+        } else {
+            orderDeliveryTime.setText("Estimated Delivery Time: " + order.getDeliveryTime());
+        }
         orderQuantity.setText("Quantity: " + order.getQuantity());
         orderStatus.setText("Order Status: " + order.getStatus());
 
