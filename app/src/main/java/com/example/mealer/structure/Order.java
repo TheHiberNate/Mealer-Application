@@ -4,8 +4,7 @@ public class Order {
     private Meal meal;
     private String quantity;
     private String status;
-    private String[] statusOptions = {"order sent to chef" , "order confirmed by chef",
-            "order being prepared", "order on the way", "order delivered", "order rejected"};
+    private String[] statusOptions = {"Pending Chef Approval", "Order being prepared", "Order on the way", "Order Delivered", "Order Rejected"};
     private String deliveryTime;
     private String chefID;
     private String clientID;

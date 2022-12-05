@@ -20,13 +20,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ClientOrderAdapter extends ArrayAdapter<Order> {
+public class ChefOrderAdapter extends ArrayAdapter<Order> {
     ArrayList<Order> orders;
     private Activity context;
-    private String chefName;
-    private DatabaseReference chefRef;
+    private String clientName;
+    private DatabaseReference clientRef;
 
-    public ClientOrderAdapter(Activity context, ArrayList<Order> orders) {
+    public ChefOrderAdapter(Activity context, ArrayList<Order> orders) {
         super(context, R.layout.client_order_adapter, orders);
         this.context = context;
         this.orders = orders;
@@ -51,14 +51,14 @@ public class ClientOrderAdapter extends ArrayAdapter<Order> {
         orderQuantity.setText("Quantity: " + order.getQuantity());
         orderStatus.setText("Order Status: " + order.getStatus());
 
-        chefRef = FirebaseDatabase.getInstance().getReference("Users").child(order.getChefID());
-        chefRef.addValueEventListener(new ValueEventListener() {
+        clientRef = FirebaseDatabase.getInstance().getReference("Users").child(order.getClientID());
+        clientRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String chefFirstName = snapshot.child("firstName").getValue().toString();
-                String chefLastName = snapshot.child("lastName").getValue().toString();
-                chefName = chefFirstName + " " + chefLastName;
-                orderChefName.setText(chefName);
+                String clientFirstName = snapshot.child("firstName").getValue().toString();
+                String clientLastName = snapshot.child("lastName").getValue().toString();
+                clientName = clientFirstName + " " + clientLastName;
+                orderChefName.setText("Order placed by: " + clientName);
             }
 
             @Override

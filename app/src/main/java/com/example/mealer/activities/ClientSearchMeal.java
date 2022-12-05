@@ -92,9 +92,9 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                 Chef chef = chefList.get(position);
                 String chefID = listChefID.get(position);
                 Meal meal = mealList.get(position);
-//                String mealRating = meal.getRating();
+                String rating = meal.getRating();
                 String mealID = listMealID.get(position);
-                showOrderMealDialog(chef, chefID, meal, mealID, position); // +meal rating
+                showOrderMealDialog(chef, chefID, meal, mealID); // +meal rating
             }
         });
 
@@ -287,7 +287,7 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
         });
     }
 
-    public void showOrderMealDialog(Chef chef, String chefID, Meal meal, String mealID, int position) {
+    public void showOrderMealDialog(Chef chef, String chefID, Meal meal, String mealID) {
 
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();

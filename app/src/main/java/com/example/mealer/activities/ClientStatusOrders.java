@@ -39,15 +39,9 @@ public class ClientStatusOrders extends AppCompatActivity implements View.OnClic
     }
 
     private void initializeVariables() {
-        ordersListView = findViewById(R.id.clientOrderListView);
-        ordersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ordersListView = findViewById(R.id.chefOrderListView);
 
-            }
-        });
-
-        backBtn = findViewById(R.id.backClientHomeBtn);
+        backBtn = findViewById(R.id.backToChefHome);
         backBtn.setOnClickListener(this);
 
         clientOrders = new ArrayList<>();
@@ -59,14 +53,14 @@ public class ClientStatusOrders extends AppCompatActivity implements View.OnClic
 
         clientOrderAdapter = new ClientOrderAdapter(ClientStatusOrders.this, clientOrders);
 
-        noOrders = findViewById(R.id.noOrderTxtView);
+        noOrders = findViewById(R.id.noIncomingOrders);
         ordersListView.setEmptyView(noOrders);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.backClientHomeBtn:
+            case R.id.backToChefHome:
                 finish();
                 break;
         }

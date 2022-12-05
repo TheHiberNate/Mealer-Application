@@ -7,10 +7,10 @@
     tools:context=".activities.ChefUpdateMenu">
 
     <ListView
-        android:id="@+id/clientOrderListView"
+        android:id="@+id/chefOrderListView"
         android:layout_width="match_parent"
         android:layout_height="587dp"
-        android:layout_above="@+id/backClientHomeBtn"
+        android:layout_above="@+id/backToChefHome"
         android:layout_below="@+id/textViewSelectMealToEdit"
         android:layout_marginTop="31dp"
         android:layout_marginBottom="0dp"
@@ -31,7 +31,7 @@
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/noOrderTxtView"
+        android:id="@+id/noIncomingOrders"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -41,7 +41,7 @@
         tools:visibility="invisible"></TextView>
 
     <TextView
-        android:id="@+id/ordersTextView"
+        android:id="@+id/txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewSelectMealToEdit"
@@ -54,7 +54,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/backClientHomeBtn"
+        android:id="@+id/backToChefHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
