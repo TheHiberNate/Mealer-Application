@@ -77,8 +77,8 @@
 
     <RadioGroup
         android:id="@+id/radioGroupAmountOfTime"
-        android:layout_width="237dp"
-        android:layout_height="102dp"
+        android:layout_width="253dp"
+        android:layout_height="103dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_style"
         android:backgroundTint="@color/green"
@@ -158,8 +158,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="422dp"
-        android:layout_height="72dp"
+        android:layout_width="403dp"
+        android:layout_height="71dp"
         android:layout_marginTop="450dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -190,12 +190,12 @@
 
     <Button
         android:id="@+id/btn_backToComplaints"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="227dp"
+        android:layout_height="51dp"
         android:layout_marginTop="33dp"
-        android:text="Back to List of Complaints"
         android:background="@drawable/button_style"
         android:backgroundTint="@color/green"
+        android:text="Back to List of Complaints"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

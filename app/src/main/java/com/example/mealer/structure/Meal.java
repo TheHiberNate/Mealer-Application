@@ -44,7 +44,8 @@ public class Meal {
         if (rating.equals("-1")) {
             this.rating = String.valueOf(Double.parseDouble(newRating));
         } else {
-            this.rating = String.valueOf((Double.parseDouble(rating)+Double.parseDouble(newRating))/2);
+            String tempRating = String.valueOf((Double.parseDouble(rating)+Double.parseDouble(newRating))/2);
+            this.rating = String.format("%3.3s", tempRating);
         }
     }
 }

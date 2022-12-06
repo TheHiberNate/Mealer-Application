@@ -30,7 +30,7 @@ public class ClientRateChef extends AppCompatActivity implements View.OnClickLis
     private TextView noOrders;
     private Button back;
     private String clientID;
-    private DatabaseReference reference;
+    private DatabaseReference reference, complaintRef;
     private ArrayList<Order> pastOrdersList;
     private RateMealAdapter rateMealAdapter;
 
@@ -58,6 +58,7 @@ public class ClientRateChef extends AppCompatActivity implements View.OnClickLis
         back.setOnClickListener(this);
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(clientID).child("orders");
+        complaintRef = FirebaseDatabase.getInstance().getReference("Complaints");
 
         pastOrdersList = new ArrayList<>();
 
@@ -109,44 +110,44 @@ public class ClientRateChef extends AppCompatActivity implements View.OnClickLis
         final EditText rating = dialogView.findViewById(R.id.editTextNewRating);
         final EditText title = dialogView.findViewById(R.id.editTextTitleComplaint);
         final EditText description = dialogView.findViewById(R.id.editTextDescriptionComplaint);
-        final Button buttonConfirm = dialogView.findViewById(R.id.confirmButton);
-        final Button buttonBack = dialogView.findViewById(R.id.backButton);
+        final Button btnConfirm = dialogView.findViewById(R.id.confirmButton);
+        final Button btnBack = dialogView.findViewById(R.id.backButton);
 
         final AlertDialog b = dialogBuilder.create();
         b.show();
 
-        buttonConfirm.setOnClickListener(new View.OnClickListener() {
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String newRating = rating.getText().toString();
                 String complaintTitle = title.getText().toString();
-                String descriptionTitle = description.getText().toString();
+                String complaintDescription = description.getText().toString();
+                // Check if one of the complaint fields has text
+                Boolean complaintToAdd = !complaintTitle.isEmpty() || !complaintDescription.isEmpty();
 
                 if (newRating.isEmpty()) {
                     rating.setError("Please enter a rating");
                     rating.requestFocus();
+                } else if (!newRating.isEmpty() && !complaintToAdd) {
+                    addNewRating(order, newRating);
+                    b.dismiss();
                 } else {
-                    addNewRating(newRating);
-                    // check if user wants to add a complaint
-                    Boolean complaintToAdd = !complaintTitle.isEmpty() || !descriptionTitle.isEmpty();
-                    if (complaintToAdd) {
-                        if (complaintTitle.isEmpty()) {
-                            title.setError("Please enter a title to submit a complaint");
-                            title.requestFocus();
-                        } else if (descriptionTitle.isEmpty()){
-                            description.setError("Please enter a description to submit complaint");
-                            description.requestFocus();
-                        } else {
-                            addNewComplaint();
-                        }
+                    if (complaintTitle.isEmpty()) {
+                        title.setError("Please enter a title to submit a complaint");
+                        title.requestFocus();
+                    } else if (complaintDescription.isEmpty()){
+                        description.setError("Please enter a description to submit complaint");
+                        description.requestFocus();
+                    } else {
+                        addNewRating(order, newRating);
+                        addNewComplaint(order, complaintTitle, complaintDescription);
+                        b.dismiss();
                     }
                 }
-
-                b.dismiss();
             }
         });
 
-        buttonBack.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 b.dismiss();
@@ -154,10 +155,15 @@ public class ClientRateChef extends AppCompatActivity implements View.OnClickLis
         });
     }
 
-    private void addNewComplaint() {
+    private void addNewComplaint(Order order, String title, String description) {
+        String id = complaintRef.push().getKey();
+        complaintRef.child(id).child("chefID").setValue(order.getChefID());
+        complaintRef.child(id).child("clientID").setValue(order.getClientID());
+        complaintRef.child(id).child("title").setValue(title);
+        complaintRef.child(id).child("description").setValue(description);
     }
 
-    private void addNewRating(String newRating) {
+    private void addNewRating(Order order, String newRating) {
 
     }
 }

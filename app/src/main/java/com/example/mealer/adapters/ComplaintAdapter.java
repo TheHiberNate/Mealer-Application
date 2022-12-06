@@ -62,7 +62,7 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
 
                 title.setText(complaint.getTitle());
                 chefName.setText("Complaint Against Chef: " + getChefName());
-                description.setText("Description: " + complaint.getDescription());
+                description.setText("Description:\n" + complaint.getDescription());
                 clientName.setText("Complaint filed by Client: " + getClientName());
             }
 
