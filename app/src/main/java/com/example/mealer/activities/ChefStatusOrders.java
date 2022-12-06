@@ -192,7 +192,6 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
                     && order.getMeal().getRating().equals(clientOrder.getMeal().getRating())
                     && order.getMeal().getVegetarian().equals(clientOrder.getMeal().getVegetarian())) { // if order chef object == order client object, we found the order
                         clientOrderID = ds.getKey();
-                        System.out.println("Client Order ID is: " + clientOrderID);
                         break;
                     }
                 }

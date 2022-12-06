@@ -156,7 +156,7 @@ public class ChefUpdateMenu extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void updateMeal(String mealID,String name, String description, String price, Boolean vegetarianChecked, Boolean availableChecked) {
+    private void updateMeal(String mealID, String name, String description, String price, Boolean vegetarianChecked, Boolean availableChecked) {
         DatabaseReference mealReference = menuReference.child(mealID);
         if (!name.isEmpty()) {
             mealReference.child("mealName").setValue(name);

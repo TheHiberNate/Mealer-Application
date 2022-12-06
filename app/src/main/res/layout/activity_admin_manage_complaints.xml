@@ -21,16 +21,6 @@
         android:scrollbarSize="20dp"
         android:stackFromBottom="false" />
 
-    <TextView
-        android:id="@+id/noIncomingOrders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/currently_no_chef_complaints"
-        android:textColor="@color/white"
-        android:visibility="invisible"
-        tools:visibility="invisible"></TextView>
-
 
     <TextView
         android:id="@+id/textView_BacktoAdminHome"
@@ -44,6 +34,16 @@
         android:textStyle="bold"
         android:visibility="visible"
         tools:visibility="visible"></TextView>
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/currently_no_chef_complaints"
+        android:textColor="@color/black"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
 
 
 </RelativeLayout>
