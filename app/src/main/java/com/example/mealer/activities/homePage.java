@@ -76,6 +76,7 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
 
         if (validCredentials()) {
             if (Validation.validateAdmin(email_check, password_check)) {
+                Toast.makeText(homePage.this, "Admin Login Successful", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(homePage.this, home_page_admin.class));
             } else {
                 mAuth.signInWithEmailAndPassword(email_check, password_check).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -108,6 +109,7 @@ public class homePage extends AppCompatActivity implements View.OnClickListener 
                                                 }
                                             }
                                             intentUserWelcome.putExtra("userID", id);
+                                            Toast.makeText(homePage.this, "Login Successful", Toast.LENGTH_LONG).show();
                                             startActivity(intentUserWelcome);
                                         }
                                     }
