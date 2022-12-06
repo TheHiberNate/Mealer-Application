@@ -5,7 +5,7 @@ Projet Mealer pour la classe SEG 2505 (Groupe 16)
 ## Authors
 @author Hakim <br />
 @author Stéphane <br />
-@author Nathan Gawargy (300232268) <br />
+@author Nathan Gawargy <br />
 @author Astrid <br />
 @author Brice <br />
 @author Emma <br />
