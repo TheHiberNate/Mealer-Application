@@ -137,6 +137,9 @@ public class ClientRateChef extends AppCompatActivity implements View.OnClickLis
                 if (newRating.isEmpty()) {
                     rating.setError("Please enter a rating");
                     rating.requestFocus();
+                } if (Double.parseDouble(newRating) > 5 || Double.parseDouble(newRating) < 1) {
+                    rating.setError("Rating must be between 1 to 5 stars");
+                    rating.requestFocus();
                 } else if (!newRating.isEmpty() && !complaintToAdd) {
                     addNewRating(order, newRating, orderID);
                     b.dismiss();
@@ -208,7 +211,6 @@ public class ClientRateChef extends AppCompatActivity implements View.OnClickLis
                 }
                 reference.child(orderID).removeValue();
                 Toast.makeText(getApplicationContext(), "Thank you for your feedback!", Toast.LENGTH_LONG).show();
-
             }
 
             @Override
