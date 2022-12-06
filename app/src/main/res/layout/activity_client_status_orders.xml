@@ -31,12 +31,12 @@
 
     <Button
         android:id="@+id/backToChefHome"
-        android:layout_width="154dp"
+        android:layout_width="192dp"
         android:layout_height="65dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="57dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="3dp"
         android:text="Back" />
 
     <TextView
@@ -57,14 +57,12 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="154dp"
-        android:layout_height="67dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="191dp"
+        android:layout_height="66dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="214dp"
-        android:layout_marginEnd="43dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="2dp"
         android:text="Remove Rejected Orders" />
 
 </RelativeLayout>

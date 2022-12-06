@@ -48,22 +48,22 @@
 
     <Button
         android:id="@+id/removeRejectedOrders"
-        android:layout_width="176dp"
-        android:layout_height="60dp"
+        android:layout_width="205dp"
+        android:layout_height="69dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="2dp"
-        android:text="Remove Rejected Orders" />
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="3dp"
+        android:text="Remove Completed Orders" />
 
     <Button
         android:id="@+id/backToChefHome"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
+        android:layout_width="206dp"
+        android:layout_height="66dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginBottom="6dp"
         android:text="Back" />
 
 </RelativeLayout>

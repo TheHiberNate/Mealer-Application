@@ -68,7 +68,7 @@ public class admin_manage_complaints extends AppCompatActivity implements View.O
             }
         });
 
-        noComplaints = (TextView) findViewById(R.id.noIncomingOrders);
+        noComplaints = (TextView) findViewById(R.id.textView16);
         complaintsListView.setEmptyView(noComplaints);
     }
 

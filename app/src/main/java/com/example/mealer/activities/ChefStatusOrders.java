@@ -54,7 +54,12 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
         ordersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showOrderDialog(chefOrders.get(position), chefOrdersID.get(position));
+                Order order = chefOrders.get(position);
+                if (order.getStatus().equals("Order Delivered") || order.getStatus().equals("Order Rejected")) {
+                    Toast.makeText(getApplicationContext(), "Cannot change the status of a rejected or delivered meal!", Toast.LENGTH_LONG).show();
+                } else {
+                    showOrderDialog(order, chefOrdersID.get(position));
+                }
             }
         });
 
@@ -187,7 +192,6 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
                     && order.getMeal().getRating().equals(clientOrder.getMeal().getRating())
                     && order.getMeal().getVegetarian().equals(clientOrder.getMeal().getVegetarian())) { // if order chef object == order client object, we found the order
                         clientOrderID = ds.getKey();
-                        System.out.println("Client Order ID is: " + clientOrderID);
                         break;
                     }
                 }
@@ -219,12 +223,12 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     Order order = ds.getValue(Order.class);
-                    if (order.getStatus().equals("Order Rejected")) {
+                    if (order.getStatus().equals("Order Rejected") || order.getStatus().equals("Order Delivered")) {
                         String orderToDelete = ds.getKey();
                         orderRef.child(orderToDelete).removeValue();
                     }
                 }
-                Toast.makeText(getApplicationContext(), "Removed Rejected Orders", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Removed Completed Orders", Toast.LENGTH_LONG).show();
             }
 
             @Override

@@ -57,7 +57,9 @@ public class home_page_client extends AppCompatActivity implements View.OnClickL
                 startActivity(newIntent);
                 break;
             case R.id.rateChefBtn:
-                //
+                Intent rateChefIntent = new Intent(this, ClientRateChef.class);
+                rateChefIntent.putExtra("clientID", clientID);
+                startActivity(rateChefIntent);
                 break;
         }
     }
