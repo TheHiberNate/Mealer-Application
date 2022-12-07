@@ -45,20 +45,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="cursive"
-                android:text="@string/hi_admin_welcome_back"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/welcomemess"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="6dp"
-                android:layout_marginEnd="177dp"
-                android:fontFamily="cursive"
-                android:text="@string/you_are_in_charge" />
+                android:text="Hi Admin! Welcome Back!"
+                android:textSize="25sp" />
 
 
         </RelativeLayout>
