@@ -8,6 +8,8 @@ public class Chef extends User {
     private Boolean suspended;
     private Menu menu;
     private List<Order> orders;
+    private String soldMeals;
+    private String rating;
 
     public Chef() { }
 
@@ -21,6 +23,8 @@ public class Chef extends User {
         this.orders = new ArrayList<>();
         Order order = new Order(new Meal("IgnoreMe", "IgnoreMe", "0"), "0", "chefID", "clientID");
         orders.add(order);
+        this.soldMeals = "0";
+        this.rating = "-1";
     }
 
     public String getSuspensionLength() { return suspensionLength; }
@@ -46,4 +50,12 @@ public class Chef extends User {
     public void addOrder(Order order) {
         orders.add(order);
     }
+
+    public String getRating() { return rating; }
+
+    public void setRating(String rating) { this.rating = rating; }
+
+    public String getSoldMeals() { return soldMeals; }
+
+    public void setSoldMeals(String soldMeals) { this.soldMeals = soldMeals; }
 }

@@ -199,14 +199,15 @@ public class ClientRateChef extends AppCompatActivity implements View.OnClickLis
                 }
 
                 if (meal.getRating().equals("-1")) {
-                    System.out.println("New Rating: " + newRating);
-                    chefRef.child(chefMealID).child("rating").setValue(newRating);
+                    Double ratingDoub = Double.parseDouble(newRating);
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    String ratingString = df.format(ratingDoub);
+                    chefRef.child(chefMealID).child("rating").setValue(ratingString);
                 } else {
                     Double ratingDouble = (Double.parseDouble(meal.getRating()) + Double.parseDouble(newRating))/2;
                     DecimalFormat df = new DecimalFormat("#.##");
                     ratingDouble = Double.valueOf(df.format(ratingDouble));
                     String rating = String.valueOf(ratingDouble);
-                    System.out.println("New Rating: " + rating);
                     chefRef.child(chefMealID).child("rating").setValue(rating);
                 }
                 reference.child(orderID).removeValue();

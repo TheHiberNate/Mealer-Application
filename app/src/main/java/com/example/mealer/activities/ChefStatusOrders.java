@@ -204,8 +204,16 @@ public class ChefStatusOrders extends AppCompatActivity implements View.OnClickL
 
                 // Set new delivery time for the client and the chef
                 if (!newETA.isEmpty()) {
-                    clientSnap.getRef().child("deliveryTime").setValue(newETA);
-                    chefSnap.getRef().child("deliveryTime").setValue(newETA);
+                    if (newStatus.equals("Order Delivered") || newStatus.equals("Order Rejected")) {
+                        clientSnap.getRef().child("deliveryTime").setValue("none");
+                        chefSnap.getRef().child("deliveryTime").setValue("none");
+                    } else {
+                        clientSnap.getRef().child("deliveryTime").setValue(newETA);
+                        chefSnap.getRef().child("deliveryTime").setValue(newETA);
+                    }
+                } else if (newETA.isEmpty() && (newStatus.equals("Order Delivered") || newStatus.equals("Order Rejected"))) {
+                    clientSnap.getRef().child("deliveryTime").setValue("none");
+                    chefSnap.getRef().child("deliveryTime").setValue("none");
                 }
                 Toast.makeText(getApplicationContext(), "Order Updated Successfully", Toast.LENGTH_LONG).show();
             }
