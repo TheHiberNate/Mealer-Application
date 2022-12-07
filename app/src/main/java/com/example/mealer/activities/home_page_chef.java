@@ -95,6 +95,7 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
             case R.id.profile:
                 Intent profileIntent = new Intent(this, ChefProfile.class);
                 profileIntent.putExtra("chefID", chefID);
+                startActivity(profileIntent);
                 break;
         }
     }

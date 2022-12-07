@@ -53,9 +53,10 @@
         <TextView
             android:id="@+id/profileDescription"
             android:layout_width="match_parent"
-            android:layout_height="47dp"
+            android:layout_height="55dp"
             android:layout_marginStart="10dp"
-            android:text="Chef Description Here" />
+            android:text="Chef Description Here"
+            android:textSize="16sp" />
 
         <Space
             android:layout_width="match_parent"

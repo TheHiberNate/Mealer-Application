@@ -70,14 +70,14 @@ public class ChefProfile extends AppCompatActivity implements View.OnClickListen
                     ratingString = String.valueOf(Double.valueOf(df.format(sum/count)));
                     reference.child("rating").setValue(ratingString);
                 }
-                name.setText(chef.getFirstName() + " " + chef.getLastName());
-                email.setText(chef.getEmail());
-                description.setText(chef.getDescription());
-                soldMeals.setText(chef.getSoldMeals());
+                name.setText("Name: " + chef.getFirstName() + " " + chef.getLastName());
+                email.setText("Email: " + chef.getEmail());
+                description.setText("Chef Description:\n" + chef.getDescription());
+                soldMeals.setText("Number of Meals Sold: " + chef.getSoldMeals());
                 if (chef.getRating().equals("-1")) {
                     rating.setText("No Ratings Yet");
                 } else {
-                    rating.setText(chef.getRating() + " /5 stars");
+                    rating.setText("Rating: " + chef.getRating() + " /5 stars");
                 }
             }
 
