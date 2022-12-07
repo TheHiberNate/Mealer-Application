@@ -50,7 +50,11 @@ public class ChefProfile extends AppCompatActivity implements View.OnClickListen
         rating = findViewById(R.id.profileRating);
 
         reference = FirebaseDatabase.getInstance().getReference("Users").child(chefID);
+    }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -77,7 +81,7 @@ public class ChefProfile extends AppCompatActivity implements View.OnClickListen
                 if (chef.getRating().equals("-1")) {
                     rating.setText("No Ratings Yet");
                 } else {
-                    rating.setText("Rating: " + chef.getRating() + " /5 stars");
+                    rating.setText("Rating: " + ratingString + " /5 stars");
                 }
             }
 
@@ -86,8 +90,6 @@ public class ChefProfile extends AppCompatActivity implements View.OnClickListen
 
             }
         });
-
-
     }
 
     @Override

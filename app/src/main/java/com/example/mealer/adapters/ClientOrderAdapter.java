@@ -61,7 +61,7 @@ public class ClientOrderAdapter extends ArrayAdapter<Order> {
                 String chefFirstName = snapshot.child("firstName").getValue().toString();
                 String chefLastName = snapshot.child("lastName").getValue().toString();
                 chefName = chefFirstName + " " + chefLastName;
-                orderChefName.setText(chefName);
+                orderChefName.setText("Ordered from " + chefName);
             }
 
             @Override
