@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.mealer.R;
@@ -23,6 +24,7 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
 
     //Instance Variables***********************************************
     private Button logout, menu, orderStatus;
+    private ImageView profile;
     private TextView welcome, introMsg;
     private CardView menuCardView;
     private String welcomeMessage, suspensionMessage, chefID, suspensionLength;
@@ -55,6 +57,9 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
         introMsg = findViewById(R.id.introMesg);
         menuCardView = (CardView) findViewById(R.id.sec);
 
+        profile = findViewById(R.id.profile);
+        profile.setOnClickListener(this);
+
         chefID = extras.getString("userID");
         suspended = Boolean.valueOf(extras.getString("suspended"));
         suspensionLength = extras.getString("suspensionLength");
@@ -86,6 +91,10 @@ public class home_page_chef extends AppCompatActivity implements View.OnClickLis
                 Intent newIntent = new Intent(this, ChefStatusOrders.class);
                 newIntent.putExtra("chefID", chefID);
                 startActivity(newIntent);
+                break;
+            case R.id.profile:
+                Intent profileIntent = new Intent(this, ChefProfile.class);
+                profileIntent.putExtra("chefID", chefID);
                 break;
         }
     }

@@ -79,7 +79,6 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
 
         Bundle extras = getIntent().getExtras();
         clientID = extras.getString("clientID");
-        System.out.println(clientID);
 
         clientRef = FirebaseDatabase.getInstance().getReference("Users");
 
@@ -371,6 +370,11 @@ public class ClientSearchMeal extends AppCompatActivity implements AdapterView.O
                 chef.addOrder(order);
                 clientSnapshot.getRef().child("orders").setValue(client.getOrders());
                 chefSnapshot.getRef().child("orders").setValue(chef.getOrders());
+
+                // change number of meals sold
+                Integer current = Integer.parseInt(chef.getSoldMeals())+1;
+                String newNumber = String.valueOf(current);
+                chefSnapshot.getRef().child("soldMeals").setValue(newNumber);
             }
 
             @Override
