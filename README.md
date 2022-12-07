@@ -39,3 +39,16 @@ Le livrable 3 a pour but d'implémenter la fonctionalité du cuisinier. Un cuisi
 <img src = app/src/Images/Livrable3Image.jpg>
 
 <img src = app/src/Images/UML3.jpg>
+
+## Livrable 4
+**Administrator Login Credentials:** <br />
+Email: admin@email.com <br />
+Password: mealeradmin09! <br />
+**Chef Login Credentials:** <br />
+Email: mario@kart.ca <br />
+Password: mariokart <br />
+**Client Login Credentials:** <br />
+Email: mike@grant.ca <br />
+Password: mikegrant <br />
+
+Le livrable 4 a pour but d'implémenter la fonctionnalité du client ainsi que l'intégration à l'application. Le client peut rechercher et commander des repas proposés par des cuisiniers non-suspendus. Les cuisiniers peuvent mettre à jour la commande et spécifier le temps de livraison. Après avoir reçu leur repas, les clients peuvent soumettre une note d'évaluation pour un repas et on l'option de soumettre une plainte contre le cuisinier auquel ils ont acheté leur repas. Le cuisinier a maintenant un profil qui indique ces informations ainsi que le nombre de repas vendus et sa note d'évaluation.
