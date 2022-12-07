@@ -51,7 +51,8 @@ Password: mariokart <br />
 Email: mike@grant.ca <br />
 Password: mikegrant <br />
 
-Le livrable 4 a pour but d'implémenter la fonctionnalité du client ainsi que l'intégration à l'application. Le client peut rechercher et commander des repas proposés par des cuisiniers non-suspendus. Les cuisiniers peuvent mettre à jour la commande et spécifier le temps de livraison. Après avoir reçu leur repas, les clients peuvent soumettre une note d'évaluation pour un repas et on l'option de soumettre une plainte contre le cuisinier auquel ils ont acheté leur repas. Le cuisinier a maintenant un profil qui indique ces informations ainsi que le nombre de repas vendus et sa note d'évaluation.
+Le livrable 4 a pour but d'implémenter la fonctionnalité du client ainsi que l'intégration à l'application. Le client peut rechercher et commander des repas proposés par des cuisiniers non-suspendus. Les cuisiniers peuvent mettre à jour la commande et spécifier le temps de livraison. Après avoir reçu leur repas, les clients peuvent soumettre une note d'évaluation pour un repas et on l'option de soumettre une plainte contre le cuisinier auquel ils ont acheté leur repas. Le cuisinier a maintenant un profil qui indique ces informations ainsi que le nombre de repas vendus et sa note d'évaluation. <br />
+
 <img src = app/src/Images/ChefProfile.jpg>
 
 <img src = app/src/Images/EditedFinalDiagram.jpg>
