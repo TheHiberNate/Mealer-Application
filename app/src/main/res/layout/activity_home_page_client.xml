@@ -7,51 +7,198 @@
 
     tools:context=".activities.home_page_client">
 
+
+
+
+
+
+
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Click below to see the status of your orders"
+        android:fontFamily="@font/arapey"
+        android:text="Hello[Client Name],"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.058"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/orderButton" />
-
-    <Button
-        android:id="@+id/rateChefBtn"
-        android:layout_width="156dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/green"
-        android:text="Rate Chef"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <Button
-        android:id="@+id/orderButton"
-        android:layout_width="156dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/green"
-        android:text="Order here"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105" />
 
     <TextView
         android:id="@+id/textViewWelcomeClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Mealer, [Client Name]"
+        android:fontFamily="@font/arapey"
+        android:text="Welcome to Mealer!"
+        android:textSize="16dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.056"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11" />
+        app:layout_constraintVertical_bias="0.133" />
+
+    <ImageView
+        android:layout_width="43dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Logout_Client" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="352dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="135dp"
+        android:gravity="center"
+
+        android:padding="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/Light_green">
+
+            <!-- Media -->
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/share_food" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="136dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/arapey"
+                android:text="Enjoy local food and get 20% off during holidays"
+                android:textSize="18dp" />
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card2"
+        android:layout_width="352dp"
+        android:layout_height="400dp"
+
+        android:gravity="center"
+        android:padding="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card"
+        app:layout_constraintVertical_bias="1.0">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="350dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp">
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Click below to See Available Meals Offered by the Chefs!"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/orderButton"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/textView"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="115dp"
+                android:background="@color/green"
+                android:text="Order here"
+                app:layout_below="textView" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/orderButton"
+                android:layout_marginTop="12dp"
+                android:text="Click below to see the status of your orders"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/orderButton" />
+
+            <Button
+                android:id="@+id/statusOrderBtn"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/textView6"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="115dp"
+                android:background="@color/green"
+                android:text="My Orders"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/statusOrderBtn"
+                android:layout_marginTop="12dp"
+                android:text="Click below to rate your past meals or to file a complaint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.491"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/statusOrderBtn" />
+
+            <Button
+                android:id="@+id/rateChefBtn"
+                android:layout_width="120dp"
+                android:layout_height="30dp"
+                android:layout_below="@+id/textView5"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="115dp"
+                android:background="@color/green"
+                android:text="Rate Chef"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        </RelativeLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/btn_Logout_Client"
@@ -66,38 +213,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="140dp"
-        android:text="Click below to See Available Meals Offered by the Chefs!"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/statusOrderBtn"
-        android:layout_width="156dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="12dp"
-        android:background="@color/green"
-        android:text="My Orders"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Click below to rate your past meals or to file a complaint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statusOrderBtn" />
+
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
@@ -110,6 +230,7 @@
         android:background="@color/Light_grey"/>
 
     <FrameLayout
+        android:id="@+id/container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
@@ -118,4 +239,5 @@
         app:layout_constraintStart_toStartOf="parent">
 
     </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

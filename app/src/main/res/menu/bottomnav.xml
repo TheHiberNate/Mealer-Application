@@ -3,14 +3,18 @@
 
     <item android:title="Home"
         android:icon="@drawable/ic_baseline_home_24"
-        android:id="@+id/home"/>
+        android:id="@+id/home"
+        android:enabled="true"/>
     <item android:title="Profile"
         android:icon="@drawable/ic_baseline_account_24"
-        android:id="@+id/account"/>
+        android:id="@+id/account"
+        android:enabled="true"/>
     <item android:title="Orders"
         android:icon="@drawable/ic_baseline_shopping_cart_24"
-        android:id="@+id/order"/>
+        android:id="@+id/order"
+        android:enabled="true"/>
     <item android:title="Rate"
         android:icon="@drawable/ic_baseline_favorite_24"
-        android:id="@+id/favorite"/>
+        android:id="@+id/favorite"
+        android:enabled="true"/>
 </menu>
