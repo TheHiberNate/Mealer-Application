@@ -1,7 +1,5 @@
 # **Mealer**
 
-Projet Mealer pour la classe SEG 2505 (Groupe 16)
-
 ## Authors
 @author Hakim <br />
 @author Stéphane <br />
